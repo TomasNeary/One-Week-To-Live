@@ -1,0 +1,45 @@
+module Base
+{
+  recipe Make Bucket of Concrete
+  {
+    destroy BucketEmpty/BucketWaterFull,
+    Water=5,
+    ConcretePowder,
+
+    Result:BucketConcreteFull,
+    Time:150.0,
+    Category:Carpentry,
+  }
+
+  /************************Metalworking************************/
+
+  recipe Make Metal Pipe
+  {
+     TinCanEmpty/PopEmpty=4,
+     BlowTorch=5,
+     keep WeldingMask,
+
+     Result:MetalPipe,
+     Time:250.0,
+     Category:Welding,
+     OnGiveXP:Give10MWXP,
+     NeedToBeLearn:true,
+     Override:true,
+  }
+
+  recipe Make Metal Bar
+  {
+      MetalPipe/LeadPipe,
+      ScrapMetal=1,
+      BlowTorch=6,
+      keep WeldingMask,
+
+      Result:MetalBar,
+      Time:250.0,
+      Category:Welding,
+      SkillRequired:MetalWelding=2,
+      OnGiveXP:Give10MWXP,
+      NeedToBeLearn:true,
+      Override:true,
+  }
+}

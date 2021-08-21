@@ -1,0 +1,43 @@
+module KCMweapons
+{
+	model HandCrossbow
+	{
+		mesh = weapons/firearm/HandCrossbowNoBolt,
+	}
+	model HandCrossbowDrawn
+	{
+		mesh = weapons/firearm/HandCrossbow,
+	}
+	model KCM_Compound
+	{
+		mesh = weapons/firearm/KCM_CompoundNoBolt,
+	}
+	model KCM_CompoundDrawn
+	{
+		mesh = Weapons/Firearm/KCM_Compound,
+	}
+	model KCM_Compound02
+	{
+		mesh = weapons/firearm/KCM_Compound02NoBolt,
+	}
+	model KCM_CompoundDrawn02
+	{
+		mesh = Weapons/Firearm/KCM_Compound02,
+	}
+	model KCM_Handmade
+	{
+		mesh = weapons/firearm/KCM_HandmadeNoBolt,
+	}
+	model KCM_HandmadeDrawn
+	{
+		mesh = Weapons/Firearm/KCM_Handmade,
+	}
+	model KCM_Handmade02
+	{
+		mesh = weapons/firearm/KCM_Handmade02NoBolt,
+	}
+	model KCM_HandmadeDrawn02
+	{
+		mesh = Weapons/Firearm/KCM_Handmade02,
+	}
+}

@@ -1,0 +1,16 @@
+module cheatmenu
+{
+    imports
+    {
+        Base
+    }
+
+/************************ITEMS************************/
+
+item CMInfiniteCarryweight
+    {
+        Weight    	=    -999999,
+        Type    	=    Normal,
+        DisplayName    	=     |Infinite Carryweight|,
+    }
+}

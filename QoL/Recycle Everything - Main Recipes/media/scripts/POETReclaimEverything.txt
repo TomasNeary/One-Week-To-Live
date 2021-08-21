@@ -1,0 +1,234 @@
+module POETReclaimEverything
+{
+	imports
+	{
+		Base
+	}
+	
+	/*
+	=========================
+	RECLAIM - ITEMS >>> GLASS
+	=========================
+	
+	recipe Gain Broken Glass Shards (Junk)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		Mirror/Cologne/Perfume/LightBulb/LightBulbBlue/LightBulbCyan/LightBulbGreen/LightBulbMagenta/LightBulbOrange/LightBulbPink/LightBulbPurple/LightBulbRed/LightBulbYellow,
+	   
+		Result:brokenGlass,
+		Time:50.0,
+		Sound:PZ_Hammer,
+		Category:Carpentry,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Gain Broken Glass Shards (Bottles)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		EmptyJar/WineEmpty/WineEmpty2/WhiskeyEmpty,
+	   
+		Result:brokenGlass=2,
+		Time:50.0,
+		Sound:PZ_Hammer,
+		Category:Carpentry,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	==========================
+	RECLAIM - ITEMS >>> SCREWS
+	==========================
+	*/
+	
+	recipe Gain Screws (Junk)
+	{
+		keep Screwdriver,
+		Doorknob/Hinge/AlarmClock2/CDplayer/CordlessPhone/HomeAlarm/Speaker/WalkieTalkie1/WalkieTalkie2/WalkieTalkie3/WalkieTalkie4/WalkieTalkie5/RadioRed/RadioBlack,
+	   
+		Result:Screws=2,
+		Time:100.0,
+		Category:Carpentry,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		AnimNode:Disassemble,
+		Prop1:Screwdriver,
+		Prop2:CDplayer,
+	}
+	
+	recipe Gain Screws (Makeshift)
+	{
+		keep Screwdriver,
+		RemoteCraftedV1/RemoteCraftedV2/RemoteCraftedV3/WalkieTalkieMakeShift/RadioMakeShift,
+		
+		Result:Screws=2,
+		Time:100.0,
+		Category:Carpentry,
+		NeedToBeLearn:false,
+		AnimNode:Disassemble,
+		Prop1:Screwdriver,
+		Prop2:CDplayer,
+	}
+	
+	recipe Gain Screws (Containers)
+	{
+		keep Screwdriver,
+		Briefcase/Flightcase/Lunchbox/Lunchbox2/Toolbox,
+	   
+		Result:Screws=2,
+		Time:100.0,
+		Category:Carpentry,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		AnimNode:Disassemble,
+		Prop1:Screwdriver,
+		Prop2:CDplayer,
+	}
+	
+	/*
+	=============================
+	RECLAIM - ITEMS >>> BATTERIES
+	=============================
+	*/
+	
+	recipe Gain Batteries (Devices)
+	{
+		keep Screwdriver,
+		CDplayer/Remote/RadioRed/RadioBlack/WalkieTalkie1/WalkieTalkie2/WalkieTalkie3/WalkieTalkie4/WalkieTalkie5,
+
+		Result:Battery=2,
+		Time:50.0,
+		Category:Electrical,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		AnimNode:Disassemble,
+        Prop1:Screwdriver,
+        Prop2:CDplayer,
+	}
+	
+	recipe Gain Batteries (Makeshift)
+	{
+		keep Screwdriver,
+		RemoteCraftedV1/RemoteCraftedV2/RemoteCraftedV3/WalkieTalkieMakeShift/RadioMakeShift,
+
+		Result:Battery,
+		Time:50.0,
+		Category:Electrical,
+		NeedToBeLearn:false,
+		AnimNode:Disassemble,
+        Prop1:Screwdriver,
+        Prop2:CDplayer,
+	}
+	
+	/*
+	==================================
+	RECLAIM - ITEMS >>> LEATHER STRIPS
+	==================================
+	*/
+	
+	recipe Make Leather Strips (Holsters)
+	{
+		keep Scissors,
+		HolsterSimple/HolsterDouble=1,
+		
+		Result:LeatherStrips=4,
+		Time:250.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:ClothMendingXP05,
+	}
+	
+	recipe Make Leather Strips (Wallets)
+	{
+		keep Scissors,
+		Wallet/Wallet2/Wallet3/Wallet4,
+		
+		Result:LeatherStrips,
+		Time:50.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:ClothMendingXP05,
+	}
+	
+	recipe Make Leather Strips (Junk)
+	{
+		keep Scissors,
+		Handbag/Purse/DogChew/Football,
+		
+		Result:LeatherStrips=2,
+		Time:100.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:ClothMendingXP05,
+	}
+	
+	recipe Make Leather Strips (Footwear)
+	{
+		keep Scissors,
+		Shoes_RidingBoots/Shoes_Black/Shoes_Brown/Shoes_Random,
+		
+		Result:LeatherStrips=2,
+		Time:100.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		AnimNode:RipSheets,
+		Sound:ClothesRipping,
+		OnGiveXP:ClothMendingXP05,
+	}
+	/*
+	=================================
+	RECLAIM - ITEMS >>> RIPPED SHEETS
+	=================================
+	*/
+	recipe Make Ripped Sheets (Junk)
+	{
+		destroy BathTowel/DishCloth/Pillow,
+		
+		Result:RippedSheets=2,
+		Time:50.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		AnimNode:RipSheets,
+		Sound:ClothesRipping,
+	}
+	
+	/*
+	=====================================
+	RECLAIM - ITEMS >>> ELECTRONICS SCRAP
+	=====================================
+	*/
+
+	recipe Reclaim Electric Wire (Electronics)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep Screwdriver,
+		Amplifier/TriggerCrafted/MotionSensor/Earbuds/Headphones,
+		
+		Result:ElectricWire,
+		Time:100.0,
+		Category:Electrical,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	/*
+	===============
+	RECLAIM - OTHER
+	===============
+	*/
+	
+	recipe Reclaim Stone (Stone Tools)
+	{
+		AxeStone/HammerStone/FlintKnife,
+		
+		Result:Stone,
+		Time:50.0,
+		Category:Survivalist,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+}

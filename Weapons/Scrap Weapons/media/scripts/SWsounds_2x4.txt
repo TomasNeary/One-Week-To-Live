@@ -1,0 +1,60 @@
+module Base
+{
+    sound 2x4Hit
+    {
+        category = Object,
+        clip
+        {
+            file = media/sound/2x4Hit1.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/2x4Hit2.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/2x4Hit3.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/2x4Hit4.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/2x4Hit5.ogg,
+            
+        }
+		clip
+        {
+            file = media/sound/2x4HitGore1.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/2x4HitGore2.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/2x4HitGore3.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/2x4HitGore4.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/2x4HitGore5.ogg,
+            
+        }
+		
+    }
+
+}
+

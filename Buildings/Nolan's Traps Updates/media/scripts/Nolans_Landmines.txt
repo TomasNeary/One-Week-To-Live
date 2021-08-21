@@ -1,0 +1,82 @@
+module Explosives
+{
+	imports
+	{
+		Base
+	}
+	item LandMine
+	{
+		Weight    		= 4.0,
+		Type    		= Normal,
+		DisplayName	=	Land Mine,
+		Icon	=	LandMine,
+	}
+	item LandMineSet
+	{
+		Weight    		= 4.0,
+		Type    		= Normal,
+		DisplayName	=	Land Mine (Set),
+		Icon	=	LandMine,
+	}
+	item LandMineBig
+	{
+		Weight    		= 5.0,
+		Type    		= Normal,
+		DisplayName	=	Big Land Mine,
+		ResizeWorldIcon = 1.5,
+		Icon	=	LandMine,
+	}
+	item LandMineBigSet
+	{
+		Weight    		= 5.0,
+		Type    		= Normal,
+		DisplayName	=	Big Land Mine (Set),
+		ResizeWorldIcon = 1.5,
+		Icon	=	LandMine,
+	}
+	item LandMineBigBox
+	{
+		Weight    		= 30.0,
+		Type    		= Normal,
+		DisplayName	=	Box of Big Land Mines,
+		ResizeWorldIcon = 1.5,
+		Icon	=	LandMineBox,
+	}
+	item LandMineBox
+	{
+		Weight    		= 25.0,
+		Type    		= Normal,
+		DisplayName	=	Box of Land Mines,
+		Icon	=	LandMineBox,
+	}
+	
+	
+	
+
+	recipe Open Box of Land Mines
+	{
+		LandMineBigBox,
+	   	Result:LandMineBig=5,
+	   	Time:150.0,
+		Category:Explosives,
+	}
+	recipe Open Box of Land Mines
+	{
+		LandMineBox,
+	   	Result:LandMine=5,
+	   	Time:150.0,
+		Category:Explosives,
+	}
+	
+	recipe Set Landmine
+	{
+		LandMine/LandMineBig,
+	   	Result:LandMine,
+	   	Time:50.0,
+		OnCreate: SetTrapDown,
+		Category:Explosives,
+    		RemoveResultItem:true,
+	}
+		
+
+}

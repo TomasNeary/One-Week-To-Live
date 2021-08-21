@@ -1,0 +1,220 @@
+module Base
+{
+	vehicle Trailerfuelmedium
+	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.8,
+		engineRepairLevel = 4,
+		playerDamageProtection = 0.8,
+		spawnOffsetY = 0.19392952,
+
+		model
+		{
+			file = trailer_fuelmedium,
+			scale = 1.8600,
+			offset = 0.0000 0.1398 -0.0161,
+		}
+
+		skin
+		{
+			texture = Vehicles/trailer_fuelsmallshell,
+		}
+
+		skin
+		{
+			texture = Vehicles/trailer_fuelsmall2shell,
+		}
+
+		textureMask = Vehicles/trailer_fuelsmall_mask,
+		textureLights = Vehicles/trailer_fuelsmall_lights,
+		textureDamage1Overlay = Vehicles/fr_Veh_Blood_Mask,
+		textureDamage2Overlay = Vehicles/fr_Veh_Blood_Hvy,
+		textureDamage1Shell = Vehicles/fr_Veh_Damage1,
+		textureDamage2Shell = Vehicles/fr_Veh_Damage2,
+		textureRust = Vehicles/fr_Veh_Rust,
+		extents = 0.6559 0.6344 1.6129,
+		mass = 350,
+		physicsChassisShape = 0.6559 0.6344 1.6129,
+		centerOfMassOffset = 0.0000 0.3172 0.1505,
+		engineForce = 3600,
+		engineQuality = 60,
+		engineLoudness = 55,
+		maxSpeed = 70f,
+		brakingForce = 1,
+		stoppingMovementForce = 2.0f,
+		rollInfluence = 1.0f,
+		steeringIncrement = 0.03,
+		steeringClamp = 0.3,
+		suspensionStiffness = 100,
+		suspensionCompression = 2.83,
+		suspensionDamping = 2.88,
+		maxSuspensionTravelCm = 10,
+		suspensionRestLength = 0.2,
+		wheelFriction = 4.0f,
+		frontEndHealth = 150,
+		rearEndHealth = 150,
+		seats = 2,
+
+		physics box
+		{
+			offset = 0.1667 0.0323 1.1935,
+			extents = 0.0538 0.0538 0.5591,
+			rotate = 0.0000 -30.0000 0.0000,
+		}
+
+		physics box
+		{
+			offset = -0.1667 0.0323 1.1935,
+			extents = 0.0538 0.0538 0.5591,
+			rotate = 0.0000 30.0000 0.0000,
+		}
+
+		physics sphere
+		{
+			offset = 0.0000 0.0538 1.4516,
+			radius = 0.0549,
+		}
+
+		physics box
+		{
+			offset = 0.0000 0.1828 0.0108,
+			extents = 0.9032 0.0538 0.6774,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		wheel FrontLeft
+		{
+			front = true,
+			offset = 0.3925 -0.1613 0.1935,
+			radius = 0.15f,
+			width = 0.2f,
+		}
+
+		wheel FrontRight
+		{
+			front = true,
+			offset = -0.3925 -0.1613 0.1935,
+			radius = 0.15f,
+			width = 0.2f,
+		}
+
+		wheel RearLeft
+		{
+			front = false,
+			offset = 0.3925 -0.1613 -0.1559,
+			radius = 0.15f,
+			width = 0.2f,
+		}
+
+		wheel RearRight
+		{
+			front = false,
+			offset = -0.3925 -0.1613 -0.1559,
+			radius = 0.15f,
+			width = 0.2f,
+		}
+
+		area TireFrontLeft
+		{
+			xywh = 0.6505 0.1882 0.4409 0.4731,
+		}
+
+		area TireFrontRight
+		{
+			xywh = -0.6505 0.1882 0.4409 0.4731,
+		}
+
+		area TireRearLeft
+		{
+			xywh = 0.6505 -0.1667 0.4409 0.4731,
+		}
+
+		area TireRearRight
+		{
+			xywh = -0.6505 -0.1667 0.4409 0.4731,
+		}
+
+		area TruckBed
+		{
+			xywh = 0.2634 0.9462 0.6344 0.3656,
+		}
+
+		template = Trunk/part/TruckBedOpen,
+
+		part TruckBedOpen
+		{
+			itemType = Base.FRSideContainer,
+		}
+
+		template = 500FuelTruckTank,
+
+		area FuelStorage
+		{
+			xywh = 0.0000 -0.0376 1.9462 1.9785,
+		}
+
+		part 500FuelTruckTank
+		{
+			itemType = Base.500Tank,
+		}
+
+		template = Door/part/DoorRear,
+		template = Tire/part/TireFrontLeft,
+		template = Tire/part/TireFrontRight,
+		template = Tire/part/TireRearLeft,
+		template = Tire/part/TireRearRight,
+
+		part TireFrontLeft
+		{
+			table install
+			{
+				requireInstalled = SuspensionFrontLeft,
+			}
+		}
+
+		part TireFrontRight
+		{
+			table install
+			{
+				requireInstalled = SuspensionFrontRight,
+			}
+		}
+
+		part TireRearLeft
+		{
+			table install
+			{
+				requireInstalled = SuspensionRearLeft,
+			}
+		}
+
+		part TireRearRight
+		{
+			table install
+			{
+				requireInstalled = SuspensionRearRight,
+			}
+		}
+
+		part Tire*
+		{
+			model InflatedTirePlusWheel
+			{
+				file = Vehicles_WheelFRS1,
+			}
+		}
+
+		template = Suspension/part/SuspensionFrontLeft,
+		template = Suspension/part/SuspensionFrontRight,
+		template = Suspension/part/SuspensionRearLeft,
+		template = Suspension/part/SuspensionRearRight,
+
+		attachment trailer
+		{
+			offset = 0.0000 -0.0806 1.5860,
+			rotate = 0.0000 0.0000 0.0000,
+			canAttach = trailer,
+			updateconstraint = false,
+		}
+	}
+}

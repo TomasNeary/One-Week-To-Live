@@ -1,0 +1,702 @@
+module Base
+{
+
+	model trailer_51chevy
+	{
+		mesh = vehicles/trailer_51chevy,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+
+	model trailer_fuelsmall
+	{
+		mesh = vehicles/trailer_fuelsmall,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+
+	model trailer_fuelmedium
+	{
+		mesh = vehicles/trailer_fuelmedium,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+
+	model trailer_movingmedium
+	{
+		mesh = vehicles/trailer_movingmedium,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+
+	model trailer_movingbig
+	{
+		mesh = vehicles/trailer_movingbig,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+
+	model trailer_semi
+	{
+		mesh = vehicles/trailer_semi,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+
+
+
+	model Vehicles_51Chevy3100
+	{
+		mesh = vehicles/Vehicles_51Chevy3100,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_68Wildcat
+	{
+		mesh = vehicles/Vehicles_68Wildcat,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_68Wildcatconvert
+	{
+		mesh = vehicles/Vehicles_68Wildcatconvert,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_71Impala
+	{
+		mesh = vehicles/Vehicles_71Impala,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_72beetle
+	{
+		mesh = vehicles/Vehicles_72beetle,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_77TransAm
+	{
+		mesh = vehicles/Vehicles_77TransAm,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	model Vehicles_79datsun280z
+	{
+		mesh = vehicles/Vehicles_79datsun280z,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_80f350
+	{
+		mesh = vehicles/Vehicles_80f350,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_80f350offroad
+	{
+		mesh = vehicles/Vehicles_80f350offroad,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_80f350quad
+	{
+		mesh = vehicles/Vehicles_80f350quad,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_80f350ambulance
+	{
+		mesh = vehicles/Vehicles_80f350ambulance,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_85CrownVic
+	{
+		mesh = vehicles/Vehicles_85CrownVic,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_83hilux
+	{
+		mesh = vehicles/Vehicles_83hilux,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_83hiluxoffroad
+	{
+		mesh = vehicles/Vehicles_83hiluxoffroad,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_85CrownVicPD
+	{
+		mesh = vehicles/Vehicles_85CrownVicPD,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_85CrownVicRNG
+	{
+		mesh = vehicles/Vehicles_85CrownVicRNG,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_85CrownVicWag
+	{
+		mesh = vehicles/Vehicles_85CrownVicWag,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_86econoline
+	{
+		mesh = vehicles/Vehicles_86econoline,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_86econolinerv
+	{
+		mesh = vehicles/Vehicles_86econolinerv,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_86econolineambulance
+	{
+		mesh = vehicles/Vehicles_86econolineambulance,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_87caprice
+	{
+		mesh = vehicles/Vehicles_87caprice,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_87capricePD
+	{
+		mesh = vehicles/Vehicles_87capricePD,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_86bounder
+	{
+		mesh = vehicles/Vehicles_86bounder,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_90corolla
+	{
+		mesh = vehicles/Vehicles_90corolla,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_91celica
+	{
+		mesh = vehicles/Vehicles_91celica,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_91CRX
+	{
+		mesh = vehicles/Vehicles_91CRX,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_91wagoneer
+	{
+		mesh = vehicles/Vehicles_91wagoneer,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_92wrangler
+	{
+		mesh = vehicles/Vehicles_92wrangler,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_92crownvic
+	{
+		mesh = vehicles/Vehicles_92crownvic,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_92crownvicPD
+	{
+		mesh = vehicles/Vehicles_92crownvicPD,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_92wranglerranger
+	{
+		mesh = vehicles/Vehicles_92wranglerranger,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_92wrangleroffroad
+	{
+		mesh = vehicles/Vehicles_92wrangleroffroad,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_93explorer
+	{
+		mesh = vehicles/Vehicles_93explorer,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_93explorerjurassic
+	{
+		mesh = vehicles/Vehicles_93explorerjurassic,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_AstroVan
+	{
+		mesh = vehicles/Vehicles_AstroVan,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_Blazer
+	{
+		mesh = vehicles/Vehicles_Blazer,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_Blazeroffroad
+	{
+		mesh = vehicles/Vehicles_Blazeroffroad,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_BlazerPD
+	{
+		mesh = vehicles/Vehicles_BlazerPD,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_Brougham
+	{
+		mesh = vehicles/Vehicles_Brougham,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_C10LB
+	{
+		mesh = vehicles/Vehicles_C10LB,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_C10SB
+	{
+		mesh = vehicles/Vehicles_C10SB,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_C10offroadLB
+	{
+		mesh = vehicles/Vehicles_C10offroadLB,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_C10offroadSB
+	{
+		mesh = vehicles/Vehicles_C10offroadSB,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_C10Utility
+	{
+		mesh = vehicles/Vehicles_C10Utility,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_C10UtilityLights
+	{
+		mesh = vehicles/Vehicles_C10UtilityLights,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_Charger
+	{
+		mesh = vehicles/Vehicles_Charger,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_ChargerDaytona
+	{
+		mesh = vehicles/Vehicles_ChargerDaytona,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_Chevelle
+	{
+		mesh = vehicles/Vehicles_Chevelle,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_ChevyStepVan
+	{
+		mesh = vehicles/Vehicles_chevystepvan,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_ChevyStepVanSwat
+	{
+		mesh = vehicles/Vehicles_chevystepvanswat,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_DodgeRamLB
+	{
+		mesh = vehicles/Vehicles_DodgeRamLB,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_DodgeRamSB
+	{
+		mesh = vehicles/Vehicles_DodgeRamSB,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_DodgeRamoffroadLB
+	{
+		mesh = vehicles/Vehicles_DodgeRamoffroadLB,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_DodgeRamoffroadSB
+	{
+		mesh = vehicles/Vehicles_DodgeRamoffroadSB,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_ElCamino68
+	{
+		mesh = vehicles/Vehicles_ElCamino68,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_ElCamino70
+	{
+		mesh = vehicles/Vehicles_ElCamino70,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_f700tractor
+	{
+		mesh = vehicles/Vehicles_f700tractor,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_f700box
+	{
+		mesh = vehicles/Vehicles_f700box,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_f700dump
+	{
+		mesh = vehicles/Vehicles_f700dump,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_f700flatbed
+	{
+		mesh = vehicles/Vehicles_f700flatbed,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_f700propane
+	{
+		mesh = vehicles/Vehicles_f700propane,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_firepumper
+	{
+		mesh = vehicles/Vehicles_firepumper,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_FordFalcon
+	{
+		mesh = vehicles/Vehicles_FordFalcon,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_GTO
+	{
+		mesh = vehicles/Vehicles_GTO,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_HMMWVHardTop
+	{
+		mesh = vehicles/Vehicles_HMMWVHardTop,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_HMMWVPrimeMover
+	{
+		mesh = vehicles/Vehicles_HMMWVPrimeMover,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_IsuzuBox
+	{
+		mesh = vehicles/Vehicles_IsuzuBox,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_IsuzuBoxMcCoy
+	{
+		mesh = vehicles/Vehicles_IsuzuBoxMcCoy,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_m35a2bed
+	{
+		mesh = vehicles/Vehicles_m35a2bed,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_m35a2covered
+	{
+		mesh = vehicles/Vehicles_m35a2covered,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_m35a2fuel
+	{
+		mesh = vehicles/Vehicles_m35a2fuel,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_M151Canvas
+	{
+		mesh = vehicles/Vehicles_M151Canvas,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_MovingTruck
+	{
+		mesh = vehicles/Vehicles_MovingTruck,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_Yugo
+	{
+		mesh = vehicles/Vehicles_Yugo,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_Pinto
+	{
+		mesh = vehicles/Vehicles_Pinto,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_PursuitSpecial
+	{
+		mesh = vehicles/Vehicles_PursuitSpecial,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_schoolbus
+	{
+		mesh = vehicles/Vehicles_schoolbus,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_schoolbusshort
+	{
+		mesh = vehicles/Vehicles_schoolbusshort,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_Suburban
+	{
+		mesh = vehicles/Vehicles_Suburban,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_tractorford7810
+	{
+		mesh = vehicles/Vehicles_tractorford7810,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	model Vehicles_Volvo244
+	{
+		mesh = vehicles/Vehicles_Volvo244,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.004519,
+	}
+	
+	
+}

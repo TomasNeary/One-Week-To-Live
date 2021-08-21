@@ -1,0 +1,114 @@
+module SWeapons
+{
+	imports
+	{
+		Base,
+	}
+	
+	item SmallMetalSheetMold
+    {
+	
+		Weight 		= 2,
+		Type 		= Normal,
+		DisplayName 		= Small Sheet Metal Mold,
+		DisplayCategory 		= Item,
+		Icon 		= SmallMetalSheetMold,
+		MetalValue 		= 1,
+		ResizeWorldIcon 		= 1,
+    }
+	
+	recipe Make Small Metal Sheet Mold
+    {
+    	Dirtbag,
+		SmallSheetMetal=1,
+        Result           		: SmallMetalSheetMold,
+        Time             		: 200.0,
+        Category         		: Welding,
+		OnGiveXP 				: Give10MWXP,
+		SkillRequired 		: MetalWelding=4,
+		NeedToBeLearn: true,
+    }
+	
+	recipe Cast Small Metal Sheet
+    {
+
+    	ScrapMetal=8,
+		PropaneTank,
+		keep PropaneGasFurnace,
+		keep SmallMetalSheetMold,
+        Result           		: SmallSheetMetal=4,
+        Time             		: 550,
+        Category         		: Welding,
+	    Sound 					: Welding2,
+		OnGiveXP 				: Give10MWXP,
+		CanBeDoneFromFloor      : TRUE,
+		SkillRequired 		: MetalWelding=4,
+		NeedToBeLearn: true,
+    }
+	
+    recipe Assemble Propane Gas Furnace
+    {
+	
+    	SheetMetal=2,
+		SmallSheetMetal=3,
+		Screws=20,
+		keep WeldingMask,
+		BlowTorch=5,
+        Result           		: PropaneGasFurnace,
+        Time             		: 500,
+        Category         		: Welding,
+	    Sound 					: Welding2,
+		OnGiveXP 				: Give25MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+		SkillRequired 		: MetalWelding=4,
+		NeedToBeLearn: true,
+    }
+	
+	recipe Bundle Propane Tanks
+    {
+    	PropaneTank=32,
+        Result           		: PropaneBundle,
+        Time             		: 100.0,
+        Category         		: Welding,
+		AnimNode 				: Disassemble,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	
+	recipe UnBundle Propane Tanks
+    {
+    	PropaneBundle=1,
+        Result           		: PropaneTank=4,
+        Time             		: 100.0,
+        Category         		: Welding,
+		AnimNode 				: Disassemble,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	
+	item PropaneGasFurnace
+    {
+    	Count 		= 1,
+		Weight 		= 35,
+		Type 		= Normal,
+		DisplayName 		= Propane Gas Furnace,
+		DisplayCategory 		= Item,
+		Icon 		= PropaneGasFurnace,
+		MetalValue 		= 1,
+		ResizeWorldIcon 		= 1,
+    }
+	
+    item PropaneBundle
+    {
+    	Count 		= 1,
+		Weight 		= 25,
+		Type 		= Normal,
+		DisplayName 		= Propane Tank Bundle,
+		DisplayCategory 		= Item,
+		Icon 		= PropaneBundle,
+		MetalValue 		= 1,
+		ResizeWorldIcon 		= 1,
+    }
+
+}

@@ -1,0 +1,161 @@
+module Base
+{
+	/*
+	=================
+	VANILLA OVERRIDES
+	=================
+	*/
+	recipe Make Flame bomb
+	{
+		PetrolCan=4,
+		RippedSheets/RippedSheetsDirty/AlcoholRippedSheets,
+		WaterBottleEmpty/PopBottleEmpty/WhiskeyEmpty/WineEmpty/WineEmpty2/RemouladeEmpty/EmptyJar,
+
+		Result:FlameTrap,
+		Time:100.0,
+		NeedToBeLearn:true,
+		Category:Engineer,
+		Override:true,
+	}
+	recipe Open Canned Soup
+    {
+       TinnedSoup,
+       keep [Recipe.GetItemTypes.CanOpener]/FlintKnife/HuntingKnife/KitchenKnife/LetterOpener/MeatCleaver/Scissors/SharpedStone,
+
+       Result:TinnedSoupOpen,
+       Time:50.0,
+       Category:Cooking,
+       OnGiveXP:Recipe.OnGiveXP.None,
+	   Override:true,
+    }
+	recipe Open Canned Beans
+	{
+	   TinnedBeans,
+	   keep [Recipe.GetItemTypes.CanOpener]/FlintKnife/HuntingKnife/KitchenKnife/LetterOpener/MeatCleaver/Scissors/SharpedStone,
+
+	   Result:OpenBeans,
+	   Time:50.0,
+	   Category:Cooking,
+	   OnGiveXP:Recipe.OnGiveXP.None,
+	   Override:true,
+	}
+	recipe Open Canned Tuna
+	{
+	  TunaTin,
+	  keep [Recipe.GetItemTypes.CanOpener]/FlintKnife/HuntingKnife/KitchenKnife/LetterOpener/MeatCleaver/Scissors/SharpedStone,
+
+	  Result:TunaTinOpen,
+	  Time:50.0,
+	  Category:Cooking,
+	  OnGiveXP:Recipe.OnGiveXP.None,
+	  Override:true,
+	}
+	 recipe Open Canned Corned Beef
+    {
+       CannedCornedBeef,
+
+       Result:CannedCornedBeefOpen,
+       Time:50.0,
+       Category:Cooking,
+       OnGiveXP:Recipe.OnGiveXP.None,
+	   Override:true,
+    }
+	recipe Open Canned Corn
+    {
+       CannedCorn,
+       keep [Recipe.GetItemTypes.CanOpener]/FlintKnife/HuntingKnife/KitchenKnife/LetterOpener/MeatCleaver/Scissors/SharpedStone,
+
+       Result:CannedCornOpen,
+       Time:50.0,
+       Category:Cooking,
+       OnGiveXP:Recipe.OnGiveXP.None,
+	   Override:true,
+    }
+	recipe Open Canned Bolognese
+    {
+       CannedBolognese,
+       keep [Recipe.GetItemTypes.CanOpener]/FlintKnife/HuntingKnife/KitchenKnife/LetterOpener/MeatCleaver/Scissors/SharpedStone,
+
+       Result:CannedBologneseOpen,
+       Time:50.0,
+       Category:Cooking,
+       OnGiveXP:Recipe.OnGiveXP.None,
+	   Override:true,
+    }
+	recipe Open Canned Chili
+    {
+       CannedChili,
+       keep [Recipe.GetItemTypes.CanOpener]/FlintKnife/HuntingKnife/KitchenKnife/LetterOpener/MeatCleaver/Scissors/SharpedStone,
+
+       Result:CannedChiliOpen,
+       Time:50.0,
+       Category:Cooking,
+       OnGiveXP:Recipe.OnGiveXP.None,
+	   Override:true,
+    }
+	recipe Open Canned Mushroom Soup
+    {
+       CannedMushroomSoup,
+       keep [Recipe.GetItemTypes.CanOpener]/FlintKnife/HuntingKnife/KitchenKnife/LetterOpener/MeatCleaver/Scissors/SharpedStone,
+
+       Result:CannedMushroomSoupOpen,
+       Time:50.0,
+       Category:Cooking,
+       OnGiveXP:Recipe.OnGiveXP.None,
+	   Override:true,
+    }
+	recipe Open Canned Peas
+    {
+       CannedPeas,
+       keep [Recipe.GetItemTypes.CanOpener]/FlintKnife/HuntingKnife/KitchenKnife/LetterOpener/MeatCleaver/Scissors/SharpedStone,
+
+       Result:CannedPeasOpen,
+       Time:50.0,
+       Category:Cooking,
+       OnGiveXP:Recipe.OnGiveXP.None,
+	   Override:true,
+    }
+	recipe Open Canned Potato
+    {
+       CannedPotato2,
+       keep [Recipe.GetItemTypes.CanOpener]/FlintKnife/HuntingKnife/KitchenKnife/LetterOpener/MeatCleaver/Scissors/SharpedStone,
+
+       Result:CannedPotatoOpen,
+       Time:50.0,
+       Category:Cooking,
+       OnGiveXP:Recipe.OnGiveXP.None,
+	   Override:true,
+    }
+	recipe Open Canned Sardines
+    {
+       CannedSardines,
+
+       Result:CannedSardinesOpen,
+       Time:50.0,
+       Category:Cooking,
+       OnGiveXP:Recipe.OnGiveXP.None,
+	   Override:true,
+    }
+	recipe Open Canned Tomato
+    {
+       CannedTomato2,
+       keep [Recipe.GetItemTypes.CanOpener]/FlintKnife/HuntingKnife/KitchenKnife/LetterOpener/MeatCleaver/Scissors/SharpedStone,
+
+       Result:CannedTomatoOpen,
+       Time:50.0,
+       Category:Cooking,
+       OnGiveXP:Recipe.OnGiveXP.None,
+	   Override:true,
+    }
+	recipe Open Canned Carrots
+    {
+       CannedCarrots2,
+       keep [Recipe.GetItemTypes.CanOpener]/FlintKnife/HuntingKnife/KitchenKnife/LetterOpener/MeatCleaver/Scissors/SharpedStone,
+
+       Result:CannedCarrotsOpen,
+       Time:50.0,
+       Category:Cooking,
+       OnGiveXP:Recipe.OnGiveXP.None,
+	   Override:true,
+    }
+}

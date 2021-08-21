@@ -1,0 +1,510 @@
+module SWeapons
+{
+	imports
+	{
+		Base,
+	}
+	
+	recipe Combine MetalParts
+    {
+
+    	MetalParts=3,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: ScrapMetal,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	
+    recipe Deconstruct Crowbar
+    {
+
+    	Crowbar,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=7,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: Crowbar,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Deconstruct Pan
+    {
+
+    	Pan/Saucepan/Pot/BakingPan/Kettle,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=7,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: GridlePan,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	
+	recipe Deconstruct Small Items
+    {
+
+    	Fork/Spoon/TinOpener/Tweezers/UnusableMetal/Wire/Corkscrew/Locket,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=1,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: Fork,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	
+	recipe Deconstruct Large Items
+    {
+
+    	LugWrench/Jack/Saw/PaintbucketEmpty/GardenSaw,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=5,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: Fork,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	
+    recipe Deconstruct Fishing Rod
+    {
+
+    	FishingRod,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: FishingRod_Modern
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+
+    recipe Deconstruct Golf Club Head
+    {
+
+    	GolfClubHead,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=6,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+
+    recipe Deconstruct Hammer Head
+    {
+
+    	HammerHead,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=2,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+
+    recipe Deconstruct SledgeHammer Head
+    {
+
+    	SledgeHammerHead,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=16,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+
+    recipe Deconstruct Axe Head
+    {
+
+    	AxeHead,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=8,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+
+    recipe Deconstruct SmallBlade
+    {
+
+    	SmallBlade,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=6,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+
+    recipe Deconstruct Pen
+    {
+
+    	Pen/RedPen/BluePen,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+
+    recipe Deconstruct Small Metal Bar,
+    {
+
+    	SmallMetalBar,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Deconstruct Meat Cleaver Head
+    {
+
+    	MeatCleaverHead,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=7,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Deconstruct Scythe Head
+    {
+
+    	ScytheHead,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=2,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Deconstruct Long Blade Head
+    {
+
+    	LongBlade,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=11,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Deconstruct Wrench
+    {
+
+    	PipeWrench/Wrench,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=5,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Deconstruct Shovel Head
+    {
+
+    	ShovelHead,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=5,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Deconstruct Hoe Head
+    {
+
+    	HoeHead,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=3,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Deconstruct Pickaxe Head
+    {
+
+    	PickaxeHead,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=12,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Deconstruct Rake Head
+    {
+
+    	RakeHead,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=5,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Deconstruct BarBell
+    {
+
+    	BarBell,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=30,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Deconstruct DumbBell
+    {
+
+    	DumbBell,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=15,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Deconstruct Scalpel
+    {
+
+    	Scalpel,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=1,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Deconstruct Fork Head
+    {
+
+    	ForkHead,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=1,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Deconstruct Tool Box
+    {
+
+    	Toolbox,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=10,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: WeldingMask,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+}

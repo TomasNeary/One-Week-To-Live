@@ -1,0 +1,4 @@
+name=POS ZONES
+id=POSZONES
+description=Shows (X,Y) coordiantes, current zone and room of the player.
+poster=poster.png

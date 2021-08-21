@@ -1,0 +1,1182 @@
+module POETRecycleEverything
+{
+	imports
+	{
+		Base
+	}
+	
+	/*
+	=========================
+	CRAFT - BUILDING MATERIAL
+	=========================
+	*/
+	
+	recipe Make Gravel Bag (Stone)
+    {
+		keep [Recipe.GetItemTypes.Hammer]/Sledgehammer,
+		EmptySandbag=1,
+		Stone=10,
+	    
+		Result:Gravelbag,
+		Time:100.0,
+		Sound:PZ_Hammer,
+		Category:Carpentry,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+    }
+	
+	recipe Make Gravel Bag (Chipped Stone)
+    {
+		keep [Recipe.GetItemTypes.Hammer]/Sledgehammer,
+		EmptySandbag=1,
+		SharpedStone=10,
+		
+	    Result:Gravelbag,
+		Time:100.0,
+		Sound:PZ_Hammer,
+		Category:Carpentry,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+    }
+	
+	recipe Make Sturdy Sticks
+    {
+		keep HandAxe/AxeStone/Saw/GardenSaw,
+		Broom/CanoePadel/CanoePadelX2/Mop/Plunger/GardenHoe/WoodenLance/Poolcue,
+		
+	    Result:WoodenStick=2,
+		Time:250.0,
+		Category:Survivalist,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+    }
+	
+	/*
+	========================
+	CRAFT - LEATHER CLOTHING
+	========================
+	*/
+	recipe Make Leather Belt
+	{
+		keep Needle/SutureNeedle,
+		keep Scissors,
+		LeatherStrips=4,
+		Thread=2,
+		Nails=1,
+
+		Result:Belt2,
+		Time:500.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:Tailoring=3,
+		OnGiveXP:ClothMendingXP05,
+    }
+	
+	recipe Make Leather Holster
+	{
+		keep Needle/SutureNeedle,
+		keep Scissors,
+		LeatherStrips=2,
+		Thread=2,
+		Belt2=1,
+
+		Result:HolsterSimple,
+		Time:500.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:Tailoring=2;Aiming=1,
+		OnGiveXP:ClothMendingXP15,
+    }
+	
+	recipe Make Double Holster
+	{
+		keep Needle/SutureNeedle,
+		keep Scissors,
+		HolsterSimple=2,
+		Thread=2,
+
+		Result:HolsterDouble,
+		Time:500.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:Tailoring=2;Aiming=1,
+		OnGiveXP:ClothMendingXP20,
+    } 
+	
+	recipe Make Leather Gloves
+	{
+		keep Needle/SutureNeedle,
+		keep Scissors,
+		LeatherStrips=6,
+		Thread=2,
+
+		Result:Gloves_LeatherGloves,
+		Time:2500.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:Tailoring=4,
+		OnGiveXP:ClothMendingXP25,
+    }
+	
+	recipe Make Bullets Ammo Strap
+    {
+		keep Needle/SutureNeedle,
+		keep Scissors,
+		Belt2=1,
+		LeatherStrips=4,
+		Thread=8,
+
+		Result:AmmoStrap_Bullets,
+		Time:2500.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:Tailoring=2;Reloading=1,
+		OnGiveXP:ClothMendingXP20,
+    } 
+	
+    recipe Make Shells Ammo Strap
+    {
+		keep Needle/SutureNeedle,
+		keep Scissors,
+		Belt2=1,
+		LeatherStrips=4,
+		Thread=8,
+		
+		Result:AmmoStrap_Shells,
+		Time:2500.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:Tailoring=2;Reloading=1,
+		OnGiveXP:ClothMendingXP20,
+	}
+	/*
+	==================
+	CRAFT - CONTAINERS
+	==================
+	*/
+	recipe Make Sack from Sheets
+	{
+		keep Needle/SutureNeedle,
+		Thread/Twine/FishingLine,
+		Sheet=4,
+
+		Result:EmptySandbag,
+		Time:250.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:ClothMendingXP15,
+	}
+	
+	recipe Make Seed Bag from Sack
+	
+	{
+		EmptySandbag=1,
+		Twine=1,
+		
+		Result:SeedBag,
+		Time:50.0,
+		Category:Farming,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:ClothMendingXP05,
+    }
+	
+	recipe Empty out Compost Bag
+	{
+		CompostBag=1,
+		
+		Result:EmptySandbag,
+		Time:50.0,
+		Category:Survivalist,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+    }
+	
+	recipe Empty out Gravel Bag
+    {
+		Gravelbag=1,
+		
+		Result:EmptySandbag,
+		Time:50.0,
+		Category:Survivalist,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+    }
+	
+	/*
+	===================
+	CRAFT - LIGHT BULBS
+	===================
+	*/
+	
+	recipe Paint Light Bulb Blue
+	{
+		LightBulb=1,
+        PaintBlue;1,
+        
+		Result: LightBulbBlue,
+        Time:25.0,
+        Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Paint Light Bulb Cyan
+	{
+		LightBulb=1,
+        PaintCyan;1,
+        
+		Result: LightBulbCyan,
+        Time:25.0,
+        Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Paint Light Bulb Green
+	{
+		LightBulb=1,
+        PaintGreen;1,
+        
+		Result: LightBulbGreen,
+        Time:25.0,
+        Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Paint Light Bulb Magenta
+	{
+		LightBulb=1,
+        PaintPurple;1,
+		PaintPink;1,
+        
+		Result: LightBulbMagenta,
+        Time:25.0,
+        Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Paint Light Bulb Orange
+	{
+		LightBulb=1,
+        PaintOrange;1,
+        
+		Result: LightBulbOrange,
+        Time:25.0,
+        Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Paint Light Bulb Pink
+	{
+		LightBulb=1,
+        PaintPink;1,
+        
+		Result: LightBulbPink,
+        Time:25.0,
+        Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Paint Light Bulb Purple
+	{
+		LightBulb=1,
+        PaintPurple;1,
+        
+		Result: LightBulbPurple,
+        Time:25.0,
+        Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Paint Light Bulb Red
+	{
+		LightBulb=1,
+        PaintRed;1,
+        
+		Result: LightBulbRed,
+        Time:25.0,
+        Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Paint Light Bulb Yellow
+	{
+		LightBulb=1,
+        PaintYellow;1,
+        
+		Result: LightBulbYellow,
+        Time:25.0,
+        Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	/*
+	==================
+	CRAFT - PAINT CANS
+	==================
+	*/
+	
+	recipe Make White Paint (Flour)
+	{
+		WaterPaintbucket/PaintbucketEmpty,
+        Water=10,
+		Flour=2,
+
+		Result:PaintWhite,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Black Paint (Charcoal)
+	{
+		keep MortarPestle,
+		PaintWhite=1,
+		Charcoal=2,
+		
+		Result:PaintBlack,
+		Time:200.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Black Paint (Crayons)
+	{
+		keep MortarPestle,
+		PaintWhite=1,
+		Crayons=10,
+		
+		Result:PaintBlack,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Black Paint (Pens)
+	{
+		keep Scissors,
+		PaintWhite=1,
+		Pen=20,
+		
+		Result:PaintBlack,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Blue Paint (Crayons)
+	{
+		keep MortarPestle,
+		PaintWhite=1,
+		Crayons=5,
+		
+		Result:PaintBlue,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Blue Paint (Pens)
+	{
+		keep Scissors,
+		PaintWhite=1,
+		BluePen=10,
+		
+		Result:PaintBlue,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Brown Paint (Crayons)
+	{
+		keep MortarPestle,
+		PaintWhite=1,
+		Crayons=5,
+		
+		Result:PaintBrown,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Brown Paint (Soil)
+	{
+		keep Shovel/Shovel2/HandShovel,
+		EmptySandbag=1,
+		PaintWhite=1,
+		Water=10,
+		
+		Result:PaintBrown,
+		Time:500.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:PlantScavenging=2,
+		OnGiveXP:Recipe.OnGiveXP.None,
+	}
+	
+	recipe Make Cyan Paint (Crayons)
+	{
+		keep MortarPestle,
+		PaintWhite=1,
+		Crayons=5,
+		
+		Result:PaintCyan,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Green Paint (Crayons)
+	{
+		keep MortarPestle,
+		PaintWhite=1,
+		Crayons=5,
+		
+		Result:PaintGreen,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Gray Paint (Charcoal)
+	{
+		keep MortarPestle,
+		PaintWhite=1,
+		Charcoal=1,
+		
+		Result:PaintGrey,
+		Time:200.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Gray Paint (Crayons)
+	{
+		keep MortarPestle,
+		PaintWhite=1,
+		Crayons=5,
+		
+		Result:PaintGrey,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Gray Paint (Pens)
+	{
+		keep Scissors,
+		PaintWhite=1,
+		Pen=10,
+		
+		Result:PaintGrey,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Light Blue Paint (Crayons)
+	{
+		keep MortarPestle,
+		PaintWhite=1,
+		Crayons=5,
+		
+		Result:PaintLightBlue,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Light Blue Paint (Pens)
+	{
+		keep Scissors,
+		PaintWhite=1,
+		BluePen=5,
+		
+		Result:PaintLightBlue,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Light Brown Paint (Crayons)
+	{
+		keep MortarPestle,
+		PaintWhite=1,
+		Crayons=5,
+		
+		Result:PaintLightBrown,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Light Brown Paint (Soil)
+	{
+		keep Shovel/Shovel2/HandShovel,
+		EmptySandbag=1,
+		PaintWhite=1,
+		Water=10,
+		
+		Result:PaintLightBrown,
+		Time:500.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:PlantScavenging=2,
+		OnGiveXP:Recipe.OnGiveXP.None,
+	}
+	
+	recipe Make Orange Paint (Crayons)
+	{
+		keep MortarPestle,
+		PaintWhite=1,
+		Crayons=5,
+		
+		Result:PaintOrange,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Pink Paint (Crayons)
+	{
+		keep MortarPestle,
+		PaintWhite=1,
+		Crayons=5,
+		
+		Result:PaintPink,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Pink Paint (Pens)
+	{
+		keep Scissors,
+		PaintWhite=1,
+		RedPen=5,
+		
+		Result:PaintPink,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Purple Paint (Crayons)
+	{
+		keep MortarPestle,
+		PaintWhite=1,
+		Crayons=5,
+		
+		Result:PaintPurple,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Purple Paint (Pens)
+	{
+		keep Scissors,
+		PaintWhite=1,
+		RedPen=5,
+		BluePen=5,
+		
+		Result:PaintPurple,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Red Paint (Crayons)
+	{
+		keep MortarPestle,
+		PaintWhite=1,
+		Crayons=5,
+		
+		Result:PaintRed,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Red Paint (Pens)
+	{
+		keep Scissors,
+		PaintWhite=1,
+		RedPen=10,
+		
+		Result:PaintRed,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Turquoise Paint (Crayons)
+	{
+		keep MortarPestle,
+		PaintWhite=1,
+		Crayons=5,
+		
+		Result:PaintTurquoise,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Yellow Paint (Crayons)
+	{
+		keep MortarPestle,
+		PaintWhite=1,
+		Crayons=5,
+		
+		Result:PaintYellow,
+		Time:100.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Yellow Paint (Soil)
+	{
+		keep Shovel/Shovel2/HandShovel,
+		EmptySandbag=1,
+		PaintWhite=1,
+		Water=10,
+		
+		Result:PaintYellow,
+		Time:500.0,
+		Category:Painting,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:PlantScavenging=2,
+		OnGiveXP:Recipe.OnGiveXP.None,
+	}
+	
+	/*
+	====================
+	CRAFT - METALWORKING
+	====================
+	*/
+	
+	recipe Make Unusable Metal (Cutlery)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		BreadKnife/ButterKnife/Fork/Spoon/KitchenKnife/LetterOpener,
+		BlowTorch=1,
+		
+		Result:UnusableMetal,
+		Time:250.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding10,
+	}
+	
+	recipe Make Unusable Metal (Nails)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		BlowTorch=1,
+		Nails=5,
+		
+		Result:UnusableMetal,
+		Time:250.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding10,
+	}
+	
+	recipe Make Unusable Metal (Screws)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		BlowTorch=1,
+		Screws=5,
+		
+		Result:UnusableMetal,
+		Time:250.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding10,
+	}
+	
+	recipe Make Unusable Metal (Assorted Metal)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		HandFork/HandShovel/Wire/ElectricWire/Hinge/Doorknob/MetalBar/Pipe/MetalPipe/Bell,
+		BlowTorch=1,
+		
+		Result:UnusableMetal=2,
+		Time:250.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding10,
+	}
+	
+	recipe Make Unusable Metal (Small Metal)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		TentPeg/CombinationPadlock/Padlock/SutureNeedleHolder/Necklace_DogTag/TinOpener,
+		BlowTorch=1,
+		
+		Result:UnusableMetal,
+		Time:250.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding10,
+	}
+	
+	recipe Make Unusable Metal (Containers)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		BakingPan/Pan/GridlePan/RoastingPan/Saucepan/PaintbucketEmpty/PropaneTank,
+		BlowTorch=1,
+		
+		Result:UnusableMetal=2,
+		Time:250.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding10,
+	}
+	
+	/*
+	recipe Make Unusable Metal (Keys)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		Key1/Key2/Key3/Key4/Key5/KeyPadlock,
+		BlowTorch=1,
+		
+		Result:UnusableMetal,
+		Time:250.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding10,
+	}
+	*/
+	
+	recipe Make Unusable Metal (Tools)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		Axe/BallPeenHammer/Crowbar/GardenSaw/Hammer/HandAxe/Jack/LugWrench/PipeWrench/Saw/TirePump/WoodAxe/GardenFork/GardenHoe/Shovel/Shovel2/SnowShovel/Wrench,
+		BlowTorch=1,
+		
+		Result:UnusableMetal=2,
+		Time:250.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding15,
+	}
+	
+	recipe Make Unusable Metal (Watches)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		WristWatch_Right_ClassicBlack/WristWatch_Left_ClassicBlack/WristWatch_Right_ClassicBrown/WristWatch_Left_ClassicBrown/WristWatch_Right_ClassicMilitary/WristWatch_Left_ClassicMilitary/WristWatch_Right_DigitalDress/WristWatch_Left_DigitalDress,
+		BlowTorch=1,
+		
+		Result:UnusableMetal,
+		Time:250.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding10,
+	}
+	
+	recipe Make Aluminum (Empty Pop Cans)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		PopEmpty=10,
+		BlowTorch=1,
+		
+		Result:Aluminum,
+		Time:250.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:MetalWelding=2,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding10,
+	}
+	
+	recipe Make Aluminum (Empty Tin Cans)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		TinCanEmpty=5,
+		BlowTorch=1,
+		
+		Result:Aluminum,
+		Time:250.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:MetalWelding=2,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding10,
+	}
+	
+	recipe Make Jar Lids from Aluminum
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		Aluminum=1,
+		
+		Result:JarLid=2,
+		Time:250.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:MetalWelding=2,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding10,
+	}
+	
+	recipe Make Scrap Metal (Unusable Metal)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		UnusableMetal=4,
+		WeldingRods=1,
+		BlowTorch=1,
+		
+		Result:ScrapMetal,
+		Time:500.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:MetalWelding=2,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding15,
+	}
+	
+	recipe Make Small Metal Sheet (Scrap Metal)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		ScrapMetal=4,
+		WeldingRods=2,
+		BlowTorch=1,
+		
+		Result:SmallSheetMetal,
+		Time:500.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:MetalWelding=2,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding15,
+	}
+	
+	recipe Make Metal Bar (Scrap Metal)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		ScrapMetal=4,
+		WeldingRods=1,
+		BlowTorch=1,
+		
+		Result:MetalBar,
+		Time:500.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:MetalWelding=2,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding15,
+	}
+	
+	recipe Make Metal Pipe (Small Sheets)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		SmallSheetMetal=4,
+		WeldingRods=1,
+		BlowTorch=1,
+		
+		Result:MetalPipe,
+		Time:500.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:MetalWelding=2,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding15,
+	}
+	
+	recipe Make Tent Peg (Unusable Metal)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		UnusableMetal=1,
+		BlowTorch=1,
+		
+		Result:TentPeg,
+		Time:500.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:MetalWelding=2,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding10,
+	}
+	
+	recipe Make Wire (Electric Wire)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		BlowTorch=1,
+		ElectricWire=2,
+		
+		Result:Wire,
+		Time:250.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:MetalWelding=1,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding10,
+	}
+	
+	recipe Make Wire (Metal Pipe)
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep WeldingMask,
+		BlowTorch=1,
+		Pipe/MetalPipe=1,
+		
+		Result:Wire,
+		Time:500.0,
+		Category:Welding,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:MetalWelding=3,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding20,
+	}
+	
+	/*
+	=================
+	CRAFT - TAILORING
+	=================
+	*/
+	
+	recipe Knit Twine into Sheet
+	{
+		keep KnittingNeedles,
+		Twine=10,
+
+		Result:Sheet,
+		Time:5000.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:Tailoring=4,
+		OnGiveXP:ClothMendingXP25,
+	}
+	
+	recipe Make Pillow from Sheets
+	{
+		keep Needle/SutureNeedle,
+		Thread/Twine/FishingLine,
+		RippedSheets=20,
+		Sheet=2,
+
+		Result:Pillow,
+		Time:500.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:ClothMendingXP15,
+	}
+	
+	recipe Reclaim Sheet from Sheet Rope
+	{
+		SheetRope=1,
+
+		Result:Sheet,
+		Time:100.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	/*
+	====================
+	CRAFT - OTHER & MISC
+	====================
+	*/
+	
+	recipe Make Chipped Stone from Stone
+    {
+		keep [Recipe.GetItemTypes.Hammer]/Stone,
+		Stone=1,
+		
+		Result:SharpedStone,
+		Time:100.0,
+		Category:Survivalist,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Keyring from Wire
+    {
+		Wire/ElectricWire,
+		
+		Result:KeyRing,
+		Time:25.0,
+		Category:Misc,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Matches from Sparklers
+	{
+		keep HandAxe/AxeStone/Saw/GardenSaw,
+		keep MortarPestle,
+		Glue/Woodglue/Scotchtape/DuctTape,
+		Plank/PercedWood/WoodenStick,
+		Sparklers=1,
+		
+		Result:Matches,
+		Time:250.0,
+		Category:Survivalist,
+		SkillRequired:Woodwork=1,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:Recipe.OnGiveXP.WoodWork5,
+	}
+	
+	recipe Make Gunpowder from Sparklers
+	{
+		keep MortarPestle,
+		Sparklers=5,
+		Charcoal=1,
+		EmptyJar=1,
+		JarLid=1,
+		
+		Result:GunPowder,
+		Time:500.0,
+		Category:Weapons,
+		SkillRequired:Aiming=1;Reloading=1,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Tarp from Garbage Bags
+	{
+		Garbagebag=4,
+		DuctTape=1,
+		
+		Result:Tarp,
+		Time:250.0,
+		Category:Survivalist,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Baseball Bat from Planks
+	{
+		keep [Recipe.GetItemTypes.Hammer],
+		keep HandAxe/AxeStone/Saw/GardenSaw,
+		keep Screwdriver,
+		Woodglue=3,
+		Plank=3,
+		
+		Result:BaseballBat,
+		Time:2500.0,
+		Category:Weapons,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Notebook from Papers
+	{
+		SheetPaper2=10,
+		Glue/Woodglue/Twine/Wire=1,
+		
+		Result:Notebook,
+		Time:100.0,
+		Category:Misc,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Make Journal from Notebooks
+	{
+		Notebook=2,
+		Glue/Woodglue/Twine/Wire=1,
+		
+		Result:Journal,
+		Time:100.0,
+		Category:Misc,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Write a Book
+	{
+		destroy Pen/BluePen/RedPen/Pencil,
+		Journal=2,
+		
+		Result:Book,
+		Time:20000.0,
+		Category:Misc,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+	
+	recipe Draw a Comic
+	{
+		destroy Pen/BluePen/RedPen/Pencil/Crayons,
+		Notebook=2,
+
+		Result:ComicBook,
+		Time:20000.0,
+		Category: Misc,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+	}
+}

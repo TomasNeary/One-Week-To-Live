@@ -1,0 +1,24 @@
+module EHE
+{
+	imports
+	{
+		Base
+	}
+
+	   item PlentyTee
+	{
+		HungerChange	= -60,
+		Weight		= 0.2,
+		Type		= Food,
+		UnhappyChange	= -35,
+		DisplayName	= PlentyTee(TM) Energy Bar,
+		Icon		= PlentyTee,
+		EvolvedRecipe 	= Cake:10,
+		FoodType    	= NoExplicit,
+        Carbohydrates 	= 240,
+        Proteins 	= 45,
+        Lipids 		= 66,
+        Calories 	= 550,
+        Packaged 	= TRUE,
+	}
+}

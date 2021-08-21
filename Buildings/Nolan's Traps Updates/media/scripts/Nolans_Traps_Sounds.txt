@@ -1,0 +1,24 @@
+module Base
+{
+
+
+	sound explosion_landmine
+	{
+		category = Item,
+		clip
+		{
+			event = bigExplosion,
+		}
+	}
+
+	sound explosion
+	{
+		category = Item,
+		clip
+		{
+			event = smallExplosion,
+		}
+	}
+
+}
+

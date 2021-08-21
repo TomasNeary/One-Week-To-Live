@@ -1,0 +1,7 @@
+ContextMenu_EN = {
+	
+	ContextMenu_Sleep_Mattress = "Sleep on the mattress.",
+	ContextMenu_PainNoSleep_Mattress = "Experiencing too much pain to sleep on the mattress."
+	ContextMenu_PanicNoSleep_Mattress = "Too panicked to sleep on the mattress."
+	ContextMenu_NoSleepTooEarly_Mattress = "Can't get back to sleep on the mattress.<br>Try again later.",
+} 

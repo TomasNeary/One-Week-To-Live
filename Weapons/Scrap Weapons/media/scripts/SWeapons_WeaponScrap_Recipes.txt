@@ -1,0 +1,109 @@
+module SWeapons
+{
+	imports
+	{
+		Base,
+	}
+	
+	
+    recipe Deconstruct 2x4
+    {
+
+    	2x4Bolt/2x4Can/2x4Nailed/2x4Scissors/2x4Screwdriver/2x4SScrewdriver,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=1,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: 2x4Scissors,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: false,
+    }
+	
+	recipe Deconstruct Heavy Scrap Weapon
+    {
+
+    	HugeScrapPickaxe/SpearSalvaged/GearMace/SalvagedCleaver/SalvagedSledgehammer/SharpenedStopSign,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=10,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: SalvagedCleaver,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: false,
+    }
+	
+	recipe Deconstruct Bladed Scrap Weapon
+    {
+
+    	SalvagedBlade/SpearScrapMachete/ScrapSpear/SalvagedMachete/ScrapBlade/ScrapMachete/ScrapSword/SalvagedNightstick,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=5,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: ScrapSword,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: false,
+    }
+	
+    recipe Deconstruct Medium Scrap Weapon
+    {
+
+    	SalvagedClimbingAxe/TinCanClub/SalvagedPipe/PipewithScissors/SalvagedCrowbar/SalvagedPipeWrench/TireIronAxe,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=4,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: SalvagedPipeWrench,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: false,
+    }
+
+    recipe Deconstruct Light Scrap Weapon
+    {
+
+    	SalvagedShiv/ScrapPickaxe/BigScrapPickaxe/WireBat/BoltBat/SalvagedShivO/ScrapShiv/SpearScrapShiv/SpearSharpenedScrewdriver/SharpenedScrewdriver,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=6,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: SalvagedShiv,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: false,
+    }
+
+}

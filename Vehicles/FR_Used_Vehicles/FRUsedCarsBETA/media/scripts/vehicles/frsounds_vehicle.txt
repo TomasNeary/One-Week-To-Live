@@ -1,0 +1,128 @@
+module Base
+{
+	sound SoundofSilenceAlarm
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/vehicle_soundofsilence.wav,
+			distanceMin = 10,
+			distanceMax = 20,
+			reverbMaxRange = 10,
+			reverbFactor = 0,
+		}
+	}
+
+	sound SoundofSilenceYelp
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/vehicle_soundofsilence.wav,
+			distanceMin = 10,
+			distanceMax = 20,
+			reverbMaxRange = 10,
+			reverbFactor = 0,
+		}
+	}
+
+	sound SoundofSilenceWall
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/vehicle_soundofsilence.wav,
+			distanceMin = 0,
+			distanceMax = 0,
+			reverbMaxRange = 0,
+			reverbFactor = 0,
+		}
+	}
+	
+	sound TapeDeck1Alarm
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/vehicle_classical_cassette.ogg,
+			distanceMin = 2,
+			distanceMax = 40,
+			reverbMaxRange = 10,
+			reverbFactor = 0,
+		}
+	}			
+	
+		sound TapeDeck1Yelp
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/vehicle_blues_cassette.ogg,
+			distanceMin = 2,
+			distanceMax = 40,
+			reverbMaxRange = 10,
+			reverbFactor = 0,
+		}
+	}
+	
+		sound TapeDeck1Wall
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/vehicle_metal_cassette.ogg,
+			distanceMin = 2,
+			distanceMax = 40,
+			reverbMaxRange = 10,
+			reverbFactor = 0,
+		}
+	}
+	
+	sound TapeDeck2Alarm
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/vehicle_slavorchestra_cassette.ogg,
+			distanceMin = 2,
+			distanceMax = 40,
+			reverbMaxRange = 10,
+			reverbFactor = 0,
+		}
+	}			
+	
+		sound TapeDeck2Yelp
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/vehicle_russia_cassette.ogg,
+			distanceMin = 2,
+			distanceMax = 40,
+			reverbMaxRange = 10,
+			reverbFactor = 0,
+		}
+	}
+	
+		sound TapeDeck2Wall
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/vehicle_hardbass_cassette.ogg,
+			distanceMin = 2,
+			distanceMax = 40,
+			reverbMaxRange = 10,
+			reverbFactor = 0,
+		}
+	}
+}

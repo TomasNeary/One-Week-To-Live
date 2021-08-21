@@ -1,0 +1,19 @@
+template = trunk normal 55, heavy duty 85, sport 45
+template = trunk small 40, 70, 30
+trailer 100  200
+ambulance 130 816 4900
+normal sedan, police, etc 55 800 4000/4800
+car luxury 55 950 5200
+car modern 55 800 5000
+car modern2 45 800 5000
+car small 40 650 3600
+car small 2 40 650 3600
+sports car 30 800 5700
+station wagon 60 900 4200
+offroad (jeep) 40 900 4400
+Pickup, lights 110 1030 4000 4800
+pickup van, 130 1104 4000 4800
+stepvan, mail 160 1160 3700 4000
+suv, 85 1000 4700
+van, radio, special 130 816 956 3700 2700 4000
+van seats 50 916 2600

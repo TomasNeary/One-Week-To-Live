@@ -1,0 +1,146 @@
+V 1.2.9
+- Fix for Aquatsar Yacht Club mod campitibility
+  - Added Wooden Pantone to Floor build menu
+- Attempted fix for destroy option with sledgehammer not appearing when some mods are installed. 
+
+V 1.2.8
+- Fixed wall corners and pillars acting as invisible walls
+  - isCorner = true;
+
+V 1.2.7
+- Fixed not opening NailsBox when not enough Nails (added in build 41.51). 
+- Re-added ability to craft Brown Wooden Floor and Light Brown Wooden Floor. 
+- Fixed "Floor" menu not displaying red if no floor options are craftable. 
+- Now requires ItemTweaker API
+  - For MetalWorkMag4 recipes
+
+V 1.2.6
+- Further fix for Aquatsar Yacht Club mod compatibility. 
+	- Temporary quick fix. Removes ability to craft Brown Wooden Floor and Light Brown Wooden Floor. 
+	- Wooden Pantone from Aquatsar Yacht Club is now craftable. 
+
+V 1.2.5
+- Update to build 41.50
+- Fixed Wooden Gate using black metal gate sprites
+- Removed getSpriteLvl "4" for mod compatibility, i.e. Wooden Floor sprite at Carpentry level 10. 
+	- Fixes lua error when right-clicking with hammer in inventory and using the Aquatsar Yacht Club mod. Removes the ability to craft Wooden Pantone.
+
+V 1.2.4
+- Removed mattress as constructable. Can now be placed in vanilla. 
+- Fixed new wooden planks not using correct sprite
+- Changed mod cover image
+
+V 1.2.3
+- Fixed multistage constructions (upgading wall frames) causing error. 
+
+V 1.2.2
+- Updated to build 41.44
+- Fixed crash when Dismantle Car Wreck. 
+- Fixed using Carpentry with new build 41 hammers. 
+- Adjusted floor tiles sprite
+
+V 1.2.1
+- Fixed Wooden Door at level 10 Carpentry not using correct sprites when facing West.
+
+V 1.2.0
+- Updated for build 41
+
+V 1.1.2
+- Removed hammer counter to fix build 41 incompatibilities
+
+V 1.1.1
+- Fixed issue with version updating
+
+V 1.1.0
+Added
+- Added compatibility with Stronger Log Walls mod (Improved Build Menu must be enabled AFTER that mod)
+- Added compatibility with Blacksmith mod (Improved Build Menu must be enabled AFTER that mod)
+  - added ability to craft metal drum through metalworking
+  - changed placeable sprite to orange variant
+- Added new buildables
+  - Log Pillar
+  - Wooden Bar Stool
+  - High Wooden Gate
+  - Dark Wooden Stairs
+  - Light Brown Wooden Stairs
+  - Metal Wall Corner
+  - High Wire Fence Post
+  - Metal Floor
+- Added Light source sub menu
+- Added Stairs sub menu
+- Added Chair sub menu
+- Added Carpentry level 10 sprites for some objects
+  - Brown Wooden Stairs
+  - Wooden Door
+  - Counter
+  - Corner Counter
+  - Bar Counter
+  - Corner Bar Counter
+  - Large Table
+  - Table with Drawer
+  - Wooden Chair
+- Added capacity to rain collector tooltips
+Changes
+- Moved metalwork menu to a new lua file: ISMetalWeldingMenu.lua, to increase compatibility
+- Removed mattress and concrete floor from carpentry menu. They now have their own context menu (only appear when the player has the items, similar to pour gravel/dirt/sand)
+- Required materials will now appear green on the tooltip
+- Changed Wooden Pillar sprite
+- Renamed Wooden Stairs to Brown Wooden Stairs
+Fixes
+- Fixed metal door frame lvl 1 not able to be upgraded to lvl 2
+- Fixed Large Rain Collector required materials
+
+V 1.0.1
+Fixes
+- Fixed barbed fence and gravel bag wall context menu not displaying correctly, or resulting in an error
+
+V 1.0
+Initial Release
+Added
+- Added new buildables
+  - Metal Door Frame
+  - Metal Jail Wall
+  - Metal Jail Door Frame
+  - Metal Door
+  - Metal Jail Door
+  - Wooden Pillar
+  - Wooden Fence Post
+  - Outhouse Door
+  - Wooden Gate
+  - Brown Wooden Floor
+  - Light Brown Wooden Floor
+  - Concrete Floor
+  - Mattress
+  - Bar Counter
+  - Corner Bar Counter
+  - Wooden Toilet
+- Bucket of Concrete can be made with 5 water, bucket, concrete powder.
+- Metal Pipe and Metal Bar can be crafted with empty tin cans and empty pop cans.
+- Added more information to build options
+  - Containers show capacity
+  - Metalworking options have description
+Changes
+- Reorganised build menu for Carpentry and Metalworking
+- Renamed buildables
+  - Big Wired Fence -> High Wire Fence
+  - Big Pole Fence -> High Pole Fence
+  - Big Pole Fence Gate -> High Pole Gate
+  - Double Fence Gate -> High Double Wire Gate
+  - Big Double Pole Gate -> High Double Pole Gate
+  - Doorframe -> Wooden Door Frame
+  - Wooden Pillar -> Wooden Wall Corner
+  - Double Wooden Door -> Double Wooden Gate
+  - Bar Element -> Counter
+  - Bar Corner -> Corner Counter
+  - Rain Collector Barrel -> Small Rain Collector
+  - Rain Collector Barrel -> Large Rain Collector
+- Changed The Metalwork Magazine Vol. 4 - Teaches new metalworking recipes: Make Metal Pipe, Make Metal Bar
+- Changed large Rain Collector Barrel to require more planks and no longer need garbage bags 
+- Changed required ingredient order
+  - Tools/Clothing move to top
+  - Skill(s) moved to bottom
+Fixes
+- Fixed Metal Wall sprites not changing with level
+- Fixed context options not displaying as red if unable to build
+- Fixed sprite orientations being incorrect while rotating
+- Fixed various other issues

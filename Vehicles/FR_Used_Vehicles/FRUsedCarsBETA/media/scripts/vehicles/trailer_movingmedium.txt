@@ -1,0 +1,158 @@
+module Base
+{
+	vehicle Trailermovingmedium
+	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.8,
+		engineRepairLevel = 4,
+		playerDamageProtection = 0.8,
+		spawnOffsetY = 0.19392952,
+
+		model
+		{
+			file = trailer_movingmedium,
+			scale = 1.8600,
+			offset = 0.0000 0.1667 -0.0161,
+		}
+
+		skin
+		{
+			texture = Vehicles/trailer_movingmediumshell,
+		}
+
+		textureMask = Vehicles/trailer_moving_mask,
+		textureLights = Vehicles/trailer_moving_lights,
+		textureDamage1Overlay = Vehicles/fr_Veh_Blood_Mask,
+		textureDamage2Overlay = Vehicles/fr_Veh_Blood_Hvy,
+		textureDamage1Shell = Vehicles/fr_Veh_Damage1,
+		textureDamage2Shell = Vehicles/fr_Veh_Damage2,
+		textureRust = Vehicles/fr_Veh_Rust,
+		extents = 0.8602 0.5914 1.2796,
+		mass = 300,
+		physicsChassisShape = 0.8602 0.6559 1.2796,
+		centerOfMassOffset = 0.0000 0.5215 0.0108,
+		engineForce = 3600,
+		engineQuality = 60,
+		engineLoudness = 55,
+		maxSpeed = 70f,
+		brakingForce = 1,
+		stoppingMovementForce = 2.0f,
+		rollInfluence = 1.0f,
+		steeringIncrement = 0.03,
+		steeringClamp = 0.3,
+		suspensionStiffness = 100,
+		suspensionCompression = 2.83,
+		suspensionDamping = 2.88,
+		maxSuspensionTravelCm = 10,
+		suspensionRestLength = 0.2,
+		wheelFriction = 4.0f,
+		frontEndHealth = 150,
+		rearEndHealth = 150,
+		seats = 2,
+
+		physics box
+		{
+			offset = 0.2097 0.0645 0.9194,
+			extents = 0.0538 0.0538 0.7419,
+			rotate = 0.0000 -31.0000 0.0000,
+		}
+
+		physics box
+		{
+			offset = -0.2097 0.0645 0.9194,
+			extents = 0.0538 0.0538 0.7419,
+			rotate = 0.0000 31.0000 0.0000,
+		}
+
+		physics sphere
+		{
+			offset = 0.0000 0.0914 1.2312,
+			radius = 0.0549,
+		}
+
+		physics box
+		{
+			offset = 0.0000 0.0645 -0.0054,
+			extents = 0.8602 0.0538 1.2473,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		wheel FrontLeft
+		{
+			front = true,
+			offset = 0.4731 -0.1613 0.0054,
+			radius = 0.15f,
+			width = 0.2f,
+		}
+
+		wheel FrontRight
+		{
+			front = true,
+			offset = -0.4731 -0.1613 0.0054,
+			radius = 0.15f,
+			width = 0.2f,
+		}
+
+		area TireFrontLeft
+		{
+			xywh = 0.6505 -0.0108 0.4409 0.4731,
+		}
+
+		area TireFrontRight
+		{
+			xywh = -0.6505 -0.0108 0.4409 0.4731,
+		}
+
+		area TruckBed
+		{
+			xywh = 0.0000 -1.0376 0.9570 0.7957,
+		}
+
+		template = TrunkDoor,
+		template = Trunk/part/TruckBedOpen,
+
+		part TruckBedOpen
+		{
+			itemType = Base.FRCargoTrunk,
+		}
+
+		template = Door/part/DoorRear,
+		template = Tire/part/TireFrontLeft,
+		template = Tire/part/TireFrontRight,
+
+		part TireFrontLeft
+		{
+			table install
+			{
+				requireInstalled = SuspensionFrontLeft,
+			}
+		}
+
+		part TireFrontRight
+		{
+			table install
+			{
+				requireInstalled = SuspensionFrontRight,
+			}
+		}
+
+		part Tire*
+		{
+			model InflatedTirePlusWheel
+			{
+				file = Vehicles_WheelFRS1,
+			}
+		}
+
+		template = Suspension/part/SuspensionFrontLeft,
+		template = Suspension/part/SuspensionFrontRight,
+
+		attachment trailer
+		{
+			offset = 0.0000 -0.0806 1.3763,
+			rotate = 0.0000 0.0000 0.0000,
+			canAttach = trailer,
+			updateconstraint = false,
+		}
+	}
+}

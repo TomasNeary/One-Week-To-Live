@@ -1,0 +1,641 @@
+module KCMweapons
+{
+	imports
+	{
+		Base,
+	}
+	
+	/****************************** PACK/UNPACK AMMO RECIPES ******************************/
+
+	recipe Unpack Bundle of Short Crossbow Bolts
+	{
+		CrossbowBoltBox,
+
+		Result 			: CrossbowBolt=10,
+		Sound 			: PZ_PutInBag,
+		Time 			: 5,
+		AnimNode 		: Craft,
+	}
+
+	recipe Pack Bundle of Short Crossbow Bolts
+	{
+		CrossbowBolt=10,
+        
+		Result 			: CrossbowBoltBox,
+		Sound 			: PZ_PutInBag,
+		Time 			: 5,
+		AnimNode 		: Craft,
+	}
+
+	recipe Unpack Bundle of Long Crossbow Bolts
+	{
+		CrossbowBoltLargeBox,
+
+		Result 			: CrossbowBoltLarge=10,
+		Sound 			: PZ_PutInBag,
+		Time 			: 5,
+		AnimNode 		: Craft,
+	}
+
+	recipe Pack Bundle of Long Crossbow Bolts
+	{
+		CrossbowBoltLarge=10,
+        
+		Result 			: CrossbowBoltLargeBox,
+		Sound 			: PZ_PutInBag,
+		Time 			: 5,
+		AnimNode 		: Craft,
+	}
+
+	recipe Unpack Bundle of Wooden Crossbow Bolts
+	{
+		WoodenBoltBox,
+
+		Result 			: WoodenBolt=10,
+		Sound 			: PZ_PutInBag,
+		Time 			: 5,
+		AnimNode 		: Craft,
+	}
+
+	recipe Pack Bundle of Wooden Crossbow Bolts
+	{
+		WoodenBolt=10,
+        
+		Result 			: WoodenBoltBox,
+		Sound 			: PZ_PutInBag,
+		Time 			: 5,
+		AnimNode 		: Craft,
+	}
+
+	/****************************** REPAIR & DISMANTLE RECIPES ******************************/
+
+	fixing Fix Hand Crossbow
+	{
+		Require 		: HandCrossbow,
+		Fixer 			: ScrapMetal=1; MetalWelding=1,
+		Fixer 			: HandCrossbow; Aiming=1,
+		Fixer 			: DuctTape=1,
+
+	}
+
+	fixing Fix Handmade Wooden Crossbow
+	{
+		Require 		: KCM_Handmade,
+		Fixer 			: Plank=2; Carpentry=2,
+		Fixer 			: KCM_Handmade; Aiming=2,
+		Fixer 			: DuctTape=1,
+
+	}
+
+	fixing Fix Handmade Metal Crossbow
+	{
+		Require 		: KCM_Handmade02,
+		Fixer 			: ScrapMetal=1; MetalWelding=2,
+		Fixer 			: KCM_Handmade02; Aiming=2,
+		Fixer 			: DuctTape=2,
+
+	}
+
+	fixing Fix Scout Compound Bow
+	{
+		Require 		: KCM_Compound,
+		Fixer 			: ScrapMetal=2; MetalWelding=3,
+		Fixer 			: KCM_Compound; Aiming=3,
+		Fixer 			: DuctTape=3,
+
+	}
+
+	fixing Fix Haze 470 Compound Bow
+	{
+		Require 		: KCM_Compound02,
+		Fixer 			: ScrapMetal=3; MetalWelding=3,
+		Fixer 			: KCM_Compound02; Aiming=3,
+		Fixer 			: DuctTape=3,
+
+	}
+
+	recipe Dismantle Hand Crossbow
+	{
+		keep Screwdriver,
+		HandCrossbow,
+        
+
+        NoBrokenItems		: true,        
+		Result 				: ScrapMetal,
+		Time 				: 800,
+        	OnCreate			: DismantleHandCrossbow_OnCreate,
+        	OnGiveXP			: Give10MetalWeldingXP,
+        	Category            		: Crossbows,
+		AnimNode 			: Disassemble,
+        Prop1				: Screwdriver,
+	}
+	
+	recipe Dismantle Hunting Crossbow
+	{
+		KCM_Compound02/KCM_Compound,
+        keep Screwdriver,
+
+        NoBrokenItems		: true,        
+		Result 				: ScrapMetal,
+		Time 				: 1000,
+        	OnCreate			: DismantleHuntingCrossbow_OnCreate,
+        	OnGiveXP			: Give10MetalWeldingXP,
+        	Category            		: Crossbows,
+		AnimNode 			: Disassemble,
+        Prop1				: Screwdriver,
+	}
+
+	recipe Dismantle Long Crossbow Bolts (x3)
+	{
+		CrossbowBoltLarge = 3,
+        keep Saw/GardenSaw,
+
+        NoBrokenItems		: true,        
+		Result 				: ScrapMetal,
+		Sound 				: Sawing,
+		Time 				: 500,
+        	OnGiveXP			: Give3MetalWeldingXP,
+        	Category            		: Crossbows,
+		AnimNode 			: Disassemble,
+        Prop1				: Hacksaw,
+	}
+	
+	recipe Dismantle Short Crossbow Bolts (x3)
+	{
+		CrossbowBolt = 3,
+        keep Saw/GardenSaw,
+
+        NoBrokenItems		: true,        
+		Result 				: ScrapMetal,
+		Sound 				: Sawing,
+		Time 				: 500,
+        	OnGiveXP			: Give3MetalWeldingXP,
+        	Category            		: Crossbows,
+		AnimNode 			: Disassemble,
+        Prop1				: Hacksaw,
+	}
+
+
+
+	/****************************** CRAFTING RECIPES ******************************/
+
+	recipe Craft Wooden Crossbow
+
+	{
+		Plank=4,
+		Nails=10,
+		Twine=4,
+		ScrapMetal=2,
+		RippedSheets=2,
+        keep Hammer/BallPeenHammer/HammerStone,
+		keep Saw/GardenSaw,
+
+        NoBrokenItems		: true,        
+		Result 				: KCM_Handmade,
+		Sound 				: Sawing,
+		Time 				: 2500,
+        	Category            		: Crossbows,
+		AnimNode 			: Disassemble,
+		OnGiveXP			: Give10WoodworkXP,
+        Prop1				: Hacksaw,
+		NeedToBeLearn:true,
+	}
+
+	recipe Craft Metal Crossbow
+
+	{
+		SmallSheetMetal=2,
+		BlowTorch=1,
+		Screws=10,
+		Twine=4,
+		ScrapMetal=4,
+        keep Screwdriver,
+		keep Saw/GardenSaw,
+
+        NoBrokenItems		: true,        
+		Result 				: KCM_Handmade02,
+		Sound 				: Blowtorch,
+		Time 				: 5000,
+        	Category            		: Crossbows,
+		AnimNode 			: Disassemble,
+		OnGiveXP			: Give10MetalWeldingXP,
+        Prop1				: BlowTorch,
+		NeedToBeLearn:true,
+	}
+
+	recipe Craft Wooden Crossbow Bolts (x3)
+    {
+       SharpedStone = 3,
+	   WoodenStick = 3,
+       Glue/Woodglue/Twine,
+		keep FlintKnife/HuntingKnife/KitchenKnife,
+	   keep Hammer/BallPeenHammer/HammerStone,
+
+       Result:WoodenBolt = 3,
+       Time:1000,
+	   Sound:Hammering,
+	   AnimNode:Disassemble,
+		OnGiveXP			: Give5WoodworkXP,
+	   Prop1:Hammer,
+       Category:Crossbows,
+	   NeedToBeLearn:true,
+    }
+
+	recipe Craft Wooden Crossbow Bolts (X3)
+    {
+       ScrapMetal = 1,
+	   WoodenStick = 3,
+       Glue/Woodglue/Twine,
+		keep FlintKnife/HuntingKnife/KitchenKnife,
+	   keep Hammer/BallPeenHammer/HammerStone,
+
+       Result:WoodenBolt = 3,
+       Time:1000,
+	   Sound:Hammering,
+	   AnimNode:Disassemble,
+		OnGiveXP			: Give5WoodworkXP,
+	   Prop1:Hammer,
+       Category:Crossbows,
+	   NeedToBeLearn:true,
+    }
+
+	recipe Craft Bolt Fletching (x3)
+
+    {
+       ScrapMetal,	
+	   keep Hammer/BallPeenHammer/HammerStone,
+	   keep Saw/GardenSaw,
+
+       Result:CrossbowBoltFletching = 3,
+       Time:200,
+	   Sound:Sawing,
+       AnimNode:SawLog,
+		OnGiveXP			: Give5MetalWeldingXP,
+       Prop1:GardenSaw,
+       Category:Crossbows,
+	   NeedToBeLearn:true,
+    }
+	
+    recipe Craft Short Shafts (x3)
+    {
+       ScrapMetal,
+	   keep Hammer/BallPeenHammer/HammerStone,
+       keep Saw/GardenSaw,
+
+       Result:ShortShaft = 3,
+       Time:200,
+	   Sound:Sawing,
+	   AnimNode:SawLog,
+		OnGiveXP			: Give5MetalWeldingXP,
+	   Prop1:GardenSaw,
+       Category:Crossbows,
+	   NeedToBeLearn:true,
+    }
+	
+	recipe Craft Long Shafts (x3)
+    {
+       ScrapMetal,
+	   keep Hammer/BallPeenHammer/HammerStone,
+       keep Saw/GardenSaw,
+
+       Result:LongShaft = 3,
+       Time:200,
+	   Sound:Sawing,
+	   AnimNode:SawLog,
+		OnGiveXP			: Give5MetalWeldingXP,
+	   Prop1:GardenSaw,
+       Category:Crossbows,
+	   NeedToBeLearn:true,
+    }
+
+    recipe Craft Bolt Head (x3)
+    {
+       ScrapMetal,
+	   keep Hammer/BallPeenHammer/HammerStone,
+       keep Saw/GardenSaw,
+
+       Result:CrossbowBoltHead = 3,
+       Time:300,
+	   Sound:Sawing,
+       AnimNode:SawLog,
+		OnGiveXP			: Give5MetalWeldingXP,
+       Prop1:GardenSaw,
+       Category:Crossbows,
+	   NeedToBeLearn:true,
+    }
+	
+    recipe Craft Long Crossbow Bolt (x3)
+    {
+       CrossbowBoltFletching = 3,
+	   LongShaft = 3,
+	   CrossbowBoltHead = 3,
+       Glue/BlowTorch,
+	   keep Hammer/BallPeenHammer/HammerStone,
+
+       Result:CrossbowBoltLarge = 3,
+       Time:600,
+	   Sound:Hammering,
+	   AnimNode:Disassemble,
+		OnGiveXP			: Give5MetalWeldingXP,
+	   Prop1:Hammer,
+       Category:Crossbows,
+	   NeedToBeLearn:true,
+    }
+	
+	recipe Craft Short Crossbow Bolt (x3)
+    {
+       CrossbowBoltFletching = 3,
+	   ShortShaft = 3,
+	   CrossbowBoltHead = 3,
+       Glue/BlowTorch,
+	   keep Hammer/BallPeenHammer/HammerStone,
+
+       Result:CrossbowBolt = 3,
+       Time:600,
+	   Sound:Hammering,
+	   AnimNode:Disassemble,
+		OnGiveXP			: Give5MetalWeldingXP,
+	   Prop1:Hammer,
+       Category:Crossbows,
+	   NeedToBeLearn:true,
+    }
+
+	recipe Make Chipped Stone
+	{
+		Stone=4,
+		keep Hammer/HammerStone,
+
+		Result:SharpedStone,
+		Time:300,
+		CanBeDoneFromFloor:true,
+		Category:Survivalist,
+	}
+
+
+	/****************************** ATTACHMENT CONVERSION RECIPES******************************/
+    recipe Convert Sling to Crossbow Sling
+    {
+       Sling,
+	   keep Screwdriver,
+
+       Result:KCM_Sling,
+       Time:40.0,
+	   Sound:Screwing,
+	   AnimNode:Disassemble,
+	   Prop1:Screwdriver,
+       NeedToBeLearn:FALSE,
+    }
+
+    recipe Convert Ironsight to Crossbow Ironsight
+    {
+       IronSight,
+	   keep Screwdriver,
+
+       Result:KCM_IronSight,
+       Time:40.0,
+	   Sound:Screwing,
+	   AnimNode:Disassemble,
+	   Prop1:Screwdriver,
+       NeedToBeLearn:FALSE,
+    }
+
+    recipe Convert x2 Scope to Crossbow x2 Scope
+    {
+       x2Scope,
+	   keep Screwdriver,
+
+       Result:KCM_x2Scope,
+       Time:40.0,
+	   Sound:Screwing,
+	   AnimNode:Disassemble,
+	   Prop1:Screwdriver,
+       NeedToBeLearn:FALSE,
+    }
+
+    recipe Convert x4 Scope to Crossbow x4 Scope
+    {
+       x4Scope,
+	   keep Screwdriver,
+
+       Result:KCM_x4Scope,
+       Time:40.0,
+	   Sound:Screwing,
+	   AnimNode:Disassemble,
+	   Prop1:Screwdriver,
+       NeedToBeLearn:FALSE,
+    }
+
+    recipe Convert x8 Scope to Crossbow x8 Scope
+    {
+       x8Scope,
+	   keep Screwdriver,
+
+       Result:KCM_x8Scope,
+       Time:40.0,
+	   Sound:Screwing,
+	   AnimNode:Disassemble,
+	   Prop1:Screwdriver,
+       NeedToBeLearn:FALSE,
+    }
+
+    recipe Convert RedDot to Crossbow RedDot
+    {
+       RedDot,
+	   keep Screwdriver,
+
+       Result:KCM_RedDot,
+       Time:40.0,
+	   Sound:Screwing,
+	   AnimNode:Disassemble,
+	   Prop1:Screwdriver,
+       NeedToBeLearn:FALSE,
+    }
+
+    recipe Convert Stock to Crossbow Stock
+    {
+       FiberglassStock,
+	   keep Screwdriver,
+
+       Result:KCM_FiberglassStock,
+       Time:40.0,
+	   Sound:Screwing,
+	   AnimNode:Disassemble,
+	   Prop1:Screwdriver,
+       NeedToBeLearn:FALSE,
+    }
+
+    recipe Convert Laser to Crossbow Laser
+    {
+       Laser,
+	   keep Screwdriver,
+
+       Result:KCM_Laser,
+       Time:40.0,
+	   Sound:Screwing,
+	   AnimNode:Disassemble,
+	   Prop1:Screwdriver,
+       NeedToBeLearn:FALSE,
+    }
+
+    recipe Convert Crossbow Sling to Normal Sling
+    {
+       KCM_Sling,
+	   keep Screwdriver,
+
+       Result:Sling,
+       Time:40.0,
+	   Sound:Screwing,
+	   AnimNode:Disassemble,
+	   Prop1:Screwdriver,
+       NeedToBeLearn:FALSE,
+    }
+
+    recipe Convert Crossbow Ironsight to Normal Ironsight
+    {
+       KCM_IronSight,
+	   keep Screwdriver,
+
+       Result:IronSight,
+       Time:40.0,
+	   Sound:Screwing,
+	   AnimNode:Disassemble,
+	   Prop1:Screwdriver,
+       NeedToBeLearn:FALSE,
+    }
+
+    recipe Convert Crossbow x2 Scope to Normal x2 Scope
+    {
+       KCM_x2Scope,
+	   keep Screwdriver,
+
+       Result:x2Scope,
+       Time:40.0,
+	   Sound:Screwing,
+	   AnimNode:Disassemble,
+	   Prop1:Screwdriver,
+       NeedToBeLearn:FALSE,
+    }
+
+    recipe Convert Crossbow x4 Scope to Normal 4x Scope
+    {
+       KCM_x4Scope,
+	   keep Screwdriver,
+
+       Result:x4Scope,
+       Time:40.0,
+	   Sound:Screwing,
+	   AnimNode:Disassemble,
+	   Prop1:Screwdriver,
+       NeedToBeLearn:FALSE,
+    }
+
+    recipe Convert Crossbow x8 Scope to Normal x8 Scope
+    {
+       KCM_x8Scope,
+	   keep Screwdriver,
+
+       Result:x8Scope,
+       Time:40.0,
+	   Sound:Screwing,
+	   AnimNode:Disassemble,
+	   Prop1:Screwdriver,
+       NeedToBeLearn:FALSE,
+    }
+
+    recipe Convert Crossbow RedDot to Normal RedDot
+    {
+       KCM_RedDot,
+	   keep Screwdriver,
+
+       Result:RedDot,
+       Time:40.0,
+	   Sound:Screwing,
+	   AnimNode:Disassemble,
+	   Prop1:Screwdriver,
+       NeedToBeLearn:FALSE,
+    }
+
+    recipe Convert Crossbow Stock to Normal Stock
+    {
+       KCM_FiberglassStock,
+	   keep Screwdriver,
+
+       Result:FiberglassStock,
+       Time:40.0,
+	   Sound:Screwing,
+	   AnimNode:Disassemble,
+	   Prop1:Screwdriver,
+       NeedToBeLearn:FALSE,
+    }
+
+    recipe Convert Crossbow Laser to Normal Laser
+    {
+       KCM_Laser,
+	   keep Screwdriver,
+
+       Result:Laser,
+       Time:40.0,
+	   Sound:Screwing,
+	   AnimNode:Disassemble,
+	   Prop1:Screwdriver,
+       NeedToBeLearn:FALSE,
+    }
+
+
+	/****************************** CRAFTING RECIPE ITEMS ******************************/
+	item ShortBrokenBolt
+    {
+        Weight	=	0.1,
+        Type	=	Normal,
+        DisplayName	= Broken Bolt,
+        Icon	=	CrossbowAmmoBroken,
+    }
+	
+	item LongBrokenBolt
+    {
+        Weight	=	0.1,
+        Type	=	Normal,
+        DisplayName	= Broken Bolt,
+        Icon	=	CrossbowAmmoBroken2,
+    }
+	
+	item WoodenBrokenBolt
+    {
+        Weight	=	0.1,
+        Type	=	Normal,
+        DisplayName	= Broken Bolt,
+        Icon	=	WoodenCrossbowAmmoBroken,
+    }
+	
+    item ShortShaft
+    {
+        Weight	=	0.1,
+        Type	=	Normal,
+        DisplayName	= Short	Crossbow Bolt Shaft,
+        Icon	=	ShortCrossbowBoltShaft,
+    }
+	
+	item LongShaft
+    {
+        Weight	=	0.1,
+        Type	=	Normal,
+        DisplayName	= Long Crossbow Bolt Shaft,
+        Icon	=	LongCrossbowBoltShaft,
+    }
+	
+    item CrossbowBoltHead
+    {
+        Weight	=	0.1,
+        Type	=	Normal,
+        DisplayName	=	Crossbow Bolt Head,
+        Icon	=	CrossbowBoltHead,
+    }
+	
+	item CrossbowBoltFletching
+    {
+        Weight	=	0.1,
+        Type	=	Normal,
+        DisplayName	=	Crossbow Bolt Fletching,
+        Icon	=	CrossbowBoltFletching,
+    }
+}

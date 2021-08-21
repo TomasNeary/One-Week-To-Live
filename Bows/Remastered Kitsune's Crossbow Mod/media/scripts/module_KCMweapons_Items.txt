@@ -1,0 +1,503 @@
+module KCMweapons
+{
+	imports
+	{
+		Base,
+	}
+
+	/****************************** BOWS ******************************/
+
+	item HandCrossbow
+    {
+		/* STATS */
+		
+		MinDamage	=	0.50,
+        	MaxDamage	=	0.8,
+		DoorDamage	=	4,
+        	CriticalChance = 30,
+        	CritDmgMultiplier = 5,
+		AimingPerkCritModifier = 5,
+		
+        	AimingTime = 10,
+		HitChance = 60,
+		AimingPerkHitChanceModifier = 5,
+        
+		
+		MinRange	=	0.5,
+		MaxRange	=	6,
+		MinAngle	=	0.9,
+		
+		AmmoType = KCMweapons.CrossbowBolt,
+		AmmoBox = KCMweapons.CrossbowBoltBox,
+        	WeaponReloadType = revolver,
+		ReloadTime = 8,
+		SwingTime	=	0.45,
+		RecoilDelay = 1,
+	
+		SoundRadius	=	4,
+		ConditionMax	=	10,
+		ConditionLowerChanceOneIn	=	60,
+		MaxAmmo = 1,
+		ProjectileCount	=	1,
+		MaxHitCount	=	1,
+		
+		SplatNumber	=	5,
+		Weight	=	1.2,
+		UseEndurance	=	FALSE,
+		KnockBackOnNoDeath	=	TRUE,
+		KnockdownMod	=	0,
+		
+		/* ANIMATION AND SPRITES */
+        	Icon	=	HandCrossbow,
+        	RunAnim	=	Run_Weapon2,
+		WeaponSprite	=	KCMweapons.HandCrossbow,
+		
+		/* SOUNDS */
+		SoundVolume	=	10,
+		SoundGain = 2,
+		
+        	ImpactSound	=	null,
+		SwingSound	=	HandCrossbowFire,
+        	InsertAmmoSound = HandCrossbowInsert,
+        	EjectAmmoSound = HandCrossbowInsert,
+        	RackSound = HandCrossbowCock,
+        	BreakSound  =   HandCrossbowBreak,
+		
+		/* MISC */
+		DisplayName	=	Hand Crossbow,
+		Type	=	Weapon,
+		Ranged	=	TRUE,
+		SubCategory	=	Firearm,
+        	IsAimedHandWeapon	=	TRUE,
+        	IsAimedFirearm	=	TRUE,
+		AttachmentType = Holster,
+        	InsertAllBulletsReload = TRUE,
+        	RackAfterShoot = FALSE,
+        	haveChamber = FALSE,
+		JamGunChance = 0,
+		SplatBloodOnNoDeath	=	TRUE,
+		
+		/* NO CLUE */
+        	RangeFalloff	=	FALSE,
+        	ToHitModifier	=	1.5,
+        	PushBackMod	=	0.5,
+        	ShareDamage	=	FALSE,
+        	AngleFalloff	=	TRUE,
+        	MultipleHitConditionAffected	=	FALSE,
+		MetalValue = 25,
+    }
+
+
+	item KCM_Compound
+    {
+        ImpactSound	=	null,
+        MaxRange	=	11,
+        RangeFalloff	=	TRUE,
+        WeaponSprite	=	KCMweapons.KCM_Compound,
+		ToHitModifier	=	1.5,
+        SoundVolume	=	10,
+        MinAngle	=	0.9,
+        Type	=	Weapon,
+        KnockBackOnNoDeath	=	TRUE,
+        Ranged	=	TRUE,
+        ProjectileCount	=	1,
+        ConditionLowerChanceOneIn	=	45,
+        Weight	=	2.4,
+        SplatNumber	=	5,
+        PushBackMod	=	1,
+        SubCategory	=	Firearm,
+        AimingMod	=	2,
+        ConditionMax	=	10,
+        ShareDamage	=	FALSE,
+        MaxHitCount	=	1,
+        IsAimedHandWeapon	=	TRUE,
+        IsAimedFirearm	=	TRUE,
+        DoorDamage	=	8,
+        UseEndurance	=	FALSE,
+        DisplayName	=	Scout Compound Bow,
+        MinRange	=	0.5,
+        SwingTime	=	1.25,
+		SwingAnim	=	Rifle,
+        AngleFalloff	=	TRUE,
+        MultipleHitConditionAffected	=	FALSE,
+        SwingSound	=	LargeCrossbowFire,
+        SoundRadius	=	4,
+        MinDamage	=	1.0,
+        MaxDamage	=	1.75,
+        KnockdownMod	=	0,
+        SplatBloodOnNoDeath	=	TRUE,
+        Icon	=	KCM_Compound,
+        RunAnim	=	Run_Weapon2,
+        CriticalChance = 60,
+        CritDmgMultiplier = 8,
+        AimingPerkCritModifier = 4,
+		TwoHandWeapon = TRUE,
+		RequiresEquippedBothHands = TRUE,
+        HitChance = 50,
+        AimingPerkHitChanceModifier = 15,
+        RecoilDelay = 1,
+        SoundGain = 2,
+        ReloadTime = 10,
+        AimingTime = 20,
+        BreakSound  =   HandCrossbowBreak,
+        MetalValue = 25,
+        AmmoBox = KCMweapons.CrossbowBoltLargeBox,
+        MaxAmmo = 1,
+        InsertAmmoSound = LargeCrossbowReload,
+        EjectAmmoSound = HandCrossbowInsert,
+        RackSound = LargeCrossbowReload,
+        AmmoType = KCMweapons.CrossbowBoltLarge,
+        WeaponReloadType = boltaction,
+        JamGunChance = 0,
+        AttachmentType = Rifle,
+        InsertAllBulletsReload = TRUE,
+        RackAfterShoot = FALSE,
+        haveChamber = FALSE,
+    }
+
+	item KCM_Compound02
+    {
+        ImpactSound	=	null,
+        MaxRange	=	12,
+        RangeFalloff	=	TRUE,
+        WeaponSprite	=	KCMweapons.KCM_Compound02,
+		ToHitModifier	=	1.5,
+        SoundVolume	=	10,
+        MinAngle	=	0.9,
+        Type	=	Weapon,
+        KnockBackOnNoDeath	=	TRUE,
+        Ranged	=	TRUE,
+        ProjectileCount	=	1,
+        ConditionLowerChanceOneIn	=	40,
+        Weight	=	2.4,
+        SplatNumber	=	5,
+        PushBackMod	=	1,
+        SubCategory	=	Firearm,
+        AimingMod	=	2,
+        ConditionMax	=	10,
+        ShareDamage	=	FALSE,
+        MaxHitCount	=	1,
+        IsAimedHandWeapon	=	TRUE,
+        IsAimedFirearm	=	TRUE,
+        DoorDamage	=	8,
+        UseEndurance	=	FALSE,
+        DisplayName	=	Haze 470 Compound Bow,
+        MinRange	=	0.5,
+        SwingTime	=	1.25,
+		SwingAnim	=	Rifle,
+        AngleFalloff	=	TRUE,
+        MultipleHitConditionAffected	=	FALSE,
+        SwingSound	=	LargeCrossbowFire,
+        SoundRadius	=	4,
+        MinDamage	=	1.2,
+        MaxDamage	=	2.0,
+        KnockdownMod	=	0,
+        SplatBloodOnNoDeath	=	TRUE,
+        Icon	=	KCM_Compound02,
+        RunAnim	=	Run_Weapon2,
+        CriticalChance = 60,
+        CritDmgMultiplier = 10,
+        AimingPerkCritModifier = 4,
+		TwoHandWeapon = TRUE,
+		RequiresEquippedBothHands = TRUE,
+        HitChance = 55,
+        AimingPerkHitChanceModifier = 15,
+        RecoilDelay = 1,
+        SoundGain = 2,
+        ReloadTime = 10,
+        AimingTime = 20,
+        BreakSound  =   HandCrossbowBreak,
+        MetalValue = 25,
+        AmmoBox = KCMweapons.CrossbowBoltLargeBox,
+        MaxAmmo = 1,
+        InsertAmmoSound = LargeCrossbowReload,
+        EjectAmmoSound = HandCrossbowInsert,
+        RackSound = LargeCrossbowReload,
+        AmmoType = KCMweapons.CrossbowBoltLarge,
+        WeaponReloadType = boltaction,
+        JamGunChance = 0,
+        AttachmentType = Rifle,
+        InsertAllBulletsReload = TRUE,
+        RackAfterShoot = FALSE,
+        haveChamber = FALSE,
+    }
+
+	item KCM_Handmade
+    {
+        ImpactSound	=	null,
+        MaxRange	=	10,
+        RangeFalloff	=	TRUE,
+        WeaponSprite	=	KCMweapons.KCM_Handmade,
+		ToHitModifier	=	1.8,
+        SoundVolume	=	10,
+        MinAngle	=	0.95,
+        Type	=	Weapon,
+        KnockBackOnNoDeath	=	TRUE,
+        Ranged	=	TRUE,
+        ProjectileCount	=	1,
+        ConditionLowerChanceOneIn	=	60,
+        Weight	=	2.4,
+        SplatNumber	=	5,
+        PushBackMod	=	2,
+        SubCategory	=	Firearm,
+        AimingMod	=	2,
+        ConditionMax	=	6,
+        ShareDamage	=	FALSE,
+        MaxHitCount	=	1,
+        IsAimedHandWeapon	=	TRUE,
+        IsAimedFirearm	=	TRUE,
+        DoorDamage	=	8,
+        UseEndurance	=	FALSE,
+        DisplayName	=	Handmade Wooden Crossbow,
+        MinRange	=	0.61,
+        SwingTime	=	1.25,
+		SwingAnim	=	Rifle,
+        AngleFalloff	=	TRUE,
+        MultipleHitConditionAffected	=	FALSE,
+        SwingSound	=	LargeCrossbowFire,
+        SoundRadius	=	6,
+        MinDamage	=	0.70,
+        MaxDamage	=	1.50,
+        KnockdownMod	=	0,
+        SplatBloodOnNoDeath	=	TRUE,
+        Icon	=	KCM_Handmade,
+        RunAnim	=	Run_Weapon2,
+        CriticalChance = 50,
+        CritDmgMultiplier = 7,
+        AimingPerkCritModifier = 4,
+		TwoHandWeapon = TRUE,
+		RequiresEquippedBothHands = TRUE,
+        HitChance = 40,
+        AimingPerkHitChanceModifier = 12,
+        RecoilDelay = 1,
+        SoundGain = 2,
+        ReloadTime = 10,
+        AimingTime = 20,
+        BreakSound  =   HandCrossbowBreak,
+        MetalValue = 25,
+        AmmoBox = KCMweapons.WoodenBoltBox,
+        MaxAmmo = 1,
+        InsertAmmoSound = LargeCrossbowReload,
+        EjectAmmoSound = HandCrossbowInsert,
+        RackSound = LargeCrossbowReload,
+        AmmoType = KCMweapons.WoodenBolt,
+        WeaponReloadType = boltaction,
+        JamGunChance = 0,
+        AttachmentType = Rifle,
+        InsertAllBulletsReload = TRUE,
+        RackAfterShoot = FALSE,
+        haveChamber = FALSE,
+    }
+
+	item KCM_Handmade02
+    {
+        ImpactSound	=	null,
+        MaxRange	=	11,
+        RangeFalloff	=	TRUE,
+        WeaponSprite	=	KCMweapons.KCM_Handmade02,
+		ToHitModifier	=	1.8,
+        SoundVolume	=	10,
+        MinAngle	=	0.95,
+        Type	=	Weapon,
+        KnockBackOnNoDeath	=	TRUE,
+        Ranged	=	TRUE,
+        ProjectileCount	=	1,
+        ConditionLowerChanceOneIn	=	55,
+        Weight	=	2.4,
+        SplatNumber	=	5,
+        PushBackMod	=	1,
+        SubCategory	=	Firearm,
+        AimingMod	=	2,
+        ConditionMax	=	8,
+        ShareDamage	=	FALSE,
+        MaxHitCount	=	1,
+        IsAimedHandWeapon	=	TRUE,
+        IsAimedFirearm	=	TRUE,
+        DoorDamage	=	8,
+        UseEndurance	=	FALSE,
+        DisplayName	=	Handmade Metal Crossbow,
+        MinRange	=	0.61,
+        SwingTime	=	1.0,
+		SwingAnim	=	Rifle,
+        AngleFalloff	=	TRUE,
+        MultipleHitConditionAffected	=	FALSE,
+        SwingSound	=	LargeCrossbowFire,
+        SoundRadius	=	6,
+        MinDamage	=	0.85,
+        MaxDamage	=	1.65,
+        KnockdownMod	=	0,
+        SplatBloodOnNoDeath	=	TRUE,
+        Icon	=	KCM_Handmade02,
+        RunAnim	=	Run_Weapon2,
+        CriticalChance = 60,
+        CritDmgMultiplier = 7,
+        AimingPerkCritModifier = 4,
+		TwoHandWeapon = TRUE,
+		RequiresEquippedBothHands = TRUE,
+        HitChance = 44,
+        AimingPerkHitChanceModifier = 13,
+        RecoilDelay = 1,
+        SoundGain = 2,
+        ReloadTime = 10,
+        AimingTime = 20,
+        BreakSound  =   HandCrossbowBreak,
+        MetalValue = 25,
+        AmmoBox = KCMweapons.WoodenBoltBox,
+        MaxAmmo = 1,
+        InsertAmmoSound = LargeCrossbowReload,
+        EjectAmmoSound = HandCrossbowInsert,
+        RackSound = LargeCrossbowReload,
+        AmmoType = KCMweapons.WoodenBolt,
+        WeaponReloadType = boltaction,
+        JamGunChance = 0,
+        AttachmentType = Rifle,
+        InsertAllBulletsReload = TRUE,
+        RackAfterShoot = FALSE,
+        haveChamber = FALSE,
+    }
+
+	/****************************** AMMO ******************************/
+
+	item CrossbowBolt
+	{
+		Count	=	1,
+		Weight	=	0.1,
+		AlwaysWelcomeGift	=	TRUE,
+		Type	=	Normal,
+		DisplayCategory = Ammo,
+		DisplayName	=	Short Crossbow Bolt,
+		Icon	=	CrossbowAmmo,
+		MetalValue = 1,
+	}
+
+    item CrossbowBoltBox
+    {
+        Weight	=	0.5,
+        Type	=	Normal,
+        DisplayName	=	Bundle of Short Crossbow Bolts,
+        DisplayCategory = Ammo,
+        Icon	=	CrossbowBoltBundle,
+        MetalValue = 30,
+    }
+	item CrossbowBoltLarge
+	{
+		Count	=	1,
+		Weight	=	0.1,
+		AlwaysWelcomeGift	=	TRUE,
+		Type	=	Normal,
+		DisplayCategory = Ammo,
+		DisplayName	=	Long Crossbow Bolt,
+		Icon	=	CrossbowAmmo2,
+		MetalValue = 1,
+	}
+
+    item CrossbowBoltLargeBox
+    {
+        Weight	=	0.5,
+        Type	=	Normal,
+        DisplayName	=	Bundle of Long Crossbow Bolts,
+        DisplayCategory = Ammo,
+        Icon	=	CrossbowBoltBundle2,
+        MetalValue = 30,
+    }
+
+	item WoodenBolt
+	{
+		Count	=	1,
+		Weight	=	0.1,
+		AlwaysWelcomeGift	=	TRUE,
+		Type	=	Normal,
+		DisplayCategory = Ammo,
+		DisplayName	=	Wooden Crossbow Bolt,
+		Icon	=	KCM_WoodenBolt,
+		MetalValue = 1,
+	}
+
+    item WoodenBoltBox
+    {
+        Weight	=	0.5,
+        Type	=	Normal,
+        DisplayName	=	Bundle of Wooden Crossbow Bolts,
+        DisplayCategory = Ammo,
+        Icon	=	KCM_WoodenBoltBox,
+        MetalValue = 30,
+    }
+
+	
+	/****************************** CUSTOM BOOK ******************************/
+		
+	item TheUltimateHuntingGuide1
+	{
+		NumberOfPages = 220,
+		Weight = 0.8,
+		Type = Literature,
+		DisplayName = Hunting Guide for Beginners,
+		SkillTrained = Aiming,
+        LvlSkillTrained = 1,
+        NumLevelsTrained = 2,
+		Icon = TUHGBook,
+		StaticModel = Book,
+	}
+
+	item TheUltimateHuntingGuide2
+	{
+		NumberOfPages = 260,
+		Weight = 0.8,
+		Type = Literature,
+		DisplayName = Hunting Guide for Advanced,
+		SkillTrained = Aiming,
+        LvlSkillTrained = 3,
+        NumLevelsTrained = 2,
+		Icon = TUHGBook,
+		StaticModel = Book,
+	}
+
+	item TheSniperGuide
+	{
+		NumberOfPages = 300,
+		Weight = 0.8,
+		Type = Literature,
+		DisplayName = Sniper Guide,
+		SkillTrained = Aiming,
+        LvlSkillTrained = 5,
+        NumLevelsTrained = 2,
+		Icon = TUHGBook,
+		StaticModel = Book,
+	}
+	
+	item WeaponHandlersReloaded
+	{
+		NumberOfPages = 220,
+		Weight = 0.8,
+		Type = Literature,
+		DisplayName = Weapon Handlers: Reloaded,
+		SkillTrained = Reloading,
+		LvlSkillTrained = 1,
+		NumLevelsTrained = 2,
+		Icon = WPRBook,
+		StaticModel = Book,
+	}
+	
+	item DoomsdayPreppers1
+	{
+		Weight = 0.2,
+		Type = Literature,
+		DisplayName = Doomsday Preppers Vol.1,
+		Icon = DPBook,
+		StaticModel = Magazine,
+		TeachedRecipes =  Craft Bolt Fletching (x3); Craft Short Shafts (x3); Craft Long Shafts (x3); Craft Bolt Head (x3); Craft Short Crossbow Bolt (x3); Craft Long Crossbow Bolt (x3),
+		ReplaceOnUse = DoomsdayPreppers1,
+	}
+	
+	item DoomsdayPreppers2
+	{
+		Weight = 0.2,
+		Type = Literature,
+		DisplayName = Doomsday Preppers Vol.2,
+		Icon = DPBook,
+		StaticModel = Magazine,
+		TeachedRecipes = Craft Wooden Crossbow; Craft Metal Crossbow; Craft Wooden Crossbow Bolts (x3),
+		ReplaceOnUse = DoomsdayPreppers2,
+	}
+
+}

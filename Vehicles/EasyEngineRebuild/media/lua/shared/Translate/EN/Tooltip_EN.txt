@@ -1,0 +1,4 @@
+Tooltip_EN = {
+	-- Item tooltip
+	Tooltip_eer_RebuildEngine = "The engine quality will be repaired to max",
+}

@@ -1,0 +1,4 @@
+Tiaxx12/10/2020
+It's currently broken (dunno if intentionally). You can fix it yourself if you change media/lua/client/OptionScreens/WorkshopSubmitScreen.lua line 289
+-       self.tags:setTags(allowedTags)
++       self.tags:setTags(item:getTags())

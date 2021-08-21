@@ -1,0 +1,33 @@
+IGUI_EN = {
+
+
+    IGUI_VehiclePartCounter = "Counter",
+    IGUI_VehiclePartFridge = "Fridge",
+    IGUI_VehiclePartOven = "Oven",
+
+    IGUI_VehiclePartfridge = "Fridge",
+    IGUI_VehiclePartstove = "Oven",
+
+    IGUI_VehiclePartRoofrack = "Roof Rack",
+
+    IGUI_VehiclePartTV = "Television",
+    IGUI_VehiclePartMattress = "Mattress",
+    IGUI_VehiclePartGunRack = "Gun Rack",
+
+
+
+    IGUI_VehiclePart250FuelTruckTank = "Fuel Storage Tank",
+    IGUI_VehiclePart500FuelTruckTank = "Fuel Storage Tank",
+    IGUI_VehiclePart1000FuelTruckTank = "Fuel Storage Tank",
+
+
+
+    IGUI_VehiclePart250PropaneTruckTank = "Propane Storage Tank",
+    IGUI_VehiclePart500PropaneTruckTank = "Propane Storage Tank",
+    IGUI_VehiclePart1000PropaneTruckTank = "Propane Storage Tank",
+
+
+    IGUI_PlayerText_CanNotSleepInMovingCar_Mattress = "Stop the car first to sleep in the mattress.",
+
+    IGUI_Sleep_NotTiredEnough_Mattress = "Not tired enough to sleep in the mattress yet.",
+}

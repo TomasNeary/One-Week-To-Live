@@ -1,0 +1,110 @@
+module SWeapons
+{
+	imports
+	{
+		Base
+	}
+
+	item WeaponMag1
+	{
+		Weight = 0.1,
+		Type = Literature,
+		DisplayName = Doom's Day Survivor Vol. 1 (Pickaxes),
+		Icon = WeaponMag1,
+		TeachedRecipes = Make Huge Scrap Pickaxe;Make Scrap Pickaxe;Make Large Scrap Pickaxe;Sharpen Stop Sign,
+		StaticModel = Magazine,
+		ReplaceOnUse    =   WeaponMag1,
+	}
+	item WeaponMag2
+	{
+		Weight = 0.1,
+		Type = Literature,
+		DisplayName = Doom's Day Survivor Vol. 2 (Shivs),
+		Icon = WeaponMag2,
+		TeachedRecipes = Make Scrap Shiv;Make Glass Shiv;Make Salvaged Shiv;Sharpen Screwdriver,
+		StaticModel = Magazine,
+		ReplaceOnUse    =   WeaponMag2,
+	}
+
+	item WeaponMag3
+	{
+		Weight = 0.1,
+		Type = Literature,
+		DisplayName = Doom's Day Survivor Vol. 3 (Blunt Weapons),
+		Icon = WeaponMag3,
+		TeachedRecipes = Attach Pipes;Make Tin Can Club;Attach Gears to Pipe;Attach DumbBell to Pipe,
+		StaticModel = Magazine,
+		ReplaceOnUse    =   WeaponMag3,
+	}
+	
+	item WeaponMag4
+	{
+		Weight = 0.1,
+		Type = Literature,
+		DisplayName = Wasteland Warrior Vol. 1 (Axes),
+		Icon = WeaponMag4,
+		TeachedRecipes = Make TireIronAxe;Make Salvaged PipeWrench;Make Salvaged Crowbar;Make Salvaged Climbing Axe,
+		StaticModel = Magazine,
+		ReplaceOnUse    =   WeaponMag4,
+	}
+	item WeaponMag5
+	{
+		Weight = 0.1,
+		Type = Literature,
+		DisplayName = Wasteland Warrior Vol. 2 (Spears),
+		Icon = WeaponMag5,
+		TeachedRecipes = Make Salvaged Spear;Make Scrap Spear,
+		StaticModel = Magazine,
+		ReplaceOnUse    =   WeaponMag5,
+	}
+	item WeaponMag6
+	{
+		Weight = 0.1,
+		Type = Literature,
+		DisplayName = Wasteland Warrior Vol. 3 (Bladed Weapons),
+		Icon = WeaponMag6,
+		TeachedRecipes = Make Salvaged Cleaver;Make Salvaged Blade;Make Scrap Sword;Make Scrap Machete;Make Salvaged Machete;Make Scrap Blade;Make Salvaged Nightstick,
+		StaticModel = Magazine,
+		ReplaceOnUse    =   WeaponMag6,
+	}
+	item WeaponMag7
+	{
+		Weight = 0.1,
+		Type = Literature,
+		DisplayName = D.I.Y Crafting for Idiots Vol. 1 (Deconstruction),
+		Icon = WeaponMag7,
+		TeachedRecipes = Make File;Make Scrap Workbench;Deconstruct Fork Head;Deconstruct Scalpel;Deconstruct DumbBell;Deconstruct BarBell;Deconstruct Rake Head;Deconstruct Pickaxe Head;Deconstruct Hoe Head;Deconstruct Shovel Head;Deconstruct Wrench;Deconstruct Long Blade Head;Deconstruct Scythe Head;Deconstruct Meat Cleaver Head;Deconstruct Small Metal Bar;Deconstruct Pen;Deconstruct SmallBlade;Deconstruct Axe Head;Deconstruct SledgeHammer Head;Deconstruct Hammer Head;Deconstruct Golf Club Head;Deconstruct Fishing Rod;Deconstruct Large Items;Deconstruct Small Items;Deconstruct Pan;Deconstruct Crowbar;Combine MetalParts,
+		StaticModel = Magazine,
+		ReplaceOnUse    =   WeaponMag7,
+	}
+	item WeaponMag8
+	{
+		Weight = 0.1,
+		Type = Literature,
+		DisplayName = D.I.Y Crafting for Idiots Vol. 2 (Tool Dissasembly),
+		Icon = WeaponMag8,
+		TeachedRecipes = Make Scrap Workbench;Deconstruct Tool Box;Dissasemble Fork;Dissasemble Rake;Dissasemble Pickaxe;Dissasemble Hoe;Dissasemble Shovel;Dissasemble LongBlade;Dissasemble Scythe;Dissasemble MeatCleaver;Dissasemble Screwdriver;Dissasemble SmallBlade;Dissasemble Axe;Dissasemble Sledgehammer;Dissasemble Hammer;Dissasemble Golfclub;Combine MetalParts,
+		StaticModel = Magazine,
+		ReplaceOnUse    =   WeaponMag8,
+	}
+	item WeaponMag9
+	{
+		Weight = 0.1,
+		Type = Literature,
+		DisplayName = Backyard Smelting for Dumbshits,
+		Icon = WeaponMag9,
+		TeachedRecipes = Cast Small Metal Sheet;Assemble Propane Gas Furnace;Bundle Propane Tanks;UnBundle Propane Tanks;Make Small Metal Sheet Mold,
+		StaticModel = Magazine,
+		ReplaceOnUse    =   WeaponMag9,
+	}
+	item WeaponMag10
+	{
+		Weight = 0.1,
+		Type = Literature,
+		DisplayName = Car Butchering in a nutshell,
+		Icon = WeaponMag10,
+		TeachedRecipes = Make Scrap Workbench;Deconstruct Car Brake;Deconstruct Car Door;Deconstruct Car Gas Tank;Deconstruct Car Muffler,
+		StaticModel = Magazine,
+		ReplaceOnUse    =   WeaponMag10,
+	}
+}

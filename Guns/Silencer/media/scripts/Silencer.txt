@@ -1,0 +1,59 @@
+module Silencer
+{
+	imports
+	{
+		Base
+	}
+
+
+	 item Silencer
+    {
+        Type = WeaponPart,
+        DisplayName = Silencer,
+        Icon = Silencer,
+        Weight = 1,
+		MaxRangeModifier = -1,
+		RecoilDelayModifier = -1,
+        WeightModifier = 1.2,
+        MountOn = Pistol; Pistol2; Pistol3; VarmintRifle; HuntingRifle; AssaultRifle; AssaultRifle2,
+        PartType = Canon,
+		Tooltip = Tooltip_Silencer,
+    }
+	item HMSilencer
+    {
+        Type = WeaponPart,
+        DisplayName = Home Made Silencer,
+        Icon = Silencer,
+        Weight = 1.2,
+		MaxRangeModifier = -2,
+		RecoilDelayModifier = -1,
+        WeightModifier = 1.4,
+        MountOn = Pistol; Pistol2; Pistol3; VarmintRifle; HuntingRifle; AssaultRifle; AssaultRifle2,
+        PartType = Canon,
+		Tooltip = Tooltip_HMSilencer,
+    }
+
+	recipe Craft Silencer
+    {
+    	destroy Torch,
+		keep Screwdriver,
+		keep Saw,
+    	Result:HMSilencer,
+    	Category:Engineer,
+		SkillRequired:Aiming=2,
+    	Time:500.0,
+    }
+	
+	recipe Craft Silencer
+    {
+    	destroy MetalPipe,
+		keep Screwdriver,
+		keep Saw,
+    	Result:HMSilencer,
+    	Category:Engineer,
+		SkillRequired:Aiming=2,
+    	Time:500.0,
+    }
+	
+
+}

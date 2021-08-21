@@ -1,0 +1,10 @@
+﻿--***********************************************************
+--**                     OSIRIS_CSX                        **
+--***********************************************************
+
+
+Tooltip_CN = {
+    -- Item tooltip
+	Tooltip_Silencer = "Reduces sound radius but Slightly lowers range",
+	Tooltip_HMSilencer = "Reduces sound radius but lowers range",
+}

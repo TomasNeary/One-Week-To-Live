@@ -1,0 +1,13 @@
+module Base
+{
+  /***************************Literature************************************/
+  item MetalworkMag4
+	{
+			Weight	=	0.1,
+			Type	=	Literature,
+			DisplayName	=	The Metalwork Magazine Vol. 4,
+			Icon	=	MagazineWelding3,
+			TeachedRecipes  =   Make Metal Sheet;Make Small Metal Sheet;Make Metal Pipe;Make Metal Bar;,
+			ReplaceOnUse    =   MetalworkMag4,
+	}
+}

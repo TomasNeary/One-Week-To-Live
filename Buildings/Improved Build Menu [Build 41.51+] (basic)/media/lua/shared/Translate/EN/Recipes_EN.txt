@@ -1,0 +1,6 @@
+Recipe_EN =
+{
+  Recipe_Make_Wooden_Cage_Trap = "Crate Trap",
+  Recipe_Make_Trap_Box = "Make Wooden Box Trap",
+  Recipe_Make_Door_Knob = "Make Doorknob",
+}

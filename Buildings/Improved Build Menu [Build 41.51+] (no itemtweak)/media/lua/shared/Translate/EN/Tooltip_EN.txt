@@ -1,0 +1,94 @@
+-- Build Menu tooltip
+Tooltip_craft_Needs = "Needs",
+-- Carpentry
+-- Wall
+Tooltip_craft_woodenWallFrameDesc = "Wooden base for walls or windows.",
+Tooltip_craft_woodenFrameDesc = "A simple window frame. Can be barricaded, plastered and painted.",
+Tooltip_craft_doorFrameDesc = "Required when installing a door. Can be plastered.",
+Tooltip_craft_woodenWallDesc = "Simple wall. Can be barricaded, plastered and painted.",
+Tooltip_craft_woodenCornerDesc = "Wooden wall corner. To be placed on the bottom corner of walls.",
+Tooltip_craft_woodenPillarDesc = "A simple wooden pillar.",
+Tooltip_craft_wallLogDesc = "Strong wall made from bound logs.",
+Tooltip_craft_logPillarDesc = "Log pillar used as a support or tied together with other logs to form a wall.",
+-- Fence
+Tooltip_craft_woodenStakeDesc = "A sharpened pole to stick in the ground. Can be attached to barbed wire.",
+Tooltip_craft_barbedFenceDesc = "Slows movement and can inflict surface wounds.",
+Tooltip_craft_woodenPostDesc = "A wooden post to stick in the ground. Can be attached to wooden fence.",
+Tooltip_craft_woodenFenceDesc = "Provides limited protection from the horde.",
+Tooltip_craft_sandBagDesc = "Defense wall for protection from the undead.",
+Tooltip_craft_gravelBagDesc = "Heavy-duty temporary defense wall.",
+-- Door/Gate
+Tooltip_craft_woodenDoorDesc = "A regular wooden door. Must be placed in a door frame. Can be locked/unlocked with a key.",
+Tooltip_craft_outhouseDoorDesc = "Keep your privacy when on the loo. Must be placed in a door frame. Can be locked/unlocked with a key.",
+Tooltip_craft_woodenGateDesc = "Basic gate design made from wood.",
+Tooltip_craft_bigWoodenGateDesc = "High gate design made from wood, with a hole to peep through.",
+-- Stairs
+Tooltip_craft_stairsDesc = "They go up. They go down. And zombies do too.",
+-- Floor
+Tooltip_craft_woodenFloorDesc = "A basic floor made from wood.",
+Tooltip_craft_woodenBrownFloorDesc = "A basic floor made from brown wood.",
+Tooltip_craft_woodenLightBrownFloorDesc = "A basic floor made from light brown wood.",
+Tooltip_craft_concreteFloorDesc = "Poured concrete floor.",
+-- Container
+Tooltip_craft_woodenCrateDesc = "Wooden crate used for item storage. Can be locked with a padlock.",
+-- Window
+Tooltip_craft_windowDesc = "Window with the glass removed. Can be placed in window frames."
+-- Furniture
+Tooltip_craft_bedDesc = "Night night. Don't let the zombies bite.",
+Tooltip_craft_mattressDesc = "Night night. Don't let the zombies bite.",
+Tooltip_craft_barElementDesc = "A wooden counter, as perhaps found in a favored drinking den.",
+Tooltip_craft_counterElementDesc = "A wooden counter, usually found in residential kitchens.",
+Tooltip_craft_smallTableDesc = "Everyone loves a table. Even a small one.",
+Tooltip_craft_largeTableDesc = "Don't let the end of the world impact on your love of tables .",
+Tooltip_craft_tableDrawerDesc = "Comes with a drawer to keep useful gear inside.",
+Tooltip_craft_woodenChairDesc = "Rest those weary, infected legs.",
+Tooltip_craft_woodenStoolDesc = "Take a seat, enjoy a pint at your favored drinking den.",
+Tooltip_craft_woodenToiletDesc = "Don't get caught with your pants down.",
+Tooltip_craft_rainBarrelDesc = "Stockpile supplies before the water shut-off.",
+Tooltip_craft_bookcaseDesc = "Stores book-based literature of all varieties.",
+Tooltip_craft_smallBookcaseDesc = "Show off your reading loot with pride.",
+Tooltip_craft_shelvesDesc = "Basic shelves for loot and item storage.",
+Tooltip_craft_doubleShelvesDesc = "What's better than one shelf? Two at the same time!",
+-- Lamp on Pillar
+Tooltip_craft_pillarLampDesc = "A flashlight tied to the top of a wooden pillar. Remember to turn off to save battery life.",
+-- Misc
+Tooltip_craft_signDesc = "For painted messages to decorate your base and environs.",
+Tooltip_craft_crossDesc = "Erect a monument in memory of your loved ones lost to the apocalypse.",
+Tooltip_craft_stonePileDesc = "Erect a monument in memory of your loved ones lost to the apocalypse.",
+Tooltip_craft_woodenPicketDesc = "Erect a monument in memory of your loved ones lost to the apocalypse.",
+Tooltip_craft_dogHouseDesc = "A house for your dog.",
+-- Metalworking
+-- Wall
+Tooltip_craft_metalWallFrameDesc = "Metal base for walls or windows.",
+Tooltip_craft_metalDoorFrameDesc = "Door frame made up of metal sheets welded together. Required when installing a door.",
+Tooltip_craft_metalWallCornerDesc = "Metal wall corner. To be placed on the bottom corner of walls.",
+Tooltip_craft_metalJailWallDesc = "Sturdy jail wall with vertical metal bars.",
+Tooltip_craft_metalJailDoorFrameDesc = "Sturdy metal bars forming a door frame. Required when installing a door.",
+Tooltip_craft_metalJailWallCornerDesc = "Jail wall corner. To be placed on the bottom corner of walls.",
+-- Fence
+Tooltip_craft_metalFenceDesc = "Low metal fence made up of metal sheets welded together.",
+Tooltip_craft_metalPoleFenceDesc = "Low fence made up of shoddy looking metal posts.",
+Tooltip_craft_metalWiredFenceDesc = "Low fence made up of wire.",
+Tooltip_craft_fencePostDesc = "Fence post for the low wire fence.",
+Tooltip_craft_bigWiredFenceDesc = "High fence made up of wire.",
+Tooltip_craft_bigFencePostDesc = "Fence post for the high wire fence.",
+Tooltip_craft_bigMetalFenceDesc = "High fence made up of shoddy looking metal posts.",
+-- Door/Gate
+Tooltip_craft_metalDoorDesc = "Simple door made of metal. Can be locked/unlocked with a key.",
+Tooltip_craft_metalJailDoorDesc = "Sturdy jail door with vertical metal bars. Can be locked/unlocked with a key.",
+Tooltip_craft_metalFenceGateDesc = "Low gate made of shoddy looking metal posts.",
+Tooltip_craft_metalWiredGateDesc = "Low gate made up of wire.",
+Tooltip_craft_bigMetalFenceDesc = "High gate made of shoddy looking metal posts.",
+Tooltip_craft_bigMetalDoubleDoorDesc = "High double gate made of shoddy looking metal posts.",
+Tooltip_craft_doubleMetalDoorDesc = "High double gate made up of wire.",
+-- Roof/Floor
+Tooltip_craft_metalRoofDesc = "Metal sheet used for a roof.",
+Tooltip_craft_metalFloorDesc = "Metal sheet used for a floor.",
+-- Furniture
+Tooltip_craft_metalShelvesDesc = "Two metal shelves placed on top of one another. Used for item storage.",
+Tooltip_craft_metalCrateDesc = "Metal crate used for item storage. Can be locked with a padlock.",
+Tooltip_craft_metalCounterDesc = "A metal counter used for item storage.",
+Tooltip_craft_metalCounterCornerDesc = "A metal corner counter used for item storage.",
+Tooltip_craft_smallLockerDesc = "Small metal locker, often containing firearms.",
+Tooltip_craft_bigLockerDesc = "Big metal locker used for item storage.",
+Tooltip_craft_metalChairDesc = "Rest those weary, infected legs.",

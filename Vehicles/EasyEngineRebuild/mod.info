@@ -1,0 +1,4 @@
+name=Easy Engine Rebuild
+poster=poster.png
+id=EasyEngineRebuild
+description=Add the ability to rebuild vehicle engines which will set the Engine Quality, and related engine stats, to the vehicle type maximum.

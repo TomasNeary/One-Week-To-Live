@@ -1,0 +1,4 @@
+﻿Recipe_CN = {
+  Recipe_Craft HMSilencer = "制作民用消音器",
+  Recipe_Craft Silencer = "制作消音器",
+}

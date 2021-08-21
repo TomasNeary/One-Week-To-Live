@@ -1,0 +1,287 @@
+module SWeapons
+{
+	imports
+	{
+		Base,
+	}
+
+    recipe Dissasemble Golfclub
+    {
+
+    	Golfclub,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: False,
+        Result           		: GolfClubHead,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: BreakingMetalWeapon,
+		OnGiveXP 				: Give10MWXP,
+		OnCreate                : DeconstructMetalTool_OnCreate,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: Golfclub,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Dissasemble Hammer
+    {
+	
+    	Hammer/BallPeenHammer,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: False,
+        Result           		: HammerHead,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: BreakingWeapon,
+		OnGiveXP 				: Give10MWXP,
+		OnCreate                : DeconstructSmallTool_OnCreate,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: Hammer,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Dissasemble Sledgehammer
+    {
+
+    	Sledgehammer/Sledgehammer2,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: False,
+        Result           		: SledgeHammerHead,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: BreakingMetalWeapon,
+		OnGiveXP 				: Give10MWXP,
+		OnCreate                : DeconstructMetalTool_OnCreate,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: SledgeHammer,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Dissasemble Axe
+    {
+
+    	WoodAxe/Axe/HandAxe/HandHatchet/SplittingAxe,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: False,
+        Result           		: AxeHead,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: BreakingWeapon,
+		OnGiveXP 				: Give10MWXP,
+		OnCreate                : DeconstructTool_OnCreate,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: HandAxe,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Dissasemble SmallBlade
+    {
+
+    	HuntingKnife/BreadKnife/KitchenKnife/LetterOpener/Scissors/CheapSurvivalKnife/SurvivalKnife/SpearSurvivalKnife/SpearCheapSurvivalKnife,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: False,
+        Result           		: SmallBlade,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: BreakingWeapon,
+		OnGiveXP 				: Give10MWXP,
+		OnCreate                : DeconstructSmallTool_OnCreate,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: Knife,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Dissasemble Screwdriver
+    {
+
+    	IcePick/Screwdriver,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: False,
+        Result           		: SmallMetalBar,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: BreakingWeapon,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: Screwdriver,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Dissasemble MeatCleaver
+    {
+
+    	MeatCleaver,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: False,
+        Result           		: MeatCleaverHead,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: BreakingWeapon,
+		OnGiveXP 				: Give10MWXP,
+		OnCreate                : DeconstructSmallTool_OnCreate,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: MeatCleaver,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Dissasemble Scythe
+    {
+
+    	HandScythe,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: False,
+        Result           		: ScytheHead,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: BreakingWeapon,
+		OnGiveXP 				: Give10MWXP,
+		OnCreate                : DeconstructSmallTool_OnCreate,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: HandScythe,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Dissasemble LongBlade
+    {
+
+    	Katana/Machete/RancherMachete/KukriMachete,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: False,
+        Result           		: LongBlade,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: BreakingWeapon,
+		OnGiveXP 				: Give10MWXP,
+		OnCreate                : DeconstructSmallTool_OnCreate,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: Machete,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Dissasemble Shovel
+    {
+
+    	Shovel/Shovel2/HandShovel/SnowShovel,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: False,
+        Result           		: ShovelHead,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: BreakingWeapon,
+		OnGiveXP 				: Give10MWXP,
+		OnCreate                : DeconstructTool_OnCreate,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: Shovel,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Dissasemble Hoe
+    {
+
+    	GardenHoe,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: False,
+        Result           		: HoeHead,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: BreakingWeapon,
+		OnGiveXP 				: Give10MWXP,
+		OnCreate                : DeconstructTool_OnCreate,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: GardenHoe,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Dissasemble Pickaxe
+    {
+
+    	PickAxe,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: False,
+        Result           		: PickaxeHead,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: BreakingWeapon,
+		OnGiveXP 				: Give10MWXP,
+		OnCreate                : DeconstructTool_OnCreate,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: PickAxe,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Dissasemble Rake
+    {
+
+    	LeafRake/Rake,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: False,
+        Result           		: RakeHead,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: BreakingWeapon,
+		OnGiveXP 				: Give10MWXP,
+		OnCreate                : DeconstructTool_OnCreate,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: Rake,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+	recipe Dissasemble Fork
+    {
+
+    	HandFork/GardenFork,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: False,
+        Result           		: ForkHead,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: BreakingWeapon,
+		OnGiveXP 				: Give10MWXP,
+		OnCreate                : DeconstructSmallTool_OnCreate,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: HandFork,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: true,
+    }
+}

@@ -1,0 +1,89 @@
+module SWeapons
+{
+	imports
+	{
+		Base,
+	}
+	
+	
+    recipe Deconstruct Car Brake
+    {
+
+    	OldBrake1/OldBrake2/OldBrake3/NormalBrake1/NormalBrake2/NormalBrake3/ModernBrake1/ModernBrake2/ModernBrake3,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=5,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: GearMace,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: True,
+    }
+	
+	recipe Deconstruct Car Door
+    {
+
+    	EngineDoor1/EngineDoor2/EngineDoor3/FrontCarDoor1/FrontCarDoor2/FrontCarDoor3/RearCarDoor1/RearCarDoor2/RearCarDoor3/RearCarDoorDouble1/RearCarDoorDouble2/RearCarDoorDouble3,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=4,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: GearMace,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: True,
+    }
+	
+	recipe Deconstruct Car Gas Tank
+    {
+
+    	SmallGasTank1/SmallGasTank2/SmallGasTank3/NormalGasTank1/NormalGasTank2/NormalGasTank3/BigGasTank1/BigGasTank2/BigGasTank3,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=8,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: GearMace,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: True,
+    }
+
+    recipe Deconstruct Car Muffler
+    {
+
+    	OldCarMuffler1/OldCarMuffler2/OldCarMuffler3/NormalCarMuffler1/NormalCarMuffler2/NormalCarMuffler3/ModernCarMuffler1/ModernCarMuffler2/ModernCarMuffler3,
+		keep ScrapWorkbench,
+
+		NoBrokenItems			: false,
+        Result           		: MetalParts=8,
+        Time             		: 100.0,
+		Category                : Scrap,
+        Category         		: Welding,
+	    Sound 					: ScrapStuff,
+		OnGiveXP 				: Give10MWXP,
+		AnimNode 				: Disassemble,
+        Prop1					: Screwdriver,
+        Prop2					: GearMace,
+		CanBeDoneFromFloor      : TRUE,
+		NeedToBeLearn: True,
+    }
+
+}

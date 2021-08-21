@@ -1,0 +1,367 @@
+module Base
+{
+	vehicle 70elcamino
+	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.9,
+		engineRepairLevel = 5,
+		playerDamageProtection = 0.8,
+
+		model
+		{
+			file = Vehicles_ElCamino70,
+			scale = 1.8500,
+			offset = 0.0000 0.3243 0.0000,
+		}
+
+		skin
+		{
+			texture = Vehicles/vehicle_elcamino70shell,
+		}
+
+		textureMask = Vehicles/vehicle_elcamino70_mask,
+		textureLights = Vehicles/vehicle_elcamino70_lights,
+		textureDamage1Overlay = Vehicles/fr_Veh_Blood_Mask,
+		textureDamage2Overlay = Vehicles/fr_Veh_Blood_Hvy,
+		textureDamage1Shell = Vehicles/fr_Veh_Damage1,
+		textureDamage2Shell = Vehicles/fr_Veh_Damage2,
+		textureRust = Vehicles/fr_Veh_Rust,
+
+		lightbar
+		{
+			soundSiren = TapeDeck1,
+		}
+
+		sound
+		{
+			horn = VehicleHorn,
+		}
+
+		extents = 0.8865 0.5081 2.3676,
+		mass = 800,
+		physicsChassisShape = 0.8865 0.5081 2.3676,
+		centerOfMassOffset = 0.0000 0.2595 -0.0216,
+		engineForce = 4800,
+		engineQuality = 80,
+		engineLoudness = 110,
+		maxSpeed = 100f,
+		gearRatioCount = 5,
+		gearRatioR = 3.5,
+		gearRatio1 = 4,
+		gearRatio2 = 2.50,
+		gearRatio3 = 1.5,
+		gearRatio4 = 1.25,
+		gearRatio5 = 0.80,
+		brakingForce = 80,
+		stoppingMovementForce = 4.5f,
+		rollInfluence = 1.0f,
+		steeringIncrement = 0.04,
+		suspensionStiffness = 35,
+		suspensionCompression = 4.1,
+		suspensionDamping = 3.0,
+		maxSuspensionTravelCm = 10,
+		suspensionRestLength = 0.2f,
+		wheelFriction = 1.5f,
+		frontEndHealth = 150,
+		rearEndHealth = 150,
+		seats = 2,
+
+		wheel FrontLeft
+		{
+			front = true,
+			offset = 0.3568 -0.3351 0.7405,
+			radius = 0.17f,
+			width = 0.2f,
+		}
+
+		wheel FrontRight
+		{
+			front = true,
+			offset = -0.3568 -0.3351 0.7405,
+			radius = 0.17f,
+			width = 0.2f,
+		}
+
+		wheel RearLeft
+		{
+			front = false,
+			offset = 0.3568 -0.3351 -0.5784,
+			radius = 0.17f,
+			width = 0.2f,
+		}
+
+		wheel RearRight
+		{
+			front = false,
+			offset = -0.3568 -0.3351 -0.5784,
+			radius = 0.17f,
+			width = 0.2f,
+		}
+
+		template = PassengerSeat2,
+
+		passenger FrontLeft
+		{
+			position inside
+			{
+				offset = 0.2000 0.0000 0.1459,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			position outside
+			{
+				offset = 0.5946 0.0000 0.1459,
+				rotate = 0.0000 0.0000 0.0000,
+				area = SeatFrontLeft,
+			}
+		}
+
+		passenger FrontRight
+		{
+			position inside
+			{
+				offset = -0.2000 0.0000 0.1459,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			position outside
+			{
+				offset = -0.5946 0.0000 0.1459,
+				rotate = 0.0000 0.0000 0.0000,
+				area = SeatFrontRight,
+			}
+		}
+
+		area Engine
+		{
+			xywh = 0.0000 1.4216 0.8649 0.4757,
+		}
+
+		area TruckBed
+		{
+			xywh = 0.0000 -0.9459 1.8054 1.3946,
+		}
+
+		area SeatFrontLeft
+		{
+			xywh = 0.6649 0.1189 0.4757 0.5730,
+		}
+
+		area SeatFrontRight
+		{
+			xywh = -0.6649 0.1189 0.4757 0.5730,
+		}
+
+		area GasTank
+		{
+			xywh = 0.6649 -0.8703 0.4757 0.4757,
+		}
+
+		area TireFrontLeft
+		{
+			xywh = 0.6649 0.7405 0.4757 0.4757,
+		}
+
+		area TireFrontRight
+		{
+			xywh = -0.6649 0.7405 0.4757 0.4757,
+		}
+
+		area TireRearLeft
+		{
+			xywh = 0.6649 -0.5730 0.4757 0.4757,
+		}
+
+		area TireRearRight
+		{
+			xywh = -0.6649 -0.5784 0.4757 0.4757,
+		}
+
+		template = Trunk/part/TruckBedOpen,
+
+		part TruckBedOpen
+		{
+			itemType = Base.FRLargeTrunk,
+		}
+
+		template = Seat/part/SeatFrontLeft,
+		template = Seat/part/SeatFrontRight,
+
+		part Seat*
+		{
+			table install
+			{
+				skills = Mechanics:2,
+			}
+
+			table uninstall
+			{
+				skills = Mechanics:2,
+			}
+		}
+
+		part GloveBox
+		{
+			area = SeatFrontRight,
+			itemType = Base.GloveBox,
+			mechanicRequireKey = true,
+
+			container
+			{
+				capacity = 7,
+				test = Vehicles.ContainerAccess.GloveBox,
+			}
+
+			lua
+			{
+				create = Vehicles.Create.Default,
+			}
+		}
+
+		template = GasTank,
+
+		part GasTank
+		{
+			install
+			{
+				skills = Mechanics:6,
+				recipes = Intermediate Mechanics,
+			}
+
+			uninstall
+			{
+				skills = Mechanics:6,
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		template = Battery,
+		template = Engine,
+		template = Muffler,
+
+		part Muffler
+		{
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		template = EngineDoor,
+
+		part EngineDoor
+		{
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		part Heater
+		{
+			category = engine,
+
+			lua
+			{
+				update = Vehicles.Update.Heater,
+			}
+		}
+
+		part PassengerCompartment
+		{
+			category = nodisplay,
+
+			lua
+			{
+				update = Vehicles.Update.PassengerCompartment,
+			}
+		}
+
+		template = Windshield/part/Windshield,
+		template = Windshield/part/WindshieldRear,
+
+		part Windshield*
+		{
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		template = Window/part/WindowFrontLeft,
+		template = Window/part/WindowFrontRight,
+
+		part Window*
+		{
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		template = Door/part/DoorFrontLeft,
+		template = Door/part/DoorFrontRight,
+
+		part Door*
+		{
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		template = Tire,
+
+		part Tire*
+		{
+			model InflatedTirePlusWheel
+			{
+				file = Vehicles_WheelFR04,
+			}
+		}
+
+		template = Brake,
+		template = Suspension,
+		template = Radio,
+		template = Headlight,
+
+		attachment trailer
+		{
+			offset = 0.0000 -0.2541 -1.1838,
+			rotate = 0.0000 0.0000 0.0000,
+			zoffset = -1.0000,
+		}
+
+		attachment trailerfront
+		{
+			offset = 0.0000 -0.2541 1.1514,
+			rotate = 0.0000 0.0000 0.0000,
+			zoffset = 1.0000,
+		}
+	}
+}

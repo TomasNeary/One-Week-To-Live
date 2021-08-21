@@ -1,0 +1,121 @@
+module Base
+{ 
+ 
+ /************************ Weapon Upgrades ************************/
+
+
+
+    item KCM_IronSight
+    {
+        Type = WeaponPart,
+        DisplayName = Crossbow Iron Sight,
+        Icon = ScopeIronSight,
+        Weight = 0.1,
+        WeightModifier = 0.1,
+        MaxRangeModifier = 3,
+		HitChanceModifier = 2,
+        MountOn = KCMweapons.KCM_Handmade; KCMweapons.KCM_Handmade02; KCMweapons.KCM_Compound; KCMweapons.KCM_Compound02; KCMweapons.HandCrossbow,
+        PartType = Scope,
+        Tooltip = Tooltip_IronSight,
+        MetalValue = 15,
+    }
+
+    item KCM_x2Scope
+    {
+        Type = WeaponPart,
+        DisplayName = Crossbow x2 Scope,
+        Icon = Scope2x,
+        Weight = 0.3,
+        WeightModifier = 0.3,
+        MaxRangeModifier = 7,
+        MinRangeModifier = 2,
+        MountOn = KCMweapons.KCM_Handmade; KCMweapons.KCM_Handmade02; KCMweapons.KCM_Compound; KCMweapons.KCM_Compound02; KCMweapons.HandCrossbow,
+        PartType = Scope,
+        Tooltip = Tooltip_Scope,
+        MetalValue = 22,
+    }
+
+    item KCM_x4Scope
+    {
+        Type = WeaponPart,
+        DisplayName = Crossbow x4 Scope,
+        Icon = Scope4x,
+        Weight = 0.4,
+        WeightModifier = 0.4,
+        MaxRangeModifier = 13,
+        MinRangeModifier = 4,
+        MountOn = KCMweapons.KCM_Handmade; KCMweapons.KCM_Handmade02; KCMweapons.KCM_Compound; KCMweapons.KCM_Compound02,
+        PartType = Scope,
+        Tooltip = Tooltip_Scope,
+        MetalValue = 22,
+    }
+
+    item KCM_x8Scope
+    {
+        Type = WeaponPart,
+        DisplayName = Crossbow x8 Scope,
+        Icon = Scope8x,
+        Weight = 0.8,
+        WeightModifier = 0.8,
+        MaxRangeModifier = 20,
+        MinRangeModifier = 8,
+        MountOn = KCMweapons.KCM_Handmade; KCMweapons.KCM_Handmade02; KCMweapons.KCM_Compound; KCMweapons.KCM_Compound02,
+        PartType = Scope,
+        Tooltip = Tooltip_Scope,
+        MetalValue = 22,
+    }
+
+    item KCM_Sling
+    {
+        Type = WeaponPart,
+        DisplayName = Crossbow Sling,
+        Icon = GunSling,
+        Weight = 0.5,
+        WeightModifier = -0.3,
+        MountOn = KCMweapons.KCM_Handmade; KCMweapons.KCM_Handmade02; KCMweapons.KCM_Compound; KCMweapons.KCM_Compound02,
+        PartType = Sling,
+        Tooltip = Tooltip_Sling,
+    }
+
+    item KCM_FiberglassStock
+    {
+        Type = WeaponPart,
+        DisplayName = Crossbow Fiberglass Stock,
+        Icon = RifleFibreglassStock,
+        Weight = 0.1,
+        WeightModifier = -0.5,
+        HitChanceModifier = 8,
+        MountOn = KCMweapons.KCM_Handmade; KCMweapons.KCM_Handmade02; KCMweapons.KCM_Compound; KCMweapons.KCM_Compound02,
+        PartType = Stock,
+        Tooltip = Tooltip_FiberglassStock,
+    }
+
+    item KCM_RedDot
+    {
+        Type = WeaponPart,
+        DisplayName = Crossbow Red Dot,
+        Icon = RedDot,
+        Weight = 0.2,
+        WeightModifier = 0.2,
+		HitChanceModifier = 3,
+        AimingTimeModifier = 5,
+        MountOn = KCMweapons.KCM_Handmade; KCMweapons.KCM_Handmade02; KCMweapons.KCM_Compound; KCMweapons.KCM_Compound02,
+        PartType = Scope,
+        Tooltip = Tooltip_RedDot,
+        MetalValue = 15,
+    }
+
+    item KCM_Laser
+    {
+        Type = WeaponPart,
+        DisplayName = Crossbow Laser,
+        Icon = HandgunLaser,
+        Weight = 0.2,
+        WeightModifier = 0.2,
+		HitChanceModifier = 5,
+        MountOn = KCMweapons.KCM_Handmade; KCMweapons.KCM_Handmade02; KCMweapons.KCM_Compound; KCMweapons.KCM_Compound02; KCMweapons.HandCrossbow,
+        PartType = Canon,
+        Tooltip = Tooltip_Laser,
+        MetalValue = 15,
+    }
+}

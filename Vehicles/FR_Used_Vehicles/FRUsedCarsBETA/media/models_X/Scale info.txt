@@ -1,0 +1,13 @@
+s - 1.5737 or 2.54, IDK anymore
+r - x 90
+r - z 180
+
+	model Vehicles_68Wildcat
+	{
+		mesh = vehicles/Vehicles_68Wildcat,
+		shader = vehicle,
+		invertX = FALSE,
+		scale = 0.003937,
+	} 
+For wheels or non-resized cars:
+ 0.00999998

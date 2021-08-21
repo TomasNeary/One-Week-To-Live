@@ -1,0 +1,152 @@
+module POETRecycleExtra
+{
+	imports
+	{
+		Base
+	}
+	
+	/*
+	=============
+	CRAFT - EXTRA
+	=============
+	*/
+	recipe Make Barbed Wire from Wire
+    {
+		keep [Recipe.GetItemTypes.Hammer],
+		Wire=2,
+		
+		Result:BarbedWire,
+		Time:500.0,
+		Category:Carpentry,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:MetalWelding=2,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding10,
+	}
+	
+	recipe Make Sewing Needle
+    {
+		keep [Recipe.GetItemTypes.Hammer],
+		Nails/Tweezers,
+		
+		Result:Needle,
+		Time:100.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:Woodwork=1;Tailoring=1,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding10,
+	}
+	
+	recipe Make Suture Needle
+    {
+		keep [Recipe.GetItemTypes.Hammer],
+		Nails/Tweezers,
+		
+		Result:SutureNeedle,
+		Time:100.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		SkillRequired:Woodwork=1;Tailoring=1,
+		OnGiveXP:Recipe.OnGiveXP.MetalWelding10,
+	}
+	
+	recipe Make Sheet (Ripped Rags)
+	{
+		keep Needle/SutureNeedle,
+		Thread/Twine/FishingLine,
+		RippedSheets=8,
+		
+		Result:Sheet,
+		Time:250.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:ClothMendingXP10,
+	}
+	
+	recipe Make Thread from Sheets
+	{
+		keep Scissors,
+		Sheet=2,
+			   
+
+		Result:Thread,
+		Time:250.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		AnimNode:RipSheets,
+		Sound:ClothesRipping,
+		OnGiveXP:ClothMendingXP10,
+	}
+	
+	recipe Make Twine from Thread
+	{
+		destroy Thread=4,
+
+		Result:Twine,
+		Time:250.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:ClothMendingXP10,
+	}
+	
+	recipe Make Thread from Twine
+	{
+		keep FlintKnife/HuntingKnife/KitchenKnife/LetterOpener/MeatCleaver/Scissors/SharpedStone,
+		destroy Twine=1, 
+
+		Result:Thread=4,
+		Time:100.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:ClothMendingXP05,
+	}
+	
+	recipe Make Rope from Twine
+	{
+		destroy Twine=4,
+
+		Result:Rope,
+		Time:250.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:ClothMendingXP10,
+	}
+
+	recipe Make Twine from Rope
+	{
+		keep FlintKnife/HuntingKnife/KitchenKnife/LetterOpener/MeatCleaver/Scissors/SharpedStone,
+		destroy Rope=1,
+
+		Result:Twine=4,
+		Time:100.0,
+		Category:Tailoring,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:ClothMendingXP05,
+	}
+	
+	recipe Make Mouse Traps
+    {
+		keep HandAxe/AxeStone/Saw/GardenSaw,
+		keep [Recipe.GetItemTypes.Hammer],
+		Plank/PercedWood,
+		Paperclip=2,
+		Nails=2,
+		Wire=1,
+		
+		Result:TrapMouse=2,
+		Time:500.0,
+		Category:Trapper,
+		SkillRequired:Woodwork=1;Trapping=1,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:true,
+		OnGiveXP:Recipe.OnGiveXP.WoodWork5,
+	}
+}

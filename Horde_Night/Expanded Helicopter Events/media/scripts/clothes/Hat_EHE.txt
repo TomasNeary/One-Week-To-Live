@@ -1,0 +1,183 @@
+module Base
+{		
+
+		item Hat_SPHPolice
+	{
+		Type = Clothing,
+		DisplayName = Police Helicopter Helmet,
+		ClothingItem = Hat_SPHPolice,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetPolice,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = Hat_SPHPoliceVISORUP,
+        ClothingItemExtraOption = VisorUp,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+
+		item Hat_SPHPoliceVISORUP
+	{
+		Type = Clothing,
+		DisplayName = Police Helicopter Helmet (Up),
+		ClothingItem = Hat_SPHPoliceVISORUP,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetPolice,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = Hat_SPHPolice,
+        ClothingItemExtraOption = VisorDown,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+
+		item Hat_SPHMilitary
+	{
+		Type = Clothing,
+		DisplayName = Military Helicopter Helmet,
+		ClothingItem = Hat_SPHMilitary,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetMilitary,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = Hat_SPHMilitaryVISORUP,
+        ClothingItemExtraOption = VisorUp,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+
+		item Hat_SPHMilitaryVISORUP
+	{
+		Type = Clothing,
+		DisplayName = Military Helicopter Helmet (Up),
+		ClothingItem = Hat_SPHMilitaryVISORUP,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetMilitary,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = Hat_SPHMilitary,
+        ClothingItemExtraOption = VisorDown,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+
+		item Hat_SPHCivilian
+	{
+		Type = Clothing,
+		DisplayName = Civilian Helicopter Helmet,
+		ClothingItem = Hat_SPHCivilian,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetCivilian,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = Hat_SPHCivilianVISORUP,
+        ClothingItemExtraOption = VisorDown,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+		item Hat_SPHCivilianVISORUP
+	{
+		Type = Clothing,
+		DisplayName = Civilian Helicopter Helmet (Up),
+		ClothingItem = Hat_SPHCivilianVISORUP,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetCivilian,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = Hat_SPHCivilian,
+        ClothingItemExtraOption = VisorDown,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+
+	    item Boilersuit_PoliceFlying
+    {
+        Type = Clothing,
+        DisplayName = Police Pilot Flying Suit,
+        ClothingItem = Suit_PoliceFlying,
+        BodyLocation = FullSuit,
+        Icon = PoliceFlying,
+        BloodLocation = Trousers;Jumper,
+        RunSpeedModifier = 0.9,
+        ScratchDefense = 10,
+        Insulation = 0.75,
+        WindResistance = 0.55,
+        FabricType = Cotton
+    }
+	   
+	    item Vest_BulletPress
+    {
+        Type = Clothing,
+        DisplayName = Press Bulletproof Vest,
+        ClothingItem = Vest_BulletPress,
+        BodyLocation = TorsoExtra,
+        Icon = PressVest,
+        BloodLocation = ShirtNoSleeves,
+        Insulation = 0.65,
+        WindResistance = 0.30,
+        BiteDefense = 30,
+        ScratchDefense = 55,
+        BulletDefense = 100,
+    }
+
+		item Hat_PressHelmet
+	{
+		Type = Clothing,
+		DisplayName = Press Helmet,
+		ClothingItem = Hat_PressHelmet,
+		BodyLocation = Hat,
+		Icon = PressHelmet,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		BulletDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+
+		item Hat_DeserterHelmet
+	{
+		Type = Clothing,
+		DisplayName = Deserter Helmet,
+		ClothingItem = Hat_DeserterHelmet,
+		BodyLocation = Hat,
+		Icon = PressHelmet,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		BulletDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+	
+}

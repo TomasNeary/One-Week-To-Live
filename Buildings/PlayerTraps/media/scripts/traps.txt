@@ -1,0 +1,126 @@
+module Trap
+{
+	imports
+	{
+		Base
+	}
+	item Nothing
+	{
+		Weight    		= 0.1,
+		Type    		= Normal,
+		DisplayName	=	No Result,
+		Icon	=	Nothing,
+	}
+	
+	recipe Set Trap
+    {
+		keep SpikeTrap/BearTrap/PropaneTrap,
+    	Result:Nothing,
+    	Category:Traps,
+		OnCreate:SetTrapDown,
+    	Time:10.0,
+    }
+	recipe Open BearTrap
+    {
+		BearTrapClosed,
+    	Result:BearTrap,
+    	Category:Traps,
+		CanBeDoneFromFloor:true,
+    	Time:10.0,
+    }
+	recipe Make Spike Trap
+    {
+		Nails = 4,
+		Plank = 5,
+		keep Hammer,
+		keep Saw,
+	   	Result:SpikeTrap,
+    	Category:Traps,
+		Sound:PZ_Hammer,
+		CanBeDoneFromFloor:true,
+    	Time:200.0,
+    }
+	recipe Add Nails to Spike Trap
+    {
+		SpikeTrapClosed,
+		Nails = 3,
+		keep Hammer,
+	   	Result:SpikeTrap,
+    	Category:Traps,
+		CanBeDoneFromFloor:true,
+    	Time:100.0,
+    }
+	recipe Add Nails to Spike Trap
+    {
+		SpikeTrapClosed,
+		Nails = 3,
+		keep Hammer,
+	   	Result:SpikeTrap,
+    	Category:Traps,
+		CanBeDoneFromFloor:true,
+		Sound:PZ_Hammer,
+    	Time:100.0,
+    }
+	recipe Craft Propane Bomb Trap
+    {
+		PropaneTank=8,
+		Pistol,
+		Nails,
+		Bullets9mm,
+		Plank = 3,
+		Thread/String/Rope/SheetRope/Yarn,
+		keep Hammer,
+	   	Result:PropaneTrap,
+    	Category:Traps,
+		CanBeDoneFromFloor:true,
+		Sound:PZ_Hammer,
+    	Time:100.0,
+    }
+	
+	
+	item PropaneTrap
+    {
+        Weight    		= 25.0,
+        Type    		= Normal,
+        DisplayName         	= Propane Trap (Set),
+        icon 			= Propanetrap,
+		ResizeWorldIcon = 0.9,
+    }
+	item BearTrap
+    {
+        Weight    		= 2.0,
+        Type    		= Normal,
+        DisplayName         	= Bear Trap (Set),
+        icon 			= Beartrap,
+		ResizeWorldIcon = 0.9,
+    }
+	item BearTrapClosed
+    {
+        Weight    		= 2.0,
+        Type    		= Normal,
+        DisplayName         	= Bear Trap (Closed),
+        icon 			= Beartrapclosed,
+		ResizeWorldIcon = 0.9,
+    }
+	item SpikeTrap
+    {
+        Weight    		= 3.0,
+        Type    		= Normal,
+        DisplayName         	= Spike Trap (Set),
+        icon 			= Spiketrap,
+		ResizeWorldIcon = 0.7,
+    }
+	item SpikeTrapClosed
+    {
+        Weight    		= 3.0,
+        Type    		= Normal,
+        DisplayName         	= Spike Trap (Worn Out),
+        icon 			= Spiketrapclosed,
+		ResizeWorldIcon = 0.7,
+    }
+	
+	
+	
+	
+
+}

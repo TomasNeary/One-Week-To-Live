@@ -1,0 +1,385 @@
+module Base
+{
+	fixing Fix Scrap Sword
+	{
+		Require 		: ScrapSword,
+		Fixer 		: DuctTape=3,
+		Fixer 		: Scotchtape=5,
+		Fixer 		: BlowTorch=5,
+		Sound 		: LargeBladeWeaponFix,
+	}
+	fixing Fix Scrap Spear
+	{
+		Require 		: ScrapSpear,
+		Fixer 		: DuctTape=3,
+		Fixer 		: Scotchtape=5,
+		Fixer 		: BlowTorch=5,
+		Sound 		: LargeBladeWeaponFix,
+	}
+	fixing Fix Scrap Blade
+	{
+		Require 		: ScrapBlade,
+		Fixer 		: DuctTape=3,
+		Fixer 		: Scotchtape=5,
+		Fixer 		: BlowTorch=5,
+		Sound 		: LargeBladeWeaponFix,
+	}
+	fixing Fix Scrap Machete
+	{
+		Require 		: ScrapMachete,
+		Fixer 		: DuctTape=2,
+		Fixer 		: Scotchtape=3,
+		Fixer 		: BlowTorch=3,
+		Sound 		: LargeBladeWeaponFix,
+	}
+	fixing Fix Scrap Pickaxe
+	{
+		Require 		: ScrapPickaxe,
+		Fixer 		: DuctTape=2,
+		Fixer 		: Scotchtape=3,
+		Fixer 		: Woodglue=2; Woodwork=2,
+		Fixer 		: Glue=2,
+		Fixer 		: Nails=2,
+		Sound 		: TapeFix,
+	}
+	fixing Fix Big Scrap Pickaxe
+	{
+		Require 		: BigScrapPickaxe,
+		Fixer 		: DuctTape=4,
+		Fixer 		: Scotchtape=5,
+		Fixer 		: Woodglue=4; Woodwork=2,
+		Fixer 		: Glue=4,
+		Fixer 		: Nails=4,
+		Sound 		: TapeFix,
+	}
+	fixing Fix Scrap Shiv
+	{
+		Require 		: ScrapShiv,
+		Fixer 		: DuctTape=1,
+		Fixer 		: Scotchtape=2,
+		Fixer 		: BlowTorch=1,
+		Sound 		: SmallBladeWeaponFix,
+	}
+	fixing Fix Spear Scrap Shiv
+	{
+		Require 		: SpearScrapShiv,
+		Fixer 		: DuctTape=1,
+		Fixer 		: LeatherStrips=1,
+		Sound 		: TapeFix,
+	}
+	fixing Fix Spear Scrap Machete
+	{
+		Require 		: SpearScrapMachete,
+		Fixer 		: DuctTape=1,
+		Fixer 		: LeatherStrips=1,
+		Sound 		: TapeFix,
+	}
+	fixing Fix TireIronAxe
+	{
+		Require 		: TireIronAxe,
+		Fixer 		: DuctTape=3,
+		Fixer 		: Scotchtape=5,
+		Fixer 		: BlowTorch=5,
+		Sound 		: LargeBladeWeaponFix,
+	}
+	fixing Fix BoltBat
+	{
+		Require 		: BoltBat,
+		Fixer 		: DuctTape=3,
+		Fixer 		: Scotchtape=5,
+		Sound 		: TapeFix,
+	}
+	fixing Fix WireBat
+	{
+		Require 		: WireBat,
+		Fixer 		: DuctTape=3,
+		Fixer 		: Scotchtape=5,
+		Fixer 		: BarbedWire,
+		Sound 		: WireBatCrafting,
+	}
+	fixing Fix SalvagedCrowbar
+	{
+		Require 		: SalvagedCrowbar,
+		Fixer 		: DuctTape=2,
+		Fixer 		: Scotchtape=3,
+		Fixer 		: BlowTorch,
+		Sound 		: WeldFix,
+	}
+	fixing Fix SalvagedClimbingAxe
+	{
+		Require 		: SalvagedClimbingAxe,
+		Fixer 		: DuctTape=2,
+		Fixer 		: Scotchtape=3,
+		Fixer 		: BlowTorch,
+		Sound 		: WeldFix,
+	}
+	fixing Fix SalvagedSledgehammer
+	{
+		Require 		: SalvagedSledgehammer,
+		Fixer 		: BlowTorch=5,
+		Sound 		: WeldFix,
+	}
+	fixing Fix GearMace
+	{
+		Require 		: GearMace,
+		Fixer 		: BlowTorch=5,
+		Sound 		: WeldFix,
+	}
+	fixing Fix SalvagedNightstick
+	{
+		Require 		: SalvagedNightstick,
+		Fixer 		: BlowTorch=5,
+		Sound 		: LargeBladeWeaponFix,
+	}
+	fixing Fix SalvagedPipeWrench
+	{
+		Require 		: SalvagedPipeWrench,
+		Fixer 		: BlowTorch=5,
+		Sound 		: LargeBladeWeaponFix,
+	}
+	fixing Fix SalvagedMachete
+	{
+		Require 		: SalvagedMachete,
+		Fixer 		: BlowTorch=5,
+		Sound 		: LargeBladeWeaponFix,
+	}
+	fixing Fix SalvagedShiv
+	{
+		Require 		: SalvagedShiv,
+		Fixer 		: BlowTorch=5,
+		Sound 		: SmallBladeWeaponFix,
+	}
+	fixing Fix SalvagedSpear
+	{
+		Require 		: SalvagedSpear,
+		Fixer 		: BlowTorch=5,
+		Sound 		: SmallBladeWeaponFix,
+	}
+	fixing Fix 2x4
+	{
+		Require 		: 2x4,
+		Fixer 		: DuctTape=1,
+		Fixer 		: Scotchtape=1,
+		Fixer 		: Glue=1,
+		Fixer 		: Nails=1,
+		Sound 		: TapeFix,
+	}
+	fixing Fix 2x4Nail
+	{
+		Require 		: 2x4Nail,
+		Fixer 		: DuctTape=1,
+		Fixer 		: Scotchtape=1,
+		Fixer 		: Glue=1,
+		Fixer 		: Nails=1,
+		Sound 		: TapeFix,
+	}
+	fixing Fix 2x4Can
+	{
+		Require 		: 2x4Can,
+		Fixer 		: DuctTape=1,
+		Fixer 		: Scotchtape=1,
+		Fixer 		: Glue=1,
+		Fixer 		: Nails=1,
+		Sound 		: TapeFix,
+	}
+	fixing Fix 2x4Bolt
+	{
+		Require 		: 2x4Bolt,
+		Fixer 		: DuctTape=1,
+		Fixer 		: Scotchtape=1,
+		Fixer 		: Glue=1,
+		Fixer 		: Nails=1,
+		Sound 		: TapeFix,
+	}
+	fixing Fix 2x4Scissors
+	{
+		Require 		: 2x4Scissors,
+		Fixer 		: DuctTape=1,
+		Fixer 		: Scotchtape=1,
+		Fixer 		: Glue=1,
+		Fixer 		: Nails=1,
+		Sound 		: TapeFix,
+	}
+	fixing Fix 2x4Screwdriver
+	{
+		Require 		: 2x4Scissors,
+		Fixer 		: DuctTape=1,
+		Fixer 		: Scotchtape=1,
+		Fixer 		: Glue=1,
+		Fixer 		: Nails=1,
+		Sound 		: TapeFix,
+	}
+	fixing Fix Salvaged Blade
+	{
+		Require 		: SalvagedBlade
+		Fixer 		: DuctTape=3,
+		Fixer 		: Scotchtape=5,
+		Fixer 		: BlowTorch=5,
+		Sound 		: LargeBladeWeaponFix,
+	}
+	fixing Fix Salvaged Cleaver
+	{
+		Require 		: SalvagedCleaver
+		Fixer 		: DuctTape=3,
+		Fixer 		: Scotchtape=5,
+		Fixer 		: BlowTorch=5,
+		Sound 		: LargeBladeWeaponFix,
+	}
+
+	model ScrapSword
+	{
+		mesh = weapons/2handed/ScrapSword,
+	}
+	model ScrapMachete
+	{
+		mesh = weapons/1handed/ScrapMachete,
+	}
+	model ScrapPickaxe
+	{
+		mesh = weapons/1handed/ScrapPickaxe,
+	}
+	model BigScrapPickaxe
+	{
+		mesh = weapons/2handed/BigScrapPickaxe,
+	}
+	model ScrapShiv
+	{
+		mesh = weapons/1handed/ScrapShiv,
+	}
+	model SpearScrapShiv
+	{
+		mesh = weapons/2handed/SpearScrapShiv,
+	}
+	model SpearScrapMachete
+	{
+		mesh = weapons/2handed/SpearScrapMachete,
+	}
+	model PipewithScissors
+	{
+		mesh = weapons/1handed/PipewithScissors,
+	}
+	model BoltBat
+	{
+		mesh = weapons/2handed/BoltBat,
+	}
+	model TireIronAxe
+	{
+		mesh = weapons/2handed/TireIronAxe,
+	}
+	model SalvagedPipe
+	{
+		mesh = weapons/2handed/SalvagedPipe,
+	}
+	model SalvagedCrowbar
+	{
+		mesh = weapons/1handed/SalvagedCrowbar,
+	}
+	model TinCanClub
+	{
+		mesh = weapons/2handed/TinCanClub,
+	}
+	model SharpenedStopSign
+	{
+		mesh = weapons/2handed/SharpenedStopSign,
+	}
+	model SalvagedSledgehammer
+	{
+		mesh = weapons/2handed/SalvagedSledgehammer,
+	}
+	model GearMace
+	{
+		mesh = weapons/2handed/GearMace,
+	}
+	model SalvagedMachete
+	{
+		mesh = weapons/1handed/SalvagedMachete,
+	}
+	model WireBat
+	{
+		mesh = weapons/2handed/WireBat,
+	}
+	model 2x4
+	{
+		mesh = weapons/2handed/2x4,
+	}
+	model 2x4Can
+	{
+		mesh = weapons/2handed/2x4Can,
+	}
+	model 2x4Nail
+	{
+		mesh = weapons/2handed/2x4Nail,
+	}
+	model 2x4Scissors
+	{
+		mesh = weapons/2handed/2x4Scissors,
+	}
+	model 2x4Bolt
+	{
+		mesh = weapons/2handed/2x4Bolt,
+	}
+	model ScrapBlade
+	{
+		mesh = weapons/2handed/ScrapBlade,
+	}
+	model SharpenedScrewdriver
+	{
+		mesh = weapons/1handed/SharpenedScrewdriver,
+	}
+    model SpearSharpenedScrewdriver
+	{
+		mesh = weapons/2handed/SpearSharpenedScrewdriver,
+	}
+	model 2x4Screwdriver
+	{
+		mesh = weapons/2handed/2x4Screwdriver,
+	}
+	model 2x4SScrewdriver
+	{
+		mesh = weapons/2handed/2x4SScrewdriver,
+	}
+	model SpearSalvaged
+	{
+		mesh = weapons/2handed/SpearSalvaged,
+	}
+	model ScrapSpear
+	{
+		mesh = weapons/2handed/ScrapSpear,
+	}
+	model SalvagedShiv
+	{
+		mesh = weapons/1handed/SalvagedShiv,
+	}
+	model HugeScrapPickaxe
+	{
+		mesh = weapons/2handed/HugeScrapPickaxe,
+	}
+	model SalvagedPipeWrench
+	{
+		mesh = weapons/1handed/SalvagedPipeWrench,
+	}
+	model SalvagedNightstick
+	{
+		mesh = weapons/1handed/SalvagedNightstick,
+	}
+	model GlassShiv
+	{
+		mesh = weapons/1handed/GlassShiv,
+	}
+	model SalvagedClimbingAxe
+	{
+		mesh = weapons/1handed/SalvagedClimbingAxe,
+	}
+    model SalvagedBlade
+	{
+		mesh = weapons/2handed/SalvagedBlade,
+	}
+	model SalvagedCleaver
+	{
+		mesh = weapons/2handed/SalvagedCleaver,
+	}
+	model Micromaul
+	{
+		mesh = weapons/2handed/Micromaul,
+	}
+}

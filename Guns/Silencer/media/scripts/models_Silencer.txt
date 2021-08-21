@@ -1,0 +1,31 @@
+module Silencer
+{
+	model HandgunSilencer
+	{
+		mesh = Weapons/Firearm/Handgun_Silencer,
+	}
+	model Handgun02Silencer
+	{
+		mesh = Weapons/Firearm/Handgun02_Silencer,
+	}
+	model Handgun03Silencer
+	{
+		mesh = Weapons/Firearm/Handgun03_Silencer,
+	}
+	model HuntingRifleSilencer
+	{
+		mesh = Weapons/Firearm/HuntingRifle_Silencer,
+	}
+	model VarmintRifleSilencer
+	{
+		mesh = Weapons/Firearm/VarmintRifle_Silencer,
+	}
+	model AssaultRifleSilencer
+	{
+		mesh = Weapons/Firearm/AssaultRifle_Silencer,
+	}
+	model AssaultRifle02Silencer
+	{
+		mesh = Weapons/Firearm/AssaultRifle02_Silencer,
+	}
+}

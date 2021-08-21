@@ -1,0 +1,455 @@
+module Base
+{
+    sound SWLongBladeHitSounds
+    {
+        category = Object,
+        clip
+        {
+            file = media/sound/Blade3.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Blade4.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/Blade5.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Blade6.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/BladeImpale.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/LongBlade1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/LongBladeCrit1.ogg,
+
+        }
+		
+		
+    }
+	
+	sound SWMediumBladeHitSounds
+    {
+        category = Object,
+        clip
+        {
+            file = media/sound/blade3.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/blade4.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/blade2.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/blade1.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Bladeimpale.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/LightBlade1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/LightBlade1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/LightBlade1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/KnifeCrit1.ogg,
+
+        }
+		
+		
+    }
+	
+	sound SWSmallBladeHitSounds
+    {
+        category = Object,
+        clip
+        {
+            file = media/sound/Stab3.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Stab4.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/Stab2.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Stab1.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Bladeimpale.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/LightBlade1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/Blunt2.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/KnifeCrit1.ogg,
+
+        }
+		
+		
+    }
+	
+	sound SWSpearHitSounds
+    {
+        category = Object,
+        clip
+        {
+            file = media/sound/Blade6.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Blade5.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/BladeImpale.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/BladeImpale.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Bladeimpale.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/LightBlade1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/LightBlade1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/KnifeCrit1.ogg,
+
+        }
+			
+    }
+	
+	sound SWBatHitSounds
+    {
+        category = Object,
+        clip
+        {
+            file = media/sound/Stab3.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Stab4.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/Stab2.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Stab1.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Bladeimpale.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/LightBlade1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/Blunt2.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/KnifeCrit1.ogg,
+
+        }
+		
+		
+    }
+	
+	sound SWHeavyBladeHitSounds
+    {
+        category = Object,
+        clip
+        {
+            file = media/sound/Heavy3.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/HeavyCrit1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/Heavy2.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Heavy1.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Heavy1.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Heavy1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/Heavy1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/Heavy1.ogg,
+
+        }	
+		
+    }
+	
+	sound SWHeavyBluntHitSounds
+    {
+        category = Object,
+        clip
+        {
+            file = media/sound/Heavy1.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/HeavyCrit1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/Heavy2.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Heavy3.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Heavy2.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Heavy3.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/Heavy2.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/Heavy3.ogg,
+
+        }	
+		
+    }
+
+    sound SWBluntHit
+    {
+        category = Object,
+        clip
+        {
+            file = media/sound/Blunt1.ogg,
+         
+        }
+        clip
+        {
+            file = media/sound/Blunt2.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Blunt3.ogg,
+            
+        }
+    }
+	
+	sound SWKnifeSwing
+    {
+        category = Object,
+        clip
+        {
+            file = media/sound/KnifeSwing1.ogg,
+         
+        }
+        clip
+        {
+            file = media/sound/KnifeSwing2.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/KnifeSwing3.ogg,
+            
+        }
+    }
+	
+	sound SWHeavyBladeSwing
+    {
+        category = Object,
+        clip
+        {
+            file = media/sound/HeavyBladeSwing1.ogg,
+         
+        }
+        clip
+        {
+            file = media/sound/HeavyBladeSwing2.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/HeavyBladeSwing3.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/HeavyBladeSwing4.ogg,
+         
+        }
+
+    }
+	
+	sound SWHeavyBladeHitSounds2
+    {
+        category = Object,
+        
+		clip
+        {
+            file = media/sound/Blade7.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Blade8.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Blade9.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/Blade10.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/Blade11.ogg,
+
+        }
+
+    }
+	
+	sound SWBladeSwing
+    {
+        category = Object,
+        clip
+        {
+            file = media/sound/BladeSwing1.ogg,
+         
+        }
+        clip
+        {
+            file = media/sound/BladeSwing2.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/BladeSwing3.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/BladeSwing4.ogg,
+         
+        }
+
+    }
+	
+
+}
+
