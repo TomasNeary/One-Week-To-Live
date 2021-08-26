@@ -1,0 +1,54 @@
+module SGuns
+{
+	imports
+	{
+		Base
+	}
+
+	item AirGunMag
+	{
+		Weight = 0.1,
+		Tooltip    =    "Teaches how to use air pressure as a Weapon",
+		Type = Literature,
+		DisplayName = The Power of Air Pressure!,
+		Icon = AirGunMag,
+		TeachedRecipes = Disassamble Gun;Assemble Pressure Rifle Magazine;Assemble Handmade Pressure Pump Shotgun;Assemble Double Barrel Pressure Shotgun;Make Shrapnel Shell;Make Shrapnel Shells;Scramble Metal Scraps (Ammo);Assemble Handmade Pressure Pistol;Assemble Handmade Salvaged Pressure Rifle,
+		StaticModel = Magazine,
+		ReplaceOnUse    =   AirGunMag,
+	}
+	item GrenadeMag
+	{
+		Weight = 0.1,
+		Tooltip    =    "Teaches how to make Improvised Explosives",
+		Type = Literature,
+		DisplayName = Raven's Notes,
+		Icon = GrenadeMag,
+		TeachedRecipes = Make Nail Bomb;Make Glass Bomb;Assemble Pipe Bomb;Make Decoy,
+		StaticModel = Magazine,
+		ReplaceOnUse    =   GrenadeMag,
+	}
+
+	item SalvagedGunMag
+	{
+		Weight = 0.1,
+		Tooltip    =    "Teaches how to make Advanced Guns",
+		Type = Literature,
+		DisplayName = Gunsmiths Journal,
+		Icon = SalvagedGunMag,
+		TeachedRecipes = Assemble Salvaged Magazine;Make Salvaged Bullets;Disassamble Gun;Upgrade SAR with Bayonet (REMOVE MAG FIRST!);Assemble Salvaged SMG;Assemble Salvaged Assault Rifle;Assemble Salvaged Sniper Rifle,
+		StaticModel = Magazine,
+		ReplaceOnUse    =   SalvagedGunMag,
+	}
+	item ScrapGunMag
+	{
+		Weight = 0.1,
+		Tooltip    =    "Teaches how to make Basic Guns",
+		Type = Literature,
+		DisplayName = Gunsmiths Journal,
+		Icon = ScrapGunMag,
+		TeachedRecipes = Disassamble Gun;Assemble SlamFire Shotgun;Make Scrap Bullets;Assemble Scrap SMG;Assemble Scrap Pistol;Assemble Scrap Gatling;Assemble Scrap Pistol Magazine;Assemble Scrap SMG Magazine;Assemble Gatling Box Magazine,
+		StaticModel = Magazine,
+		ReplaceOnUse    =   ScrapGunMag,
+	}
+	
+}

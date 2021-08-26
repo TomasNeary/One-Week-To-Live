@@ -1,0 +1,124 @@
+module Base
+{
+	model HPS
+	{
+		mesh = weapons/firearm/HPS,
+	}
+	model HDBS
+	{
+		mesh = weapons/firearm/HDBS,
+	}
+	model HP
+	{
+		mesh = weapons/firearm/HP,
+	}
+	model NailBomb
+	{
+		mesh = weapons/1handed/NailBomb,
+	}
+	model GlassBomb
+	{
+		mesh = weapons/1handed/GlassBomb,
+	}
+	model TBottle
+	{
+		mesh = weapons/1handed/TBottle,
+	}
+	model HPB
+	{
+		mesh = weapons/1handed/HPB,
+	}
+	model HD
+	{
+		mesh = weapons/1handed/HD,
+	}
+	model SR
+	{
+		mesh = weapons/firearm/SR,
+	}
+	model SSMGUnfolded
+	{
+		mesh = weapons/firearm/SSMGUnfolded,
+		attachment muzzle
+		{
+			offset = 0.00013 -0.01359 0.24450,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}
+	model SSMGFolded
+	{
+		mesh = weapons/firearm/SSMGFolded,  
+		attachment muzzle
+		{
+			offset = 0.00013 -0.01359 0.24450,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}
+	model SlamFire
+	{
+		mesh = weapons/firearm/SlamFire,
+		attachment muzzle
+		{
+			offset = 0.00095 0.02252 0.37729,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}
+	model SAR
+	{
+		mesh = weapons/firearm/SAR,
+		attachment muzzle
+		{
+			offset = 0.00039 0.01666 0.40567,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}
+	model SARB
+	{
+		mesh = weapons/firearm/SARB,
+		attachment muzzle
+		{
+			offset = 0.00039 0.01666 0.40567,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}
+	model SARBO
+	{
+		mesh = weapons/firearm/SARBO,
+	}
+	model SSR
+	{
+		mesh = weapons/firearm/SSR,
+		attachment muzzle
+		{
+			offset = 0.00270 0.06020 0.83360,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}
+	model ScrapGatling
+	{
+		mesh = weapons/firearm/ScrapGatling,
+		attachment muzzle
+		{
+			offset = -0.00001 0.05603 0.36118,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}
+	model ScrapSMG
+	{
+		mesh = weapons/firearm/ScrapSMG,
+		attachment muzzle
+		{
+			offset = -0.00001 0.05603 0.36118,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}
+	model ScrapPistol
+	{
+		mesh = weapons/firearm/ScrapPistol,
+		attachment muzzle
+		{
+			offset = -0.00715 -0.02300 0.15743,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}	
+}	

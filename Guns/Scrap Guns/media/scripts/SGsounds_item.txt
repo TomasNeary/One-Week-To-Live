@@ -1,0 +1,391 @@
+module SGuns
+{
+    sound SRRSound
+    {
+
+        clip
+        {
+            file = media/sound/SSRRSound.ogg,
+            
+        }
+
+    }
+    sound SSRRack
+    {
+
+        clip
+        {
+            file = media/sound/SSRRack.ogg,
+            
+        }
+
+    }
+	
+	
+    sound SGSSMGRack
+    {
+
+        clip
+        {
+            file = media/sound/SSMGRack.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/SSMGRack1.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/SSMGRack2.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/SSMGRack3.ogg,
+
+        }
+    }
+
+    sound SGSSMGSound
+    {
+
+        clip
+        {
+            file = media/sound/SSMGSound.ogg,
+         
+        }
+        clip
+        {
+            file = media/sound/SSMGSound1.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/SSMGSound2.ogg,
+            
+        }
+    }
+	
+	sound SGSSMGMagInsert
+    {
+
+		clip
+        {
+            file = media/sound/SSMGMagInsert.ogg,
+         
+        }
+        clip
+        {
+            file = media/sound/SSMGMagInsert1.ogg,
+            
+        }
+
+    }
+	
+	sound SGHDBSSound
+    {
+
+        clip
+        {
+            file = media/sound/HDBSSound.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/HDBSSound1.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/HDBSSound2.ogg,
+            
+        }
+
+    }
+	
+	sound SGHPInsert
+    {
+
+        clip
+        {
+            file = media/sound/HPInsert.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/HPInsert1.ogg,
+            
+        }
+
+    }
+	
+	sound SGHPRack
+    {
+
+        clip
+        {
+            file = media/sound/HPRack.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/HPRack1.ogg,
+            
+        }
+	}	
+	
+	sound SGHPSound
+    {		
+        clip
+        {
+            file = media/sound/HPSound.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/HPSound1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/HPSound2.ogg,
+
+        }
+    }
+	
+	sound SGHPSPump
+    {
+
+        clip
+        {
+            file = media/sound/HPSPump.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/HPSPump1.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/HPSPump2.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/HPSPump3.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/HPSPump4.ogg,
+
+        }
+    }
+	
+	sound SGHPSSound
+    {		
+        clip
+        {
+            file = media/sound/HPSSound.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/HPSSound1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/HPSSound2.ogg,
+
+        }
+    }
+	
+	sound SGSlamFireSound
+    {		
+        clip
+        {
+            file = media/sound/SlamFireSound.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/SlamFireSound1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/SlamFireSound2.ogg,
+
+        }
+    }
+	
+	sound SGSRSound
+    {		
+        clip
+        {
+            file = media/sound/SRSound.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/SRSound1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/SRSound2.ogg,
+
+        }
+    }
+	
+	sound SGSRRack
+    {		
+        clip
+        {
+            file = media/sound/SRRack.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/SRRack1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/SRRack2.ogg,
+
+        }
+    }
+
+	sound SRMagInsert
+    {
+  
+        clip
+        {
+            file = media/sound/MagInsert.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/MagInsert1.ogg,
+            
+        }
+		clip
+        {
+            file = media/sound/MagInsert2.ogg,
+            
+        }
+	}
+	
+	sound BulletHit
+    {
+	
+        clip
+        {
+            file = media/sound/BulletHit1.ogg,
+            
+        }
+        clip
+        {
+            file = media/sound/BulletHit2.ogg,
+            
+        }
+		clip
+        {
+            file = media/sound/BulletHit3.ogg,
+            
+        }
+		clip
+        {
+            file = media/sound/BulletHit4.ogg,
+            
+        }
+		clip
+        {
+            file = media/sound/BulletHit5.ogg,
+            
+        }
+	}
+	sound ScrapSMGRack
+    {		
+        clip
+        {
+            file = media/sound/ScrapSMGRack1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/ScrapSMGRack2.ogg,
+
+        }
+	}
+    sound ScrapSMGSound
+    {		
+        clip
+        {
+            file = media/sound/ScrapSMGSound1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/ScrapSMGSound2.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/ScrapSMGSound3.ogg,
+
+        }
+	}
+	sound ScrapPistolRack
+    {		
+        clip
+        {
+            file = media/sound/ScrapPistolRack1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/ScrapPistolRack2.ogg,
+
+        }
+	}
+    sound ScrapPistolSound
+    {		
+        clip
+        {
+            file = media/sound/ScrapPistolSound1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/ScrapPistolSound1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/ScrapPistolSound1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/ScrapPistolSound1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/ScrapPistolSound1.ogg,
+
+        }
+		clip
+        {
+            file = media/sound/ScrapPistolSound2.ogg,
+
+        }
+	}		
+	
+}
+

@@ -1,0 +1,625 @@
+module SGuns
+{
+	imports
+	{
+		Base,
+	}
+	recipe Remove Airtank
+	{
+	    Jacket_Fireman=2,
+	
+		Result 		: AirTank,
+		Sound 		: ChangeTank,
+		Time 		: 200,
+		SkillRequired 		: MetalWelding=1,
+	}
+	recipe Make Salvaged Bullet Box
+	{
+	    SBullets=300,
+		
+		Result 		: SBBox,
+		Sound 		: SBulletsBoxCrafting,
+		Time 		: 650,
+		SkillRequired 		: MetalWelding=0,
+	}
+	recipe Make Scrap Bullet Box
+	{
+	    ScrapBullets=300,
+		
+		Result 		: ScrapBBox,
+		Sound 		: SBulletsBoxCrafting,
+		Time 		: 650,
+		SkillRequired 		: MetalWelding=0,
+	}
+	recipe Make Shrapnel Shell Box
+	{
+	    ShrapnelShell=100,
+	
+		Result 		: SSBox,
+		Sound 		: SBulletsBoxCrafting,
+		Time 		: 650,
+		SkillRequired 		: MetalWelding=0,
+	}
+	recipe Salvage GunPowder
+	{
+		Base.Bullets45/Base.Bullets44/Base.Bullets38,
+		Result:GunPowder,
+		Time:50.0,
+	}
+	recipe Take Ammo
+	{
+		SSBox,
+		Result:ShrapnelShell=20,
+		Sound: TakeShotgunAmmo,
+		Time:500.0,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:TRUE,
+	}
+	recipe Take Ammo
+	{
+		SBBox,
+		Result:SBullets=30,
+		Sound: TakeSMGAmmo,
+		Time:500.0,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:TRUE,
+	}
+	recipe Take Ammo
+	{
+		ScrapBBox,
+		Result:ScrapBullets=30,
+		Sound: TakeScrapBulletsAmmo,
+		Time:500.0,
+		NeedToBeLearn:false,
+		CanBeDoneFromFloor:TRUE,
+	}
+	recipe Assemble Double Barrel Pressure Shotgun
+	{
+		AirTank,
+		SheetMetal,
+		MetalPipe/LeadPipe,
+		LeadPipe/MetalPipe,
+		Plank,
+		LeatherStrips=5,
+		BlowTorch=5,
+		keep WeldingMask,
+		keep [Recipe.GetItemTypes.Hammer],
+		keep [Recipe.GetItemTypes.Saw],
+		Result 		: HDBS,
+		Sound 		: ShotgunCrafting,
+		Time 		: 1900,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=3,
+		OnGiveXP 		: Give25MWXP,
+		AnimNode 		: BlowTorchMid,
+		Prop1 		: BlowTorch,
+		NeedToBeLearn : true,
+	}
+	recipe Make Shrapnel Shell
+	{
+		ScrapMetal,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ShrapnelShell=4,
+		Sound 		: AmmoCrafting,
+		Time 		: 650,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=3,
+		OnGiveXP 		: Give10MWXP,
+		NeedToBeLearn : true,
+	}
+	recipe Make Shrapnel Shells
+	{
+		Screws/Nails=30,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ShrapnelShell=4,
+		Sound 		: AmmoCrafting,
+		Time 		: 650,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=3,
+		OnGiveXP 		: Give10MWXP,
+		NeedToBeLearn : true,
+	}
+	recipe Assemble Handmade Pressure Pump Shotgun
+	{
+		AirTank,
+		GunParts=2,
+		SmallSheetMetal,
+		Plank,
+		MetalPipe/LeadPipe,
+		MetalPipe/LeadPipe,
+		Screws=4,
+		LeatherStrips=2,
+		BlowTorch=5,
+		keep WeldingMask,
+		keep [Recipe.GetItemTypes.Hammer],
+		keep [Recipe.GetItemTypes.Saw],
+		keep [Recipe.GetItemTypes.Screwdriver],
+		Result 		: HPS,
+		Sound 		: ShotgunCrafting,
+		Time 		: 1900,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=5,
+		OnGiveXP 		: Give25MWXP,
+		AnimNode 		: BlowTorchMid,
+		Prop1 		: BlowTorch,
+		NeedToBeLearn : true,
+	}
+	recipe Scramble Metal Scraps (Ammo)
+	{
+		Screws/Nails=6,
+		Result 		: MetalScraps=4,
+		Sound 		: AmmoCrafting2,
+		Time 		: 150,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=4,
+		OnGiveXP 		: Give10MWXP,
+		NeedToBeLearn : true,
+	}
+	recipe Make Salvaged Bullets
+	{
+		ScrapMetal,
+		GunPowder=30,
+		Result 		: SBullets=10,
+		Sound 		: AmmoCrafting2,
+		Time 		: 450,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=7,
+		OnGiveXP 		: Give10MWXP,
+		NeedToBeLearn : true,
+	}
+	recipe Make Scrap Bullets
+	{
+		ScrapMetal,
+		GunPowder=20,
+		Result 		: ScrapBullets=10,
+		Sound 		: AmmoCrafting2,
+		Time 		: 350,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=4,
+		OnGiveXP 		: Give10MWXP,
+		NeedToBeLearn : true,
+	}
+	recipe Assemble Handmade Pressure Pistol
+	{
+		AirTank,
+		GunParts,
+		SmallSheetMetal,
+		Plank,
+		MetalPipe/LeadPipe,
+		LeatherStrips=4,
+		BlowTorch=5,
+		keep WeldingMask,
+		keep [Recipe.GetItemTypes.Hammer],
+		keep [Recipe.GetItemTypes.Saw],
+		Result 		: HP,
+		Sound 		: ShotgunCrafting,
+		Time 		: 1900,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=4,
+		OnGiveXP 		: Give25MWXP,
+		AnimNode 		: Disassemble,
+		Prop1 		: Screwdriver,
+		Prop2 		: HP,
+		NeedToBeLearn : true,
+	}
+	recipe Make Nail Bomb
+	{
+		Nails=25,
+		Twine,
+		TinCanEmpty,
+		GunPowder=35,
+		Result 		: NailBomb,
+		Sound 		: AmmoCrafting,
+		Time 		: 650,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=1,
+		OnGiveXP 		: Give10MWXP,
+		AnimNode 		: Disassemble,
+		Prop2 		: NailBomb,
+		NeedToBeLearn : true,
+	}
+	recipe Make Glass Bomb
+	{
+		Twine,
+		EmptyJar,
+		GunPowder=50,
+		Result 		: GlassBomb,
+		Sound 		: AmmoCrafting,
+		Time 		: 650,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=0,
+		OnGiveXP 		: Give10MWXP,
+		AnimNode 		: Disassemble,
+		Prop2 		: GlassBomb,
+		NeedToBeLearn : true,
+	}
+	recipe Disassamble Gun
+	{
+		VarmintRifle/HuntingRifle/Shotgun/DoubleBarrelShotgun/ShotgunSawnoff/Pistol/Pistol2/Pistol3/Revolver/Revolver_Long/Revolver_Short/AssaultRifle/AssaultRifle2,
+		keep [Recipe.GetItemTypes.Screwdriver],
+		Result 		: GunParts,
+		Sound 		: GunDissasembly,
+		Time 		: 200,
+		Category 		: Welding,
+		SkillRequired 		: MetalWelding=4,
+		OnGiveXP 		: Give10MWXP,
+		AnimNode 		: Disassemble,
+		Prop1 		: Screwdriver,
+		Prop2 		: Pistol,
+		NeedToBeLearn : true,
+	}
+	recipe Assemble Pipe Bomb
+	{
+		Twine,
+		MetalPipe/LeadPipe,
+		GunPowder=90,
+		BlowTorch=5,
+		keep WeldingMask,
+		keep [Recipe.GetItemTypes.Saw],
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: HPB,
+		Sound 		: HPBCrafting,
+		Time 		: 1500,
+		Category 		: Weapons,
+		SkillRequired 	: MetalWelding=3,
+		OnGiveXP 		: Give10MWXP,
+		AnimNode 		: Disassemble,
+		Prop2 		: HPB,
+		NeedToBeLearn : true,
+	}
+	recipe Make Decoy
+	{
+		Twine,
+		TinCanEmpty,
+		GunPowder=20,
+		Result 		: HD,
+		Sound 		: AmmoCrafting,
+		Time 		: 650,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=1,
+		OnGiveXP 		: Give10MWXP,
+		AnimNode 		: Disassemble,
+		Prop2 		: HD,
+		NeedToBeLearn : true,
+	}
+	recipe Make Throwable
+	{
+		WineEmpty2/WineEmpty/WhiskeyEmpty/EmptyJar/BeerEmpty,
+		Result 		: TBottle,
+		Sound 		: BottleThrow,
+		Time 		: 20,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=0,
+	}
+	recipe Assemble Handmade Salvaged Pressure Rifle
+	{
+		KitchenKnife/HuntingKnife,
+		GunParts=3,
+		Twine,
+		AirTank,
+		SmallSheetMetal=3,
+		Plank=2,
+		MetalPipe/LeadPipe,
+		MetalPipe/LeadPipe,
+		Screws=4,
+		LeatherStrips=6,
+		BlowTorch=10,
+		keep WeldingMask,
+		keep [Recipe.GetItemTypes.Hammer],
+		keep [Recipe.GetItemTypes.Saw],
+		keep [Recipe.GetItemTypes.Screwdriver],
+		Result 		: SR,
+		Sound 		: ShotgunCrafting,
+		Time 		: 1900,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=6,
+		OnGiveXP 		: Give25MWXP,
+		AnimNode 		: BlowTorchMid,
+		Prop1       : BlowTorch,
+		NeedToBeLearn : true,
+	}
+	recipe Upgrade SAR with Bayonet (REMOVE MAG FIRST!)
+	{
+		KitchenKnife/HuntingKnife,
+		Twine/LeatherStrips,
+		SAR,
+		Result 		: SARB,
+		Sound 		: SpearBinding1,
+		Time 		: 200,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=0,
+		AnimNode 		: SawLog,
+		Prop1 		: Scissors,
+		Prop2 		: SAR,
+		NeedToBeLearn : true,
+	}
+	recipe Assemble Salvaged SMG
+	{
+		GunParts=4,
+		SmallSheetMetal=3,
+		Plank=1,
+		MetalPipe/LeadPipe,
+		Screws=10,
+		LeatherStrips=6,
+		BlowTorch=20,
+		keep WeldingMask,
+		keep [Recipe.GetItemTypes.Hammer],
+		keep [Recipe.GetItemTypes.Saw],
+		keep [Recipe.GetItemTypes.Screwdriver],
+		Result 		: SSMGUnfolded,
+		Sound 		: SMGCrafting,
+		Time 		: 1800,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=7,
+		OnGiveXP 		: Give25MWXP,
+		AnimNode 		: BlowTorchMid,
+		Prop1       : BlowTorch,
+		NeedToBeLearn : true,
+	}
+	recipe Assemble Scrap SMG
+	{
+		GunParts=2,
+		SmallSheetMetal=2,
+		MetalPipe/LeadPipe,
+		Screws=4,
+		RippedSheets=3,
+		BlowTorch=15,
+		keep WeldingMask,
+		keep [Recipe.GetItemTypes.Hammer],
+		keep [Recipe.GetItemTypes.Screwdriver],
+		Result 		: ScrapSMG,
+		Sound 		: SMGCrafting,
+		Time 		: 1200,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=5,
+		OnGiveXP 		: Give25MWXP,
+		AnimNode 		: BlowTorchMid,
+		Prop1       : BlowTorch,
+		NeedToBeLearn : true,
+	}
+	recipe Assemble Scrap Pistol
+	{
+		GunParts=1,
+		SmallSheetMetal=1,
+		MetalPipe/LeadPipe,
+		Screws=4,
+		RippedSheets=3,
+		BlowTorch=5,
+		keep WeldingMask,
+		keep [Recipe.GetItemTypes.Screwdriver],
+		Result 		: ScrapPistol,
+		Sound 		: SMGCrafting,
+		Time 		: 600,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=4,
+		OnGiveXP 		: Give25MWXP,
+		AnimNode 		: BlowTorchMid,
+		Prop1       : BlowTorch,
+		NeedToBeLearn : true,
+	}
+	recipe Assemble Scrap Gatling
+	{
+		GunParts=4,
+		SmallSheetMetal=6,
+		Wire=5,
+		SheetMetal=2,
+		EngineParts=3,
+		Plank=2,
+		MetalPipe/LeadPipe,
+		MetalPipe/LeadPipe,
+		MetalPipe/LeadPipe,
+		CarBattery1/CarBattery2/CarBattery3,
+		Screws=30,
+		LeatherStrips=20,
+		BlowTorch=50,
+		keep WeldingMask,
+		keep [Recipe.GetItemTypes.Hammer],
+		keep [Recipe.GetItemTypes.Screwdriver],
+		Result 		: ScrapGatling,
+		Sound 		: SMGCrafting,
+		Time 		: 1800,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=10,
+		OnGiveXP 		: Give25MWXP,
+		AnimNode 		: BlowTorchMid,
+		Prop1       : BlowTorch,
+		NeedToBeLearn : true,
+	}
+	recipe Assemble Salvaged Assault Rifle
+	{
+		GunParts=5,
+		SmallSheetMetal=1,
+		Plank=2,
+		MetalPipe/LeadPipe,
+		Screws=4,
+		Wire=5,
+		LeatherStrips=15,
+		BlowTorch=15,
+		keep WeldingMask,
+		keep [Recipe.GetItemTypes.Hammer],
+		keep [Recipe.GetItemTypes.Saw],
+		keep [Recipe.GetItemTypes.Screwdriver],
+		Result 		: SAR,
+		Sound 		: SMGCrafting,
+		Time 		: 1800,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=8,
+		OnGiveXP 		: Give25MWXP,
+		AnimNode 		: BlowTorchMid,
+		Prop1       : BlowTorch,
+		NeedToBeLearn : true,
+	}
+	recipe Assemble Salvaged Sniper Rifle
+	{
+		GunParts=5,
+		SmallSheetMetal=3,
+		Plank=2,
+		MetalPipe/LeadPipe,
+		Screws=20,
+		LeatherStrips=15,
+		BlowTorch=15,
+		keep WeldingMask,
+		keep [Recipe.GetItemTypes.Hammer],
+		keep [Recipe.GetItemTypes.Saw],
+		keep [Recipe.GetItemTypes.Screwdriver],
+		Result 		: SSR,
+		Sound 		: SMGCrafting,
+		Time 		: 1800,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=8,
+		OnGiveXP 		: Give25MWXP,
+		AnimNode 		: BlowTorchMid,
+		Prop1       : BlowTorch,
+		NeedToBeLearn : true,
+	}
+	recipe Assemble SlamFire Shotgun
+	{
+		Plank=1,
+		MetalPipe/LeadPipe,
+		MetalPipe/LeadPipe,
+		Nails=4,
+		RippedSheets=6,
+		keep [Recipe.GetItemTypes.Saw],
+		Result 		: SlamFire,
+		Sound 		: SlamFireCrafting,
+		Time 		: 1400,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=2,
+		OnGiveXP 		: Give25MWXP,
+		AnimNode 		: BuildLow,
+		NeedToBeLearn : true,
+	}
+	recipe Assemble Pressure Rifle Magazine
+	{
+		SmallSheetMetal=2,
+		LeatherStrips=2,
+		BlowTorch=5,
+		keep WeldingMask,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: SRMagazine,
+		Sound 		: AmmoCrafting,
+		Time 		: 650,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=6,
+		OnGiveXP 		: Give20MWXP,
+		AnimNode 		: Disassemble,
+		Prop1 		: Screwdriver,
+		NeedToBeLearn : true,
+	}
+	recipe Assemble Salvaged Magazine
+	{
+		SmallSheetMetal=2,
+		BlowTorch=5,
+		GunParts=1,
+		keep WeldingMask,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: SSMGMagazine,
+		Sound 		: AmmoCrafting,
+		Time 		: 650,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=7,
+		OnGiveXP 		: Give20MWXP,
+		AnimNode 		: Disassemble,
+		Prop1 		: Screwdriver,
+		NeedToBeLearn : true,
+	}
+	recipe Assemble Scrap Pistol Magazine
+	{
+		SmallSheetMetal=2,
+		BlowTorch=5,
+		GunParts=1,
+		keep WeldingMask,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ScrapPistolMagazine,
+		Sound 		: AmmoCrafting,
+		Time 		: 650,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=4,
+		OnGiveXP 		: Give20MWXP,
+		AnimNode 		: Disassemble,
+		Prop1 		: Screwdriver,
+		NeedToBeLearn : true,
+	}
+	recipe Assemble Scrap SMG Magazine
+	{
+		SmallSheetMetal=2,
+		BlowTorch=5,
+		GunParts=1,
+		keep WeldingMask,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: ScrapSMGMagazine,
+		Sound 		: AmmoCrafting,
+		Time 		: 650,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=5,
+		OnGiveXP 		: Give20MWXP,
+		AnimNode 		: Disassemble,
+		Prop1 		: Screwdriver,
+		NeedToBeLearn : true,
+	}
+	recipe Assemble Gatling Box Magazine
+	{
+		SmallSheetMetal=4,
+		BlowTorch=5,
+		GunParts=1,
+		keep WeldingMask,
+		keep [Recipe.GetItemTypes.Hammer],
+		Result 		: GatlingBoxMagazine,
+		Sound 		: AmmoCrafting,
+		Time 		: 650,
+		Category 		: Weapons,
+		SkillRequired 		: MetalWelding=10,
+		OnGiveXP 		: Give20MWXP,
+		AnimNode 		: Disassemble,
+		Prop1 		: Screwdriver,
+		NeedToBeLearn : true,
+	}
+	recipe Use Bayonet
+	{
+		SR,
+		Result 		: SRB,
+		Sound 		: SRMagRelease,
+		Time 		: 1,
+		OnCreate 		: SR_OnBayonet,
+	}
+	recipe Use Rifle
+	{
+		SRB,
+		Result 		: SR,
+		Sound 		: SRMagRelease,
+		Time 		: 1,
+		OnCreate 		: SR_OnBayonet,
+	}
+	recipe Use Bayonet
+	{
+		SARB,
+		Result 		: SARBO,
+		Sound 		: SRMagRelease,
+		Time 		: 1,
+		OnCreate 		: SAR_OnBayonet,
+	}
+	recipe Use Assault Rifle
+	{
+		SARBO,
+		Result 		: SARB,
+		Sound 		: SRMagRelease,
+		Time 		: 1,
+		OnCreate 		: SAR_OnBayonet,
+	}
+	recipe Fold SSMG
+	{
+		SSMGUnfolded,
+		Result 		: SSMGFolded,
+		Sound 		: Fold,
+		Time 		: 1,
+		OnCreate 		: SSMG_OnFold,
+	}
+	recipe Unfold SSMG
+	{
+		SSMGFolded,
+		Result 		: SSMGUnfolded,
+		Sound 		: Unfold,
+		Time 		: 1,
+		OnCreate 		: SSMG_OnFold,
+	}
+}
