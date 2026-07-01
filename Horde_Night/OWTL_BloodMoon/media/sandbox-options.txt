@@ -1,0 +1,76 @@
+VERSION = 1,
+
+option OWTL_BloodMoon.Enabled
+{
+    type = boolean,
+    default = true,
+    page = OWTL_BloodMoon,
+    translation = OWTL_BloodMoon_Enabled,
+}
+
+option OWTL_BloodMoon.IntervalMode
+{
+    type = enum,
+    numValues = 2,
+    default = 1,
+    page = OWTL_BloodMoon,
+    translation = OWTL_BloodMoon_IntervalMode,
+}
+
+option OWTL_BloodMoon.MinRandomInterval
+{
+    type = integer,
+    min = 1,
+    max = 365,
+    default = 5,
+    page = OWTL_BloodMoon,
+    translation = OWTL_BloodMoon_MinRandomInterval,
+}
+
+option OWTL_BloodMoon.MaxRandomInterval
+{
+    type = integer,
+    min = 1,
+    max = 365,
+    default = 7,
+    page = OWTL_BloodMoon,
+    translation = OWTL_BloodMoon_MaxRandomInterval,
+}
+
+option OWTL_BloodMoon.FixedInterval
+{
+    type = integer,
+    min = 1,
+    max = 365,
+    default = 7,
+    page = OWTL_BloodMoon,
+    translation = OWTL_BloodMoon_FixedInterval,
+}
+
+option OWTL_BloodMoon.ServerHordeCap
+{
+    type = integer,
+    min = 0,
+    max = 5000,
+    default = 300,
+    page = OWTL_BloodMoon,
+    translation = OWTL_BloodMoon_ServerHordeCap,
+}
+
+option OWTL_BloodMoon.GroupHordeCap
+{
+    type = integer,
+    min = 0,
+    max = 1000,
+    default = 120,
+    page = OWTL_BloodMoon,
+    translation = OWTL_BloodMoon_GroupHordeCap,
+}
+
+option OWTL_BloodMoon.DebugLogging
+{
+    type = boolean,
+    default = false,
+    page = OWTL_BloodMoon,
+    translation = OWTL_BloodMoon_DebugLogging,
+}

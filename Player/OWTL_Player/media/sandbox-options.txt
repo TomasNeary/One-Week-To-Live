@@ -1,0 +1,18 @@
+VERSION = 1,
+
+option OWTL_Player.DeathDropMode
+{
+    type = enum,
+    numValues = 3,
+    default = 2,
+    page = OWTL_Player,
+    translation = OWTL_Player_DeathDropMode,
+}
+
+option OWTL_Player.DeathPenaltiesEnabled
+{
+    type = boolean,
+    default = false,
+    page = OWTL_Player,
+    translation = OWTL_Player_DeathPenaltiesEnabled,
+}
