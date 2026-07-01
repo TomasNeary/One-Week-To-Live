@@ -1,0 +1,1069 @@
+One Week To Live - External Mods Reference
+==========================================
+
+Purpose
+-------
+
+This file documents the non-OWTL mods bundled in this repository and how each one may help implement the One Week To Live gameplay plan.
+
+These mods are reference material unless explicitly selected for integration. Do not edit bundled third-party mods directly. Build One Week To Live features under OWTL-prefixed folders or a new OWTL module.
+
+Existing OWTL folders are not treated as external mods:
+
+- Bows/OWTL_Bows
+- Buildings/OWTL_Traps
+- Horde_Night/OWTL_Horde_Night
+
+
+High-Value References
+---------------------
+
+These are the most directly useful external mods for version 1:
+
+- Horde_Night/Expanded Helicopter Events
+- Buildings/PlayerTraps
+- Buildings/Nolan's Traps Updates
+- Buildings/Improved Build Menu [Build 41.51+] (no itemtweak)
+- Bows/Remastered Kitsune's Crossbow Mod
+- QoL/Cheat Menu
+- Zombies/NocturnalZombiesFixed
+- Zombies/RestlessZombiesFixed
+- Zombies/dynamic zombies
+- Weapons/Scrap Weapons
+- Guns/Scrap Guns
+
+
+Mod-By-Mod Notes
+----------------
+
+1. Bows/Remastered Kitsune's Crossbow Mod
+
+Usefulness: High.
+
+Helpful for:
+
+- Early-game ranged weapon support.
+- Bows/crossbows as a low-noise alternative to firearms.
+- Bolt/ammunition crafting and recovery.
+- Weapon attachment patterns.
+- Reload timed actions.
+- Zombie-attached weapon spawning.
+
+Observed files:
+
+- media/scripts/module_KCMweapons_Items.txt
+- media/scripts/module_KCMweapons_Recipe.txt
+- media/lua/client/KCMCrossbowClient.lua
+- media/lua/client/TimedActions/ISKCMReloadCrossbowAction.lua
+- media/lua/client/Definitions/AttachedCrossbowDefinitions.lua
+- media/lua/server/items/ProceduralDistributions_KCMnew.lua
+
+Observed patterns:
+
+- Adds hand crossbow, compound bows, handmade bows, bolts, broken bolts, bolt heads, shafts, fletching, and bow attachments.
+- Uses custom reload timed action logic.
+- Uses OnWeaponSwingHitPoint and OnWeaponHitCharacter hooks for crossbow behavior.
+- Stores bolt condition in weapon mod data.
+- Uses low sound radius values, useful for early horde prep weapons.
+
+Plan relevance:
+
+- Strong basis for OWTL early-game ranged scaling.
+- Useful source for bow/crossbow item tuning, reload UX, ammo recipes, and projectile recovery.
+
+
+2. Buildings/CraftHelper41
+
+Usefulness: Medium.
+
+Helpful for:
+
+- Recipe discovery UI.
+- Showing which magazines/manuals teach recipes.
+- Debugging trap and defense recipe availability.
+
+Observed files:
+
+- media/lua/client/crafthelper41.lua
+- media/lua/client/UI/craftHelper41RecipePanel.lua
+- media/lua/client/UI/craftHelper41Window.lua
+
+Observed patterns:
+
+- Reads all recipes from getScriptManager():getAllRecipes().
+- Maps recipes by ingredient/result.
+- Detects teached recipes from manuals.
+- Checks whether the player knows a recipe and whether RecipeManager considers it valid.
+
+Plan relevance:
+
+- Useful for validating the "skill unlock plus magazine early-learn" trap progression model.
+- Not likely needed as runtime dependency for OWTL.
+
+
+3. Buildings/Improved Build Menu [Build 41.51+] (basic)
+
+Usefulness: Medium.
+
+Helpful for:
+
+- Build menu organization.
+- Carpentry and metalworking buildable examples.
+- Tooltip and translation patterns.
+- Multi-stage build script examples.
+
+Observed files:
+
+- media/lua/client/BuildingObjects/ISUI/ISBuildMenu.lua
+- media/lua/client/BuildingObjects/ISUI/ISMetalWeldingMenu.lua
+- media/scripts/ibm_multistagebuild.txt
+- media/scripts/ibm_recipes.txt
+- media/scripts/ibm_items_Base.txt
+
+Observed patterns:
+
+- Adds and reorganizes buildables.
+- Integrates carpentry and metalworking menu entries.
+- Requires ItemTweakerAPI according to mod.info.
+
+Plan relevance:
+
+- Useful reference for defense build menu integration.
+- Prefer the no-itemtweak variant unless ItemTweakerAPI is deliberately added.
+
+
+4. Buildings/Improved Build Menu [Build 41.51+] (no itemtweak)
+
+Usefulness: High.
+
+Helpful for:
+
+- Buildable wall/gate/trap UI patterns.
+- Carpentry and metalworking build menu patches.
+- Multi-stage build definitions.
+- Tooltip, translation, and build recipe structure.
+
+Observed files:
+
+- media/lua/client/BuildingObjects/ISUI/ISNewBuildMenu_Patch.lua
+- media/lua/client/BuildingObjects/ISUI/ISBuildMenu.lua
+- media/lua/client/Blacksmith/ISUI/ISBlacksmithMenu.lua
+- media/lua/client/BuildingObjects/ISUI/ISMetalWeldingMenu.lua
+- media/scripts/ibm_multistagebuild.txt
+- media/scripts/ibm_recipes.txt
+
+Observed patterns:
+
+- Same general build-menu concepts as the basic version.
+- Does not require ItemTweakerAPI.
+- Includes new carpentry and metalworking buildables.
+
+Plan relevance:
+
+- Best reference for OWTL buildable defenses, especially upgraded walls, gates, and advanced trap objects.
+
+
+5. Buildings/Nolan's Traps Updates
+
+Usefulness: High.
+
+Helpful for:
+
+- Additional trap variants.
+- Landmine examples.
+- Trap item definitions and distributions.
+- Updating the base PlayerTraps concept.
+
+Observed files:
+
+- media/lua/client/traps.lua
+- media/lua/server/Items/Beartrap_Distributions.lua
+- media/lua/server/Items/Landmine_Distributions.lua
+- media/scripts/Nolans_Landmines.txt
+- media/scripts/traps.txt
+- media/scripts/Nolans_Traps_Sounds.txt
+
+Observed patterns:
+
+- Extends PlayerTraps.
+- Adds landmine-related items and distributions.
+- Provides additional trap sound and texture examples.
+
+Plan relevance:
+
+- Good inspiration for consumable explosive traps and later trap expansion.
+- Should not be copied directly without reviewing balance and multiplayer behavior.
+
+
+6. Buildings/PlayerTraps
+
+Usefulness: High.
+
+Helpful for:
+
+- Trap placement.
+- Player trap damage.
+- Square mod-data state.
+- Client/server trap synchronization.
+- Consumable and repairable trap states.
+
+Observed files:
+
+- media/scripts/traps.txt
+- media/lua/client/traps.lua
+- media/lua/server/TrapServer.lua
+- media/lua/server/Loading.lua
+
+Observed patterns:
+
+- Defines BearTrap, BearTrapClosed, SpikeTrap, SpikeTrapClosed, PropaneTrap, and Nothing.
+- Uses recipe OnCreate:SetTrapDown to place traps.
+- Stores isTrapSet on square mod data.
+- Stores isSet on item/world item mod data.
+- Uses sendClientCommand with module Trap and command SetTrap to sync server state.
+- Player update checks current square and applies trap effects.
+- Trap effects include fractures, deep wounds, burns, explosions, and replacement with closed/worn-out trap items.
+
+Plan relevance:
+
+- Direct basis for OWTL spiked pits, spiked log barricades, player-damaging traps, repairable trap states, and consumable explosive traps.
+- Needs adaptation for zombies, not only players.
+
+
+7. Guns/Scrap Guns
+
+Usefulness: Medium-High.
+
+Helpful for:
+
+- Craftable firearms.
+- Improvised ammunition.
+- Explosive/throwable weapon patterns.
+- Homemade weapon balancing.
+- Sound/model/script organization.
+
+Observed files:
+
+- media/scripts/module_SGuns_air.txt
+- media/scripts/module_SGuns_scrap.txt
+- media/scripts/module_SGuns_salvaged.txt
+- media/scripts/module_SGuns_recipes.txt
+- media/lua/server/items/ScrapGun_Distributions.lua
+
+Observed patterns:
+
+- Adds handmade pistols, shotguns, salvaged rifles, scrap pistols, scrap SMGs, Gatling-style weapons, scrap bullets, shrapnel shells, bombs, and magazines.
+- Uses custom ammo types and weapon scripts.
+- Provides recipes and distributions.
+
+Plan relevance:
+
+- Useful for later weapon/resource scaling.
+- May be too firearm-heavy for V1 if the first solution is bows, but useful for homemade ranged weapon progression.
+
+
+8. Guns/Silencer
+
+Usefulness: Low-Medium.
+
+Helpful for:
+
+- Weapon attachment scripting.
+- Sound radius/noise reduction patterns.
+- Firearm balance if guns become central later.
+
+Observed files:
+
+- media/scripts/Silencer.txt
+- media/scripts/items_weapons_forsilencer.txt
+- media/lua/client/Silencer.lua
+- media/lua/server/SilencerLoading.lua
+
+Observed patterns:
+
+- Adds a silencer weapon part.
+- Overrides or extends firearm items for silencer support.
+- Provides silenced shot audio and firearm models/textures.
+
+Plan relevance:
+
+- Not central to V1.
+- Could inform later firearm noise-management options.
+
+
+9. Horde_Night/Expanded Helicopter Events
+
+Usefulness: Very High.
+
+Helpful for:
+
+- Blood Moon scheduling.
+- Emergency broadcast integration.
+- Event persistence in getGameTime():getModData().
+- Sandbox/config menu patterns.
+- Audio cues and announcer patterns.
+- Debug event tools.
+- Event target selection.
+- Spawned zombie handling.
+
+Observed files:
+
+- media/lua/client/ExpandedHelicopter06_EventScheduler.lua
+- media/lua/server/ExpandedHelicopter_AEBS.lua
+- media/lua/client/ExpandedHelicopter09_SandboxOptions.lua
+- media/lua/client/ExpandedHelicopter01c_MainCore.lua
+- media/lua/client/ExpandedHelicopter01d_MainEvents.lua
+- media/lua/client/ExpandedHelicopter03a_Announcers.lua
+- media/lua/client/ExpandedHelicopter03b_AnnouncersCore.lua
+- media/lua/client/zDebugTests.lua
+- media/lua/shared/Translate/EN/DynamicRadio_EN.txt
+- media/scripts/sounds_EHE.txt
+
+Observed patterns:
+
+- Stores event schedules as tables in game-time mod data.
+- Uses EveryHours to check and trigger events.
+- Calculates schedule offsets and renews events.
+- Extends WeatherChannel.FillBroadcast to add emergency broadcast lines.
+- Uses sandbox/config options.
+- Includes debug tests and event inspection.
+- Spawns zombies using addZombiesInOutfit in crash/event logic.
+- Provides audio assets and scripted sound definitions.
+
+Plan relevance:
+
+- Best reference for Blood Moon scheduler, emergency broadcast warnings, event persistence, audio cues, and admin/debug commands.
+- The AEBS pattern is especially relevant for radio-based Blood Moon forecasting.
+
+
+10. QoL/BetterSorting
+
+Usefulness: Medium.
+
+Helpful for:
+
+- Item category assignment.
+- Display name cleanup.
+- Compatibility categories for external mod items.
+
+Observed files:
+
+- media/lua/client/Item_Categories.lua
+- media/lua/client/ItemTweaker_Copy_CC.lua
+- media/lua/client/Mod Support/PlayerTraps_Items.lua
+- media/lua/client/Mod Support/SGuns_Items.lua
+- media/lua/client/Mod Support/ScrapWeapons_Items.lua
+- media/lua/client/Mod Support/Silencer_Items.lua
+- media/lua/client/Mod Support/KCMcrossbow_Items.lua
+
+Observed patterns:
+
+- Provides compatibility category files for several mods in this repository.
+- Uses item tweaking to assign categories and improve names.
+
+Plan relevance:
+
+- Useful for ensuring OWTL traps, bows, and defense materials appear in sensible inventory categories.
+- Not core gameplay logic.
+
+
+11. QoL/Cheat Menu
+
+Usefulness: High for development tools.
+
+Helpful for:
+
+- Admin/debug tools.
+- Zombie spawning.
+- Item spawning.
+- Teleport and home-location concepts.
+- Time control.
+- Vehicle selection and repair debug.
+- Health/death prevention test helpers.
+
+Observed files:
+
+- media/lua/client/ISUI/CheatCore.lua
+- media/lua/client/ISUI/ISUICheatMenu.lua
+- media/lua/client/ISUI/compassUI/compassCore.lua
+- media/lua/client/ISUI/crucibleUI/crucibleCore.lua
+- media/scripts/cheatItems.txt
+
+Observed patterns:
+
+- Uses addZombiesInOutfit and spawnHorde for debug zombie spawning.
+- Stores persistent cheat state in player mod data.
+- Has home/teleport coordinate functions.
+- Includes item browser and item spawning UI.
+- Provides admin gating through isAdmin checks.
+
+Plan relevance:
+
+- Useful reference for OWTL admin/debug commands: force Blood Moon, spawn horde, inspect schedule, set/reset stage, teleport to horde/player, test death and bed respawn.
+- Home/teleport patterns may inform bed/home respawn, but OWTL should implement a gameplay-safe version.
+
+
+12. QoL/LitSortOGSN
+
+Usefulness: Low-Medium.
+
+Helpful for:
+
+- Magazine and book naming.
+- Recipe/magazine organization.
+- Translation and item-name conventions.
+
+Observed files:
+
+- media/lua/client/tweaks_LitSortingOGSN.lua
+- media/lua/client/ItemTweaker_Copy_ogsn.lua
+- media/textures/Item_magazine_*.png
+
+Observed patterns:
+
+- Renames and organizes maps, magazines, and skill books.
+- Adds magazine texture conventions.
+
+Plan relevance:
+
+- Useful for naming OWTL trap/defense magazines cleanly.
+- Not gameplay-critical.
+
+
+13. QoL/LitSortOGSN_readOnePage
+
+Usefulness: Low-Medium.
+
+Helpful for:
+
+- Known/seen book state.
+- Reading action modification.
+
+Observed files:
+
+- media/lua/client/TmedActions/ISReadABook_OGSN.lua
+
+Observed patterns:
+
+- Alters reading behavior so a player can mark a book as seen/read enough for organization.
+
+Plan relevance:
+
+- Could inform future recipe-magazine quality of life.
+- Not needed for V1 systems.
+
+
+14. QoL/Minimal Display Bars
+
+Usefulness: Low-Medium.
+
+Helpful for:
+
+- Compact UI widgets.
+- Configurable client UI.
+- Mood/stat display patterns.
+
+Observed files:
+
+- media/lua/client/Minimal Display Bars (A).lua
+- media/lua/client/ISGenericMiniDisplayBar.lua
+- MOD Config Options (MinimalDisplayBars).lua
+- MOD DefaultSettings (MinimalDisplayBars).lua
+
+Observed patterns:
+
+- Creates movable display bars with client configuration.
+
+Plan relevance:
+
+- OWTL does not currently plan normal player horde UI.
+- Could be useful later for optional admin/status overlays.
+
+
+15. QoL/Recycle Everything - Main Recipes
+
+Usefulness: Medium.
+
+Helpful for:
+
+- Recipe structure.
+- Recycling vanilla items into useful materials.
+- Skill-gated recipes.
+- OnGiveXP functions.
+
+Observed files:
+
+- media/scripts/POETRecycleEverything.txt
+- media/scripts/POETReclaimEverything.txt
+- media/scripts/POETRecycleOverrides.txt
+- media/scripts/POETSecretRecipes.txt
+- media/lua/server/items/POETExperienceFunctions.lua
+
+Observed patterns:
+
+- Adds many recipes using vanilla materials.
+- Uses SkillRequired and OnGiveXP.
+- Defines custom XP helper functions that call player:getXp():AddXP.
+
+Plan relevance:
+
+- Useful for trap/defense recipes that consume vanilla materials and award appropriate skill XP.
+- May help tune material sinks without changing loot.
+
+
+16. QoL/Recycle Everything - Extra Recipes
+
+Usefulness: Medium.
+
+Helpful for:
+
+- Additional recipe examples.
+- Avoiding duplicate recipe concepts.
+- Skill-gated repair/recycling recipes.
+
+Observed files:
+
+- media/scripts/POETRecycleExtra.txt
+
+Observed patterns:
+
+- Adds smaller supplemental recipe set.
+- Uses SkillRequired, CanBeDoneFromFloor, and OnGiveXP.
+
+Plan relevance:
+
+- Useful reference for small, focused recipe additions.
+
+
+17. QoL/ShowSkillUpName
+
+Usefulness: Low.
+
+Helpful for:
+
+- Skill-up feedback.
+
+Observed files:
+
+- media/lua/client/ShowSkillUpName.lua
+
+Observed patterns:
+
+- Displays skill names when a player levels up.
+
+Plan relevance:
+
+- Could be useful for playtesting progression pacing.
+- Not part of OWTL feature implementation.
+
+
+18. QoL/ZedHealthNew
+
+Usefulness: Low-Medium.
+
+Helpful for:
+
+- Zombie health debugging.
+- Testing trap damage and horde scaling.
+
+Observed files:
+
+- media/lua/client/Zed Health.lua
+
+Observed patterns:
+
+- Zombies report current health.
+
+Plan relevance:
+
+- Useful during trap damage tuning and special zombie prototyping.
+- Not intended as player-facing OWTL behavior.
+
+
+19. QoL/ZonesPOS
+
+Usefulness: Medium for debugging.
+
+Helpful for:
+
+- Coordinate display.
+- Zone and room detection.
+- Spawn radius and safe-distance testing.
+
+Observed files:
+
+- media/lua/client/ZONES_POS.lua
+
+Observed patterns:
+
+- Shows player X/Y coordinates, current zone, and room.
+
+Plan relevance:
+
+- Useful when testing horde spawn placement and bed/home coordinates.
+- Not a runtime dependency.
+
+
+20. QoL/eris_minimap
+
+Usefulness: Low-Medium.
+
+Helpful for:
+
+- Map UI patterns.
+- Markers, beacons, safehouse/player icons.
+- Coordinate and radio info UI elements.
+
+Observed files:
+
+- media/lua/client/eris_minimap/core/em_core.lua
+- media/lua/client/eris_minimap/elements/window/em_radioInfoBox.lua
+- media/lua/client/eris_minimap/elements/window/em_safehouseInfoBox.lua
+- media/lua/client/eris_minimap/icons/*
+
+Observed patterns:
+
+- Large minimap framework with icons, markers, and info boxes.
+
+Plan relevance:
+
+- Not required for V1 because OWTL avoids player-facing horde UI.
+- Could inform future optional map markers for home/base/debug visualization.
+
+
+21. QoL/zomboid-cnd-speech
+
+Usefulness: Low-Medium.
+
+Helpful for:
+
+- Conditional speech/dialogue triggers.
+- Randomized text feedback.
+- Config-driven phrase sets.
+
+Observed files:
+
+- media/lua/client/ConditionalSpeech__Core.lua
+- media/lua/client/ConditionalSpeech_Filters.lua
+- media/lua/client/ConditionalSpeech_PhraseSet.lua
+- media/config/Conditional-Speech.config
+
+Observed patterns:
+
+- Generates player speech based on conditions and phrase sets.
+
+Plan relevance:
+
+- Could inspire optional radio/world flavor later.
+- Not needed for V1 core systems.
+
+
+22. Vehicles/EasyEngineRebuild
+
+Usefulness: Medium.
+
+Helpful for:
+
+- Mechanics-gated timed actions.
+- Vehicle context menu extension.
+- Repair/resource consumption.
+- Mechanics XP reward.
+
+Observed files:
+
+- media/lua/client/Vehicles/TimedActions/ISRebuildEngine.lua
+- media/lua/client/Vehicles/ISUI/EER_ISVehicleMechanics_AddContextMenu.lua
+
+Observed patterns:
+
+- Adds a timed action derived from ISBaseTimedAction.
+- Requires engine parts based on vehicle engine repair level.
+- Uses Mechanics skill and awards Mechanics XP.
+- Sends vehicle repairPart client command.
+
+Plan relevance:
+
+- Useful for mechanics-based trap/defense maintenance, generator-like systems, and vehicle escape-route support.
+- Not directly required unless OWTL adds mechanics-powered defenses in V1.
+
+
+23. Vehicles/FR_Used_Vehicles/FRUsedCarsBETA
+
+Usefulness: Low-Medium.
+
+Helpful for:
+
+- Vehicle definitions.
+- Vehicle distributions.
+- Heavy vehicles and utility vehicles.
+- Potential base defense or escape-route play.
+
+Observed files:
+
+- media/CarList.txt
+- media/lua/server/Vehicles/FRvehicledistributions.lua
+- media/lua/shared/FRUsedCarsSpawnListNEW.lua
+- many media/scripts/vehicles/*.txt files.
+
+Observed patterns:
+
+- Adds many vehicle types, models, textures, and spawn definitions.
+
+Plan relevance:
+
+- Not central to V1.
+- Could inform later mobile survival, heavy vehicle defense, fuel truck, or evacuation play.
+
+
+24. Vehicles/FR_Used_Vehicles/FRUsedCarsFuelTest
+
+Usefulness: Medium.
+
+Helpful for:
+
+- Fuel and propane storage vehicles.
+- Vehicle part menus.
+- Refuel timed actions.
+- Large resource containers.
+
+Observed files:
+
+- media/lua/client/Vehicles/ISUI/FuelTruckTank_ISVehicleMenu_FillPartMenu.lua
+- media/lua/client/Vehicles/ISUI/PropaneTruckTank_ISVehiclePartMenu.lua
+- media/lua/client/Vehicles/TimedActions/FuelTruck_ISRefuelFromFuelTruck.lua
+- media/scripts/vehicles/template_FuelTruckTank.txt
+- media/scripts/vehicles/template_PropaneTruckTank.txt
+
+Observed patterns:
+
+- Adds working fuel/propane truck tank interactions.
+- Extends vehicle part menus and timed refuel actions.
+
+Plan relevance:
+
+- Useful if OWTL traps consume propane/fuel or if later base defense includes fuel logistics.
+- Relevant to propane tank trap expansion.
+
+
+25. Vehicles/FR_Used_Vehicles/FRUsedCarsNamesLore
+
+Usefulness: Low.
+
+Helpful for:
+
+- Vehicle translation/name override examples.
+
+Observed files:
+
+- media/lua/shared/Translate/EN/IG_UI_EN.txt
+
+Observed patterns:
+
+- Renames Filibuster vehicles with lore-friendly names.
+
+Plan relevance:
+
+- No direct V1 gameplay value.
+
+
+26. Vehicles/FR_Used_Vehicles/FRUsedCarsNamesReal
+
+Usefulness: Low.
+
+Helpful for:
+
+- Vehicle translation/name override examples.
+
+Observed files:
+
+- media/lua/shared/Translate/EN/IG_UI_EN.txt
+
+Observed patterns:
+
+- Renames Filibuster vehicles with real-world names.
+
+Plan relevance:
+
+- No direct V1 gameplay value.
+
+
+27. Vehicles/New Car Sounds
+
+Usefulness: Low.
+
+Helpful for:
+
+- Sound asset organization.
+- Vehicle sound replacement.
+
+Observed files:
+
+- media/sound/newCar/*
+- media/sound/vehicle_*.wav
+
+Observed patterns:
+
+- Provides replacement vehicle sounds.
+
+Plan relevance:
+
+- Not useful for core OWTL systems unless later adding Blood Moon vehicle audio cues.
+
+
+28. Weapons/Scrap Weapons
+
+Usefulness: Medium-High.
+
+Helpful for:
+
+- Craftable melee weapon progression.
+- Salvage/deconstruction economy.
+- Skill and magazine-gated recipes.
+- Weapon models, sounds, and distributions.
+
+Observed files:
+
+- media/scripts/module_SWeapons.txt
+- media/scripts/SWeapons_Magazines.txt
+- media/scripts/SWeapons_ToolScrap_Recipes.txt
+- media/scripts/SWeapons_WeaponScrap_Recipes.txt
+- media/lua/server/SWeapons.lua
+- media/lua/server/Items/ScrapWeapons_Distributions.lua
+
+Observed patterns:
+
+- Adds many improvised weapons from vanilla materials.
+- Uses magazines such as Doom's Day Survivor and Wasteland Warrior.
+- Uses MetalWelding skill requirements for stronger craftables.
+- Includes deconstruction recipes for metal parts and tool heads.
+
+Plan relevance:
+
+- Useful model for OWTL defense magazines and skill-gated trap recipes.
+- Useful for early Blood Moon melee scaling without changing loot.
+
+
+29. Zombies/Night Sprinters
+
+Usefulness: Medium.
+
+Helpful for:
+
+- Time-based zombie behavior changes.
+- Seasonal/rain condition checks.
+- Zombie speed changes.
+
+Observed files:
+
+- media/lua/client/Night Sprinters.lua
+- media/lua/client/NS_Config.lua
+- media/config/NightSprinters.config
+
+Observed patterns:
+
+- Uses Events.OnZombieUpdate.
+- Uses zombie:getModData() flags to prevent repeated speed changes.
+- Calls zombie:changeSpeed(1) for sprinters and zombie:changeSpeed(2) for fast shamblers.
+- Uses config values and sandbox vars.
+
+Plan relevance:
+
+- Useful for later special zombie speed roles.
+- Not part of V1 because Blood Moon zombies should behave like normal zombies except awareness.
+
+
+30. Zombies/NocturnalZombiesFixed
+
+Usefulness: High.
+
+Helpful for:
+
+- Server-side zombie pathing nudges toward players.
+- Night behavior changes.
+- Speed mod save/restore.
+- Player-distance filtering.
+
+Observed files:
+
+- media/lua/server/NocturnalZombiesServer.lua
+- media/lua/client/nocturnalzombies_new.lua
+
+Observed patterns:
+
+- Scans nearby zombies.
+- Uses zombie:pathToLocation near the player.
+- Stores old speed in zombie mod data and restores it later.
+- Uses distance bands to ignore very close or very far zombies.
+
+Plan relevance:
+
+- Strong reference for Blood Moon horde awareness and later fallback behavior.
+- Must be adapted so only Blood Moon-spawned zombies are affected.
+
+
+31. Zombies/RestlessZombiesFixed
+
+Usefulness: High.
+
+Helpful for:
+
+- Zombie redirection/activity patterns.
+- Nearby-player zombie scanning.
+- Server/client command structure.
+
+Observed files:
+
+- media/lua/server/restlesszombiesServer.lua
+- media/lua/client/restlesszombies_new.lua
+
+Observed patterns:
+
+- Similar to NocturnalZombiesFixed.
+- Uses pathToLocation and zombie mod data to make zombies more active.
+
+Plan relevance:
+
+- Useful alternative reference for Blood Moon awareness, horde drift, and performance considerations.
+
+
+32. Zombies/dynamic zombies
+
+Usefulness: Medium-High.
+
+Helpful for:
+
+- Dynamic zombie speed variance.
+- Scatter behavior.
+- Special zombie prototypes.
+- Mod-data save/restore of temporary zombie changes.
+
+Observed files:
+
+- media/lua/client/variedzombies.lua
+- media/lua/server/VariedZombiesServer.lua
+- Readme.txt
+
+Observed patterns:
+
+- Randomly scatters zombies.
+- Randomly speeds up or slows down zombies.
+- Stores oldMoveSpeed and restores it later.
+- Has both client and server variants.
+
+Plan relevance:
+
+- Useful for later special zombie types and horde variation.
+- Not a V1 behavior unless used for testing.
+
+
+33. Zombies/nocturnal zombies
+
+Usefulness: Medium.
+
+Helpful for:
+
+- Original/simple nocturnal speed behavior.
+- Basic speed-mod save/restore.
+
+Observed files:
+
+- media/lua/client/nocturnalzombies.lua
+- media/lua/server/NocturnalZombiesServer.lua
+- media/lua/client/2HoursOfTerror.lua
+
+Observed patterns:
+
+- Applies a speed boost at night and restores oldMoveSpeed later.
+- Moves zombies using randomized pathing.
+
+Plan relevance:
+
+- Useful as a simpler reference than NocturnalZombiesFixed.
+- The fixed version appears more useful for implementation reference.
+
+
+Feature-to-Mod Map
+------------------
+
+Blood Moon scheduler:
+
+- Horde_Night/Expanded Helicopter Events
+
+Emergency broadcast warning:
+
+- Horde_Night/Expanded Helicopter Events
+
+Horde spawning/admin spawning:
+
+- Horde_Night/Expanded Helicopter Events
+- QoL/Cheat Menu
+
+Blood Moon zombie awareness/pathing:
+
+- Zombies/NocturnalZombiesFixed
+- Zombies/RestlessZombiesFixed
+- Horde_Night/OWTL_Horde_Night as current OWTL target/reference
+
+Special zombie inspiration:
+
+- Zombies/Night Sprinters
+- Zombies/dynamic zombies
+- Zombies/nocturnal zombies
+- Zombies/NocturnalZombiesFixed
+
+Traps and trap sync:
+
+- Buildings/PlayerTraps
+- Buildings/Nolan's Traps Updates
+
+Buildable defenses:
+
+- Buildings/Improved Build Menu [Build 41.51+] (no itemtweak)
+- Buildings/Improved Build Menu [Build 41.51+] (basic)
+
+Trap/defense recipes and progression:
+
+- Weapons/Scrap Weapons
+- QoL/Recycle Everything - Main Recipes
+- QoL/Recycle Everything - Extra Recipes
+- Buildings/CraftHelper41
+
+Early ranged weapons:
+
+- Bows/Remastered Kitsune's Crossbow Mod
+- Guns/Scrap Guns
+
+Death/home/admin debugging:
+
+- QoL/Cheat Menu
+
+Coordinates and spawn validation:
+
+- QoL/ZonesPOS
+- QoL/eris_minimap
+
+Vehicle escape and logistics:
+
+- Vehicles/EasyEngineRebuild
+- Vehicles/FR_Used_Vehicles/FRUsedCarsBETA
+- Vehicles/FR_Used_Vehicles/FRUsedCarsFuelTest
+
+Inventory/category cleanup:
+
+- QoL/BetterSorting
+- QoL/LitSortOGSN
+
+
+Low-Relevance Mods For Current Plan
+-----------------------------------
+
+These may be useful for polish, testing, or future compatibility, but they do not map strongly to V1 gameplay systems:
+
+- QoL/ShowSkillUpName
+- QoL/LitSortOGSN_readOnePage
+- QoL/Minimal Display Bars
+- QoL/zomboid-cnd-speech
+- Vehicles/FR_Used_Vehicles/FRUsedCarsNamesLore
+- Vehicles/FR_Used_Vehicles/FRUsedCarsNamesReal
+- Vehicles/New Car Sounds
+

@@ -1,0 +1,19 @@
+# Repo-local Codex configuration for One-Week-To-Live.
+# Keep project-specific Codex settings inside this repository.
+
+approval_policy = "on-request"
+default_permissions = "zomboid-mod"
+
+[permissions.zomboid-mod.filesystem]
+":minimal" = "read"
+":tmpdir" = "write"
+":slash_tmp" = "write"
+
+[permissions.zomboid-mod.filesystem.":workspace_roots"]
+"." = "write"
+".git" = "read"
+".codex" = "read"
+"**/*.env" = "deny"
+
+[permissions.zomboid-mod.network]
+enabled = false

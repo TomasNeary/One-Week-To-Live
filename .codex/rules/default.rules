@@ -1,0 +1,37 @@
+# Repo-local command rules for One-Week-To-Live.
+
+prefix_rule(
+    pattern = ["git", "status"],
+    decision = "allow",
+    justification = "Safe repository inspection.",
+)
+
+prefix_rule(
+    pattern = ["git", "diff"],
+    decision = "allow",
+    justification = "Safe repository inspection.",
+)
+
+prefix_rule(
+    pattern = ["git", "log"],
+    decision = "allow",
+    justification = "Safe repository inspection.",
+)
+
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "prompt",
+    justification = "Pushing to the personal GitHub repository should be explicit.",
+)
+
+prefix_rule(
+    pattern = ["git", "remote", "set-url"],
+    decision = "prompt",
+    justification = "Remote changes could affect personal/corporate GitHub separation.",
+)
+
+prefix_rule(
+    pattern = ["rm"],
+    decision = "prompt",
+    justification = "Deletion should be explicit in this mod workspace.",
+)
