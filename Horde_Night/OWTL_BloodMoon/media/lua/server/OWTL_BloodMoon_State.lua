@@ -406,6 +406,7 @@ function OWTL_BloodMoon.State.ReplaceActiveHordeGroups(groups, activeCount, queu
             requestedCount = group.requestedCount or 0,
             activeCount = group.activeCount or 0,
             queuedCount = group.queuedCount or 0,
+            currentTargetPlayerName = group.currentTargetPlayerName,
             allocatedWorldHour = group.allocatedWorldHour,
         }
     end
@@ -435,6 +436,7 @@ function OWTL_BloodMoon.State.GetActiveHordeLines()
             .. " players=" .. tostring(group.playerCount or 0)
             .. " active=" .. tostring(group.activeCount or 0)
             .. " queued=" .. tostring(group.queuedCount or 0)
+            .. " currentTarget=" .. tostring(group.currentTargetPlayerName or "none")
             .. " target=" .. tostring(math.floor(tonumber(group.targetX) or 0)) .. "," .. tostring(math.floor(tonumber(group.targetY) or 0)) .. "," .. tostring(group.targetZ or 0))
     end
 
