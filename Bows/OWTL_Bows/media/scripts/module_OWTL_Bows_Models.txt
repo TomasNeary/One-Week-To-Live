@@ -1,0 +1,26 @@
+module OWTLweapons
+{
+	model OWTL_BasicBow
+	{
+		mesh = weapons/firearm/KCM_HandmadeNoBolt,
+		texture = weapons/firearm/KCM_Handmade,
+	}
+
+	model OWTL_BasicBowDrawn
+	{
+		mesh = weapons/firearm/KCM_Handmade,
+		texture = weapons/firearm/KCM_Handmade,
+	}
+
+	model OWTL_ImprovedBow
+	{
+		mesh = weapons/firearm/KCM_CompoundNoBolt,
+		texture = weapons/firearm/KCM_Compound,
+	}
+
+	model OWTL_ImprovedBowDrawn
+	{
+		mesh = weapons/firearm/KCM_Compound,
+		texture = weapons/firearm/KCM_Compound,
+	}
+}

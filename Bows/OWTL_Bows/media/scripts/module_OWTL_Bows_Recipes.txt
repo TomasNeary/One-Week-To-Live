@@ -1,0 +1,91 @@
+module OWTLweapons
+{
+	imports
+	{
+		Base,
+	}
+
+	recipe Craft Basic Bow
+	{
+		TreeBranch,
+		Twine=2,
+		RippedSheets=2,
+		keep Saw/GardenSaw,
+		keep HuntingKnife/KitchenKnife/FlintKnife,
+		Result:OWTL_BasicBow,
+		Sound:Sawing,
+		Time:500,
+		Category:Bows,
+		AnimNode:Disassemble,
+		Prop1:Hacksaw,
+		OnGiveXP:Recipe.OnGiveXP.WoodWork5,
+	}
+
+	recipe Craft Basic Arrows (x5)
+	{
+		TreeBranch,
+		RippedSheets,
+		SharpedStone=5,
+		keep HuntingKnife/KitchenKnife/FlintKnife,
+		Result:OWTL_BasicArrow=5,
+		Sound:Sawing,
+		Time:350,
+		Category:Bows,
+		AnimNode:Disassemble,
+		Prop1:HuntingKnife,
+		OnGiveXP:Recipe.OnGiveXP.WoodWork5,
+	}
+
+	recipe Craft Improved Bow
+	{
+		Plank=2,
+		Twine=4,
+		RippedSheets=2,
+		DuctTape=1,
+		keep Saw/GardenSaw,
+		keep HuntingKnife/KitchenKnife/FlintKnife,
+		Result:OWTL_ImprovedBow,
+		Sound:Sawing,
+		Time:900,
+		Category:Bows,
+		AnimNode:Disassemble,
+		Prop1:Hacksaw,
+		SkillRequired:Woodwork=2,
+		OnGiveXP:Recipe.OnGiveXP.WoodWork5,
+		NeedToBeLearn:true,
+	}
+
+	recipe Craft Improved Arrows (x5)
+	{
+		WoodenStick=5,
+		RippedSheets,
+		SharpedStone=5,
+		DuctTape=1,
+		keep HuntingKnife/KitchenKnife/FlintKnife,
+		Result:OWTL_ImprovedArrow=5,
+		Sound:Sawing,
+		Time:500,
+		Category:Bows,
+		AnimNode:Disassemble,
+		Prop1:HuntingKnife,
+		SkillRequired:Woodwork=1,
+		OnGiveXP:Recipe.OnGiveXP.WoodWork5,
+		NeedToBeLearn:true,
+	}
+
+	fixing Fix Basic Bow
+	{
+		Require:OWTL_BasicBow,
+		Fixer:TreeBranch=1; Woodwork=1,
+		Fixer:DuctTape=1,
+		Fixer:OWTL_BasicBow; Aiming=1,
+	}
+
+	fixing Fix Improved Bow
+	{
+		Require:OWTL_ImprovedBow,
+		Fixer:Plank=1; Woodwork=2,
+		Fixer:DuctTape=2,
+		Fixer:OWTL_ImprovedBow; Aiming=2,
+	}
+}
