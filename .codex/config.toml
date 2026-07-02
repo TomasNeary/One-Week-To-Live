@@ -11,7 +11,7 @@ default_permissions = "zomboid-mod"
 
 [permissions.zomboid-mod.filesystem.":workspace_roots"]
 "." = "write"
-".git" = "read"
+".git" = "write"
 ".codex" = "read"
 "**/*.env" = "deny"
 
