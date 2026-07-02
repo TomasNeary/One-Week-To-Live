@@ -7,6 +7,13 @@ local function addEvent(event, handler)
     end
 end
 
+local function notifyPlayerAvailable()
+    local player = getPlayer()
+    if player and sendClientCommand then
+        sendClientCommand(player, "OWTL_BloodMoon", "PlayerAvailable", {})
+    end
+end
+
 local function requestStatus()
     local player = getPlayer()
     if not player then
@@ -135,3 +142,5 @@ end
 
 addEvent(Events.OnGameStart, patchChat)
 addEvent(Events.OnCreatePlayer, patchChat)
+addEvent(Events.OnGameStart, notifyPlayerAvailable)
+addEvent(Events.OnCreatePlayer, notifyPlayerAvailable)

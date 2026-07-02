@@ -13,9 +13,9 @@ Sandbox_EN = {
     Sandbox_OWTL_BloodMoon_FixedInterval = "Fixed interval length",
     Sandbox_OWTL_BloodMoon_FixedInterval_tooltip = "In-game days between Blood Moon events when using fixed interval mode.",
     Sandbox_OWTL_BloodMoon_ServerHordeCap = "Server-wide horde cap",
-    Sandbox_OWTL_BloodMoon_ServerHordeCap_tooltip = "Maximum Blood Moon zombies tracked server-wide. Horde spawning is implemented in a later slice.",
+    Sandbox_OWTL_BloodMoon_ServerHordeCap_tooltip = "Maximum Blood Moon zombies tracked server-wide.",
     Sandbox_OWTL_BloodMoon_GroupHordeCap = "Per-group horde cap",
-    Sandbox_OWTL_BloodMoon_GroupHordeCap_tooltip = "Maximum Blood Moon zombies tracked for one player group. Horde spawning is implemented in a later slice.",
+    Sandbox_OWTL_BloodMoon_GroupHordeCap_tooltip = "Maximum Blood Moon zombies tracked for one player group.",
     Sandbox_OWTL_BloodMoon_DebugLogging = "Debug logging",
     Sandbox_OWTL_BloodMoon_DebugLogging_tooltip = "Prints OWTL Blood Moon scheduler diagnostics to the log.",
 }

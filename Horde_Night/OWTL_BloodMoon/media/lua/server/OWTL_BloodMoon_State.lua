@@ -309,6 +309,9 @@ function OWTL_BloodMoon.State.StartBloodMoon(data, reason)
     data.lastTransition = reason or "started"
 
     dispatchLocalCue("OWTL_BloodMoonStartCue")
+    if OWTL_BloodMoon.Horde and OWTL_BloodMoon.Horde.StartEvent then
+        OWTL_BloodMoon.Horde.StartEvent(data)
+    end
     debugLog("Blood Moon started reason=" .. tostring(reason or "started"))
     return data
 end
@@ -339,6 +342,9 @@ function OWTL_BloodMoon.State.EndBloodMoon(data, reason)
     data.queuedHordeCount = 0
     data.lastTransition = reason or "ended"
 
+    if OWTL_BloodMoon.Horde and OWTL_BloodMoon.Horde.EndEvent then
+        OWTL_BloodMoon.Horde.EndEvent()
+    end
     OWTL_BloodMoon.State.ScheduleNext(data, getCurrentWorldAgeHours())
     dispatchLocalCue("OWTL_BloodMoonEndCue")
     debugLog("Blood Moon ended reason=" .. tostring(reason or "ended") .. " advancedStage=" .. tostring(hadGroup))
@@ -382,6 +388,36 @@ function OWTL_BloodMoon.State.MarkHordeGroupAllocated(groupId, count, queuedCoun
     return data
 end
 
+function OWTL_BloodMoon.State.ReplaceActiveHordeGroups(groups, activeCount, queuedCount)
+    local data = OWTL_BloodMoon.State.Ensure()
+    if not data then
+        return nil
+    end
+
+    data.activeHordeGroups = {}
+    for id, group in pairs(groups or {}) do
+        data.activeHordeGroups[id] = {
+            id = id,
+            playerCount = group.players and #group.players or 0,
+            playerNames = group.playerNames or {},
+            targetX = group.targetX,
+            targetY = group.targetY,
+            targetZ = group.targetZ,
+            requestedCount = group.requestedCount or 0,
+            activeCount = group.activeCount or 0,
+            queuedCount = group.queuedCount or 0,
+            allocatedWorldHour = group.allocatedWorldHour,
+        }
+    end
+
+    data.activeHordeCount = math.max(0, math.floor(tonumber(activeCount) or 0))
+    data.queuedHordeCount = math.max(0, math.floor(tonumber(queuedCount) or 0))
+    data.eventHadHordeGroup = OWTL_BloodMoon.State.CountActiveGroups(data) > 0
+    data.lastTransition = "horde-registry-synced"
+
+    return data
+end
+
 function OWTL_BloodMoon.State.GetActiveHordeLines()
     local data = OWTL_BloodMoon.State.Ensure()
     if not data then
@@ -395,7 +431,18 @@ function OWTL_BloodMoon.State.GetActiveHordeLines()
     }
 
     for id, group in pairs(data.activeHordeGroups) do
-        table.insert(lines, tostring(id) .. " active=" .. tostring(group.activeCount or 0) .. " queued=" .. tostring(group.queuedCount or 0))
+        table.insert(lines, tostring(id)
+            .. " players=" .. tostring(group.playerCount or 0)
+            .. " active=" .. tostring(group.activeCount or 0)
+            .. " queued=" .. tostring(group.queuedCount or 0)
+            .. " target=" .. tostring(math.floor(tonumber(group.targetX) or 0)) .. "," .. tostring(math.floor(tonumber(group.targetY) or 0)) .. "," .. tostring(group.targetZ or 0))
+    end
+
+    if OWTL_BloodMoon.Horde and OWTL_BloodMoon.Horde.GetReportLines then
+        local registryLines = OWTL_BloodMoon.Horde.GetReportLines()
+        for i = 1, #registryLines do
+            table.insert(lines, registryLines[i])
+        end
     end
 
     return lines
