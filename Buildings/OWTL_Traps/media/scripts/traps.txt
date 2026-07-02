@@ -61,6 +61,55 @@ module Trap
 		Sound:PZ_Hammer,
     	Time:100.0,
     }
+
+	recipe Build Simple Spiked Pit
+    {
+		Plank = 2,
+		Nails = 4,
+		keep Hammer/HammerStone,
+		keep Saw/GardenSaw,
+	   	Result:OWTL_SimpleSpikedPit,
+    	Category:Traps,
+		CanBeDoneFromFloor:true,
+		Sound:PZ_Hammer,
+		Time:180.0,
+		SkillRequired:Woodwork=1,
+		NeedToBeLearn:true,
+		OnGiveXP:Recipe.OnGiveXP.WoodWork5,
+    }
+
+	recipe Build Dug Spiked Pit
+    {
+		Plank = 4,
+		Nails = 8,
+		keep Hammer/HammerStone,
+		keep Saw/GardenSaw,
+		keep Shovel/Shovel2/HandShovel,
+	   	Result:OWTL_DugSpikedPit,
+    	Category:Traps,
+		CanBeDoneFromFloor:true,
+		Sound:PZ_Hammer,
+		Time:320.0,
+		SkillRequired:Woodwork=2,
+		NeedToBeLearn:true,
+		OnGiveXP:Recipe.OnGiveXP.WoodWork5,
+    }
+
+	recipe Build Spiked Log Barricade
+    {
+		Log = 2,
+		Nails = 4,
+		keep Hammer/HammerStone,
+		keep Saw/GardenSaw,
+	   	Result:OWTL_SpikedLogBarricade,
+    	Category:Traps,
+		CanBeDoneFromFloor:true,
+		Sound:PZ_Hammer,
+		Time:260.0,
+		SkillRequired:Woodwork=2,
+		NeedToBeLearn:true,
+		OnGiveXP:Recipe.OnGiveXP.WoodWork5,
+    }
 	recipe Craft Propane Bomb Trap
     {
 		PropaneTank=8,
@@ -117,6 +166,66 @@ module Trap
         DisplayName         	= Spike Trap (Worn Out),
         icon 			= Spiketrapclosed,
 		ResizeWorldIcon = 0.7,
+    }
+
+	item OWTL_SimpleSpikedPit
+    {
+        Weight    		= 8.0,
+        Type    		= Normal,
+        DisplayName     = Simple Spiked Pit,
+        icon 			= Spiketrap,
+		ResizeWorldIcon = 0.7,
+    }
+
+	item OWTL_DugSpikedPit
+    {
+        Weight    		= 14.0,
+        Type    		= Normal,
+        DisplayName     = Dug Spiked Pit,
+        icon 			= Spiketrap,
+		ResizeWorldIcon = 0.8,
+    }
+
+	item OWTL_SpikedLogBarricade
+    {
+        Weight    		= 16.0,
+        Type    		= Normal,
+        DisplayName     = Spiked Log Barricade,
+        icon 			= Spiketrap,
+		ResizeWorldIcon = 0.9,
+    }
+
+	item OWTL_BasicPitTrapsMagazine
+    {
+        Weight    		= 0.1,
+        Type    		= Literature,
+        DisplayName     = Basic Pit Traps,
+        Icon 			= Magazine,
+		StaticModel     = Magazine,
+		TeachedRecipes  = Build Simple Spiked Pit,
+		ReplaceOnUse    = OWTL_BasicPitTrapsMagazine,
+    }
+
+	item OWTL_AdvancedPitTrapsMagazine
+    {
+        Weight    		= 0.1,
+        Type    		= Literature,
+        DisplayName     = Advanced Pit Traps,
+        Icon 			= Magazine,
+		StaticModel     = Magazine,
+		TeachedRecipes  = Build Dug Spiked Pit,
+		ReplaceOnUse    = OWTL_AdvancedPitTrapsMagazine,
+    }
+
+	item OWTL_SpikedBarricadesMagazine
+    {
+        Weight    		= 0.1,
+        Type    		= Literature,
+        DisplayName     = Spiked Barricades,
+        Icon 			= Magazine,
+		StaticModel     = Magazine,
+		TeachedRecipes  = Build Spiked Log Barricade,
+		ReplaceOnUse    = OWTL_SpikedBarricadesMagazine,
     }
 	
 	

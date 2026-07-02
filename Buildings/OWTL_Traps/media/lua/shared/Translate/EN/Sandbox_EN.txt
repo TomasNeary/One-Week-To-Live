@@ -1,5 +1,5 @@
 Sandbox_EN = {
     Sandbox_OWTL_Traps = "OWTL Traps",
     Sandbox_OWTL_Traps_PlayerDamageEnabled = "Trap player damage enabled",
-    Sandbox_OWTL_Traps_PlayerDamageEnabled_tooltip = "Allows OWTL traps to damage players. Trap behavior changes are implemented in a later slice.",
+    Sandbox_OWTL_Traps_PlayerDamageEnabled_tooltip = "Allows OWTL traps to damage players when stepped on.",
 }
