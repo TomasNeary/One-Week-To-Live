@@ -15,6 +15,7 @@ local function debugLog(message)
     end
 end
 
+<<<<<<< HEAD
 local function dispatchLocalCue(cueName)
     if not cueName then
         return
@@ -32,6 +33,8 @@ local function dispatchLocalCue(cueName)
     end
 end
 
+=======
+>>>>>>> c4f761b22ee0330b26c5511191d5c80f5f227f97
 local function getCurrentWorldAgeHours()
     local gameTime = getGameTime()
     if gameTime and gameTime.getWorldAgeHours then
@@ -308,7 +311,10 @@ function OWTL_BloodMoon.State.StartBloodMoon(data, reason)
     data.lastStartedWorldHour = math.floor(worldAgeHours)
     data.lastTransition = reason or "started"
 
+<<<<<<< HEAD
     dispatchLocalCue("OWTL_BloodMoonStartCue")
+=======
+>>>>>>> c4f761b22ee0330b26c5511191d5c80f5f227f97
     debugLog("Blood Moon started reason=" .. tostring(reason or "started"))
     return data
 end
@@ -340,7 +346,10 @@ function OWTL_BloodMoon.State.EndBloodMoon(data, reason)
     data.lastTransition = reason or "ended"
 
     OWTL_BloodMoon.State.ScheduleNext(data, getCurrentWorldAgeHours())
+<<<<<<< HEAD
     dispatchLocalCue("OWTL_BloodMoonEndCue")
+=======
+>>>>>>> c4f761b22ee0330b26c5511191d5c80f5f227f97
     debugLog("Blood Moon ended reason=" .. tostring(reason or "ended") .. " advancedStage=" .. tostring(hadGroup))
     return data
 end

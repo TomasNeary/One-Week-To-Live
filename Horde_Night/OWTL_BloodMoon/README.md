@@ -52,6 +52,7 @@ Implemented admin commands:
 - `/owtl reset`
 - `/owtl help`
 
+<<<<<<< HEAD
 Phase 3 broadcast/audio behavior:
 
 - `media/lua/server/OWTL_BloodMoon_Broadcast.lua` wraps `WeatherChannel.FillBroadcast`, calls the previous implementation first, then appends Blood Moon warning lines only during the one-day warning window.
@@ -63,5 +64,8 @@ Phase 3 broadcast/audio behavior:
 - Server-side start/end transitions broadcast cue commands to clients in multiplayer and call local cue playback directly in single-player where available.
 
 This slice initializes, advances, forces, reports scheduler state, injects AEBS warning text, and plays local start/end cues only. It does not spawn hordes, apply death persistence, or change trap behavior.
+=======
+This slice initializes, advances, forces, and reports scheduler state only. It does not spawn hordes, apply death persistence, or change trap behavior.
+>>>>>>> c4f761b22ee0330b26c5511191d5c80f5f227f97
 
 Horde stage advances at event end only when `eventHadHordeGroup` is true, at least one active group exists, `activeHordeCount` is greater than zero, or `queuedHordeCount` is greater than zero.

@@ -22,11 +22,14 @@ constants.GROUP_DISTANCE_TILES = 100
 constants.HORDE_STAGES = { 20, 35, 55, 80, 110, 150 }
 constants.FINAL_STAGE_ZOMBIES = 150
 
+<<<<<<< HEAD
 constants.SOUND_CUES = {
     OWTL_BloodMoonStartCue = "ZombieSurprisedPlayer",
     OWTL_BloodMoonEndCue = "Thunder",
 }
 
+=======
+>>>>>>> c4f761b22ee0330b26c5511191d5c80f5f227f97
 function OWTL_BloodMoon.GetStageZombieCount(stage)
     if not stage or stage < 1 then
         return constants.HORDE_STAGES[1]
