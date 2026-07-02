@@ -1,0 +1,19 @@
+Continue implementing One Week To Live.
+
+Read docs/IMPLEMENTATION_PLAN.md and proceed with Phase 9 only: Bows, Arrows, And Early Horde Combat.
+
+Use AGENTS.md, zomboid-mod, and zomboid-lua.
+
+Deliver:
+- Basic Bow and Improved Bow.
+- Basic Arrows and Improved Arrows.
+- Basic Bow and Basic Arrows craftable from game start.
+- Improved Bow and Improved Arrows through progression.
+- No crossbows in V1 unless trivial.
+- No zombie-attached bow or arrow spawns.
+- Use Aiming for accuracy/damage and Reloading for draw/reload speed.
+- Corpse-based arrow recovery.
+- No missed-shot/ground recovery.
+- Balance as viable early horde defense with preparation, below firearms for burst killing.
+
+Use bundled Kitsune Crossbow as reference only. Document all best-guess tuning values.

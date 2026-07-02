@@ -14,6 +14,7 @@ Primary planning references:
 
 - `docs/GAMEPLAY_PLAN.md`
 - `docs/EXTERNAL_MODS.txt`
+- `docs/IMPLEMENTATION_PLAN.md`
 
 Resolved planning decisions:
 

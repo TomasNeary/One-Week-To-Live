@@ -1,0 +1,9 @@
+VERSION = 1,
+
+option OWTL_Traps.PlayerDamageEnabled
+{
+    type = boolean,
+    default = true,
+    page = OWTL_Traps,
+    translation = OWTL_Traps_PlayerDamageEnabled,
+}

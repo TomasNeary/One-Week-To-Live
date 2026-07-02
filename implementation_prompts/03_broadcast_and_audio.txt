@@ -1,0 +1,15 @@
+Continue implementing One Week To Live.
+
+Read docs/IMPLEMENTATION_PLAN.md and proceed with Phase 3 only: Emergency Broadcast And Audio Hooks.
+
+Use AGENTS.md, zomboid-mod, and zomboid-lua.
+
+Do not implement horde spawning, death persistence, traps, or bows yet.
+
+Deliver:
+- Blood Moon warning injected into the emergency broadcast cycle one day before the event.
+- Diegetic but clear stage-scaled warning text.
+- Semantic sound hooks OWTL_BloodMoonStartCue and OWTL_BloodMoonEndCue.
+- Player-local start/end cue calls using selected base-game sound IDs.
+
+Verify vanilla broadcast behavior is preserved where possible.

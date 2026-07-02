@@ -1,0 +1,10 @@
+Sandbox_EN = {
+    Sandbox_OWTL_Player = "OWTL Player",
+    Sandbox_OWTL_Player_DeathDropMode = "Death drop mode",
+    Sandbox_OWTL_Player_DeathDropMode_tooltip = "Controls which inventory is dropped by the OWTL player lifecycle system. Behavior is implemented in a later slice.",
+    Sandbox_OWTL_Player_DeathDropMode_option1 = "Drop All",
+    Sandbox_OWTL_Player_DeathDropMode_option2 = "Drop Backpack Only",
+    Sandbox_OWTL_Player_DeathDropMode_option3 = "Keep Inventory",
+    Sandbox_OWTL_Player_DeathPenaltiesEnabled = "Death penalties enabled",
+    Sandbox_OWTL_Player_DeathPenaltiesEnabled_tooltip = "Enables OWTL respawn penalties. Penalty behavior is implemented in a later slice.",
+}

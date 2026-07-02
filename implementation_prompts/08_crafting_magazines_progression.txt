@@ -1,0 +1,17 @@
+Continue implementing One Week To Live.
+
+Read docs/IMPLEMENTATION_PLAN.md and proceed with Phase 8 only: Crafting, Magazines, And Progression.
+
+Use AGENTS.md, zomboid-mod, and zomboid-lua.
+
+Deliver:
+- Trap recipe/progression integration:
+  - Simple Spiked Pit: Carpentry 2 natural unlock, Basic Pit Traps magazine, Carpentry 1 build minimum.
+  - Dug Spiked Pit: Carpentry 3 natural unlock, Advanced Pit Traps magazine, Carpentry 2 build minimum.
+  - Spiked Log Barricade: Carpentry 4 natural unlock, Spiked Barricades magazine, Carpentry 2 build minimum.
+- Magazine/schematic items using vanilla magazine/book icons.
+- Literature/schematic loot only as needed.
+- No direct weapon/ammo loot distributions.
+- XP awards if default build/recipe XP is insufficient.
+
+Verify recipes appear and known-recipe/skill gates are represented correctly in code.

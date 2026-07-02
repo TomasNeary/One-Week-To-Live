@@ -1,0 +1,18 @@
+Continue implementing One Week To Live.
+
+Read docs/IMPLEMENTATION_PLAN.md and proceed with Phase 5 only: Horde Awareness And Dawn Reversion.
+
+Use AGENTS.md, zomboid-mod, and zomboid-lua.
+
+Do not implement death persistence, traps, or bows yet.
+
+Deliver:
+- Verify whether Build 41 zombie target/awareness follows player movement automatically.
+- If needed, add 3-second manual target/path refresh.
+- Retarget horde zombies on player death/logout to another valid player.
+- Retarget to respawned player when appropriate.
+- Keep non-Blood Moon zombies unchanged.
+- At dawn, clear OWTL tracking/modData and safely clear forced target/path state if available.
+- Never despawn remaining Blood Moon zombies.
+
+Report what could and could not be verified without in-game testing.

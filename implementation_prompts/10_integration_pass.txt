@@ -1,0 +1,14 @@
+Continue implementing One Week To Live.
+
+Read docs/IMPLEMENTATION_PLAN.md and proceed with Phase 10 only: Integration And Compatibility Pass.
+
+Use AGENTS.md, zomboid-mod, and zomboid-lua.
+
+Deliver:
+- Full static review across OWTL_BloodMoon, OWTL_Player, OWTL_Traps, and OWTL_Bows.
+- Verify no bundled third-party mods were edited.
+- Run available syntax/static checks.
+- Produce single-player manual test checklist results where possible.
+- Produce multiplayer manual test checklist and mark unverified items.
+- Check symlinked paths under /Users/tneary/Zomboid/mods only if local game behavior requires it.
+- Update docs/BUILD_TODO.md or create a known-issues note with remaining playtest items.

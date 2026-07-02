@@ -1,0 +1,19 @@
+Continue implementing One Week To Live.
+
+Read docs/IMPLEMENTATION_PLAN.md and proceed with Phase 4 only: Horde Allocation, Spawning, And Tracking.
+
+Use AGENTS.md, zomboid-mod, and zomboid-lua.
+
+Do not implement death persistence, traps, or bows yet.
+
+Deliver:
+- Distance-based player grouping at Blood Moon start.
+- Joiner/respawn merge into nearest active group within 100 tiles.
+- Server-wide horde cap 300 and per-group cap 120.
+- Queued spawn counts when caps or spawn failures prevent full spawn.
+- Spawn selection 60-100 tiles from target, preferring outdoor valid squares.
+- Blood Moon zombie modData tagging.
+- Server-side active horde registry.
+- Admin/debug reporting for active groups and counts.
+
+Verify single-player spawning with static/log checks; document unverified multiplayer behavior.

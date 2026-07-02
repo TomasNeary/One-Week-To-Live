@@ -1,0 +1,21 @@
+Continue implementing One Week To Live.
+
+Read docs/IMPLEMENTATION_PLAN.md and proceed with Phase 6 only: Persistent Character, Death Drops, And Home Respawn.
+
+Use AGENTS.md, zomboid-mod, and zomboid-lua.
+
+Do not implement traps or bows yet.
+
+Deliver:
+- OWTL_Player persistence for skills, recipes, traits, profession, map knowledge, known media, and partial XP where feasible.
+- Fallback persistence for skills, recipes, traits, and profession.
+- Infection reset to zero on every respawn.
+- Death drop modes: Drop All, Drop Backpack Only, Keep Inventory.
+- Default Drop Backpack Only.
+- Disabled-by-default death penalties with table: broken limb, burn, severe pain, exhaustion/fatigue.
+- Bed/home assignment context action: Set as Home.
+- Confirmation: Home set. You will respawn here.
+- Home respawn fallback: exact home, nearby safe square, old valid location, random.
+- Multiplayer safehouse permission checks where available.
+
+Verify with static checks and document required in-game death/respawn tests.

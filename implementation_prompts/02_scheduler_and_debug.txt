@@ -1,0 +1,18 @@
+Continue implementing One Week To Live.
+
+Read docs/IMPLEMENTATION_PLAN.md and proceed with Phase 2 only: Scheduler And Admin Debug Commands.
+
+Use AGENTS.md, zomboid-mod, and zomboid-lua.
+
+Do not implement horde spawning, death persistence, traps, or bows yet.
+
+Deliver:
+- Blood Moon scheduler initialization.
+- World-age based schedule persistence.
+- Random 5-7 day and fixed interval support.
+- 21:00 start / 06:00 end state transitions.
+- Stage advancement only when a horde group was allocated/spawned/queued.
+- Admin chat commands for status/schedule, force warning, force start, force end, set stage, reset scheduler, and active horde status.
+- Debug logging behind a debug setting.
+
+Verify with static checks and explain unverified in-game behavior.

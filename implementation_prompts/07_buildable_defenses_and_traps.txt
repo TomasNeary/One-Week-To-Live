@@ -1,0 +1,22 @@
+Continue implementing One Week To Live.
+
+Read docs/IMPLEMENTATION_PLAN.md and proceed with Phase 7 only: Buildable Defenses And Traps.
+
+Use AGENTS.md, zomboid-mod, and zomboid-lua.
+
+Do not implement bows yet.
+
+Deliver:
+- Build-menu defenses in Buildings/OWTL_Traps:
+  - Simple Spiked Pit.
+  - Dug Spiked Pit.
+  - Spiked Log Barricade.
+- Dug Spiked Pit multistage build if reliable, otherwise shovel-required single build action.
+- Server-authoritative trap triggering.
+- Player damage toggle.
+- Damage plus durability/use loss.
+- Timed context repair action consuming materials.
+- V1 repair restores full durability/uses.
+- Multiplayer state sync for trap condition/use state.
+
+Use relative balance targets from docs/IMPLEMENTATION_PLAN.md and take best-guess values based on reference mods. Document values for playtesting.

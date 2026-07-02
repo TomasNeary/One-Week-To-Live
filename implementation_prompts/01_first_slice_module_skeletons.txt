@@ -1,0 +1,28 @@
+Use the repository instructions in AGENTS.md.
+
+We are implementing the One Week To Live Project Zomboid mod.
+
+Start with docs/IMPLEMENTATION_PLAN.md. Also read:
+- docs/GAMEPLAY_PLAN.md
+- docs/BUILD_TODO.md
+- docs/EXTERNAL_MODS.txt
+- .agents/skills/zomboid-mod/SKILL.md
+- .agents/skills/zomboid-lua/SKILL.md
+
+Begin with the "First Implementation Slice" from docs/IMPLEMENTATION_PLAN.md:
+
+1. Audit existing OWTL module folders and mod.info files.
+2. Create Horde_Night/OWTL_BloodMoon.
+3. Create Player/OWTL_Player.
+4. Add native sandbox settings and shared constants.
+5. Add scheduler state schema and admin status command.
+
+Follow these rules:
+- Target Project Zomboid Build 41.
+- Use zomboid-mod for mod structure and mod.info work.
+- Use zomboid-lua for all Lua/Kahlua/client/server/shared work.
+- Do not edit bundled third-party mods.
+- Keep One Week To Live code in OWTL-prefixed mod folders.
+- Inspect relevant mod.info and nearby media/lua and media/scripts files before editing.
+- Implement only the first slice. Do not start horde spawning, death persistence, traps, or bows yet.
+- Verify with repository/static checks where possible and report any unverified in-game behavior.
