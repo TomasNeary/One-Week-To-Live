@@ -3,6 +3,8 @@ OWTL_BloodMoon.PlayerData = OWTL_BloodMoon.PlayerData or {}
 
 local constants = OWTL_BloodMoon.Constants
 
+-- Ensures a player-specific Blood Moon modData table exists. The horde server
+-- writes group membership here so status survives normal object references.
 function OWTL_BloodMoon.PlayerData.Ensure(player)
     if not player or not player.getModData then
         return nil

@@ -8,6 +8,7 @@ local defs = OWTL_Traps.Definitions
 local lastPlayerTrigger = {}
 local zombieScanTick = 0
 
+-- Protected-call helper for Java-backed PZ methods.
 local function safeCall(fn)
     local ok, result = pcall(fn)
     if ok then
@@ -16,6 +17,8 @@ local function safeCall(fn)
     return nil
 end
 
+-- Converts "Module.Type" into "Type". Some inventory removal APIs want the
+-- simple type rather than the full type.
 local function simpleType(fullType)
     local dot = string.find(fullType, ".", 1, true)
     if dot then
@@ -24,6 +27,8 @@ local function simpleType(fullType)
     return fullType
 end
 
+-- Finds the square represented by the right-clicked world objects. If none have
+-- a square, it falls back to the player's current square.
 local function getSquareFromWorldObjects(worldobjects)
     if not worldobjects then
         return nil
@@ -38,6 +43,8 @@ local function getSquareFromWorldObjects(worldobjects)
     return player and safeCall(function() return player:getCurrentSquare() end) or nil
 end
 
+-- Counts matching items in inventory, including bags. It tries full type first
+-- and simple type second for compatibility with different PZ APIs.
 local function getItemCount(inventory, fullType)
     if not inventory then
         return 0
@@ -47,6 +54,8 @@ local function getItemCount(inventory, fullType)
         or 0
 end
 
+-- Checks for required tools that are kept after building. Some requirements
+-- accept multiple item types, such as Hammer or HammerStone.
 local function hasKeepTool(inventory, toolName)
     if not inventory then
         return false
@@ -68,6 +77,8 @@ local function hasKeepTool(inventory, toolName)
     return safeCall(function() return inventory:containsTypeRecurse(toolName) end) == true
 end
 
+-- Validates materials, kept tools, Carpentry level, and recipe unlocks. The
+-- repair path skips tools/skill/recipe checks and only checks repair materials.
 local function hasMaterials(player, trapDef, repair)
     if not player or not trapDef then
         return false
@@ -95,6 +106,8 @@ local function hasMaterials(player, trapDef, repair)
     return true
 end
 
+-- Removes consumed materials from the player's inventory. Kept tools are never
+-- passed into this function.
 local function consumeMaterials(player, materials)
     local inventory = player and player:getInventory()
     if not inventory or not materials then
@@ -108,6 +121,7 @@ local function consumeMaterials(player, materials)
     return true
 end
 
+-- Gives Carpentry XP after a successful build.
 local function awardBuildXp(player, trapDef)
     if not player or not trapDef or not trapDef.buildXp or trapDef.buildXp <= 0 then
         return
@@ -118,6 +132,7 @@ local function awardBuildXp(player, trapDef)
     end
 end
 
+-- Detects whether a square already has an active OWTL trap.
 local function squareHasTrap(square)
     if not square then
         return false
@@ -139,6 +154,7 @@ local function squareHasTrap(square)
     return false
 end
 
+-- Finds the world item and inventory item for an OWTL trap on a square.
 local function findTrapWorldItem(square)
     local objects = square and safeCall(function() return square:getWorldObjects() end) or nil
     if not objects then
@@ -154,6 +170,8 @@ local function findTrapWorldItem(square)
     return nil, nil
 end
 
+-- Updates trap uses/condition/active state on both the item and its world item,
+-- then transmits modData so clients/server see the same values.
 local function syncTrapLocal(square, worldItem, item, trapDef, uses)
     local active = uses > 0
     item:getModData().uses = uses
@@ -169,6 +187,8 @@ local function syncTrapLocal(square, worldItem, item, trapDef, uses)
     safeCall(function() square:transmitModdata() end)
 end
 
+-- Applies local zombie damage. In single-player this can be authoritative; in
+-- multiplayer the server version handles zombie scans instead.
 local function applyZombieDamageLocal(zombie, trapDef)
     local health = zombie and safeCall(function() return zombie:getHealth() end) or nil
     if not health then
@@ -186,6 +206,8 @@ local function applyZombieDamageLocal(zombie, trapDef)
     end
 end
 
+-- Applies foot damage to a player who steps on a trap, unless sandbox disables
+-- player damage.
 local function applyPlayerDamageLocal(player, trapDef)
     if not player or not trapDef or not defs.IsPlayerDamageEnabled() then
         return
@@ -204,6 +226,7 @@ local function applyPlayerDamageLocal(player, trapDef)
     end
 end
 
+-- Triggers a trap on one square against a zombie or player, then spends one use.
 local function triggerTrapLocal(square, target)
     local worldItem, item = findTrapWorldItem(square)
     local trapDef = item and defs.Get(item:getModData().owtlTrapId)
@@ -223,6 +246,8 @@ local function triggerTrapLocal(square, target)
     return true
 end
 
+-- Builds a trap immediately in local/single-player mode. Multiplayer builds are
+-- sent to the server from the timed action instead.
 local function placeTrapLocal(player, trapId, square)
     local trapDef = defs.Get(trapId)
     if not player or not trapDef or not square or squareHasTrap(square) then
@@ -259,10 +284,14 @@ end
 
 OWTLBuildTrapAction = ISBaseTimedAction:derive("OWTLBuildTrapAction")
 
+-- Timed action validation runs before and during the progress bar. Returning
+-- false cancels the action if materials disappeared or the square gained a trap.
 function OWTLBuildTrapAction:isValid()
     return self.character and self.square and hasMaterials(self.character, self.trapDef, false) and not squareHasTrap(self.square)
 end
 
+-- Timed action completion. Clients request server build; local games build
+-- directly.
 function OWTLBuildTrapAction:perform()
     if isClient and isClient() then
         sendClientCommand(self.character, defs.COMMAND_MODULE, "BuildTrap", {
@@ -277,6 +306,8 @@ function OWTLBuildTrapAction:perform()
     ISBaseTimedAction.perform(self)
 end
 
+-- Constructor for the build timed action. In Lua, colon syntax passes self
+-- automatically, and this returns the new action table.
 function OWTLBuildTrapAction:new(character, square, trapDef)
     local o = ISBaseTimedAction.new(self, character)
     o.character = character
@@ -291,10 +322,14 @@ end
 
 OWTLRepairTrapAction = ISBaseTimedAction:derive("OWTLRepairTrapAction")
 
+-- Repair action remains valid while the character, square, item, and materials
+-- still exist.
 function OWTLRepairTrapAction:isValid()
     return self.character and self.square and self.worldItem and hasMaterials(self.character, self.trapDef, true)
 end
 
+-- Completes a repair. Multiplayer sends the repair request to the server;
+-- single-player consumes materials and resets uses locally.
 function OWTLRepairTrapAction:perform()
     if isClient and isClient() then
         sendClientCommand(self.character, defs.COMMAND_MODULE, "RepairTrap", {
@@ -319,6 +354,7 @@ function OWTLRepairTrapAction:perform()
     ISBaseTimedAction.perform(self)
 end
 
+-- Constructor for the repair timed action.
 function OWTLRepairTrapAction:new(character, square, worldItem, trapDef)
     local o = ISBaseTimedAction.new(self, character)
     o.character = character
@@ -332,6 +368,8 @@ function OWTLRepairTrapAction:new(character, square, worldItem, trapDef)
     return o
 end
 
+-- Builds the hover tooltip for build/repair menu entries, coloring each
+-- requirement green when satisfied and red when missing.
 local function addTooltip(option, player, trapDef, repair)
     local tooltip = ISToolTip:new()
     tooltip:initialise()
@@ -369,6 +407,7 @@ local function addTooltip(option, player, trapDef, repair)
     option.toolTip = tooltip
 end
 
+-- Context-menu callback that queues a build timed action.
 local function onBuildTrap(worldobjects, playerIndex, trapId, square)
     local player = getSpecificPlayer(playerIndex)
     local trapDef = defs.Get(trapId)
@@ -378,6 +417,7 @@ local function onBuildTrap(worldobjects, playerIndex, trapId, square)
     ISTimedActionQueue.add(OWTLBuildTrapAction:new(player, square, trapDef))
 end
 
+-- Finds all OWTL trap world items among the clicked world objects' squares.
 local function findTrapWorldItems(worldobjects)
     local result = {}
     for _, object in ipairs(worldobjects or {}) do
@@ -396,6 +436,7 @@ local function findTrapWorldItems(worldobjects)
     return result
 end
 
+-- Context-menu callback that queues a repair timed action for one trap item.
 local function onRepairTrap(worldobjects, playerIndex, trapInfo)
     local player = getSpecificPlayer(playerIndex)
     if not player or not trapInfo then
@@ -409,6 +450,8 @@ local function onRepairTrap(worldobjects, playerIndex, trapInfo)
     ISTimedActionQueue.add(OWTLRepairTrapAction:new(player, trapInfo.square, trapInfo.worldItem, trapDef))
 end
 
+-- Adds the "Build OWTL Defenses" submenu and repair options to the world
+-- right-click menu.
 local function addBuildMenu(playerIndex, context, worldobjects, test)
     if test and ISWorldObjectContextMenu and ISWorldObjectContextMenu.Test then
         return true
@@ -449,6 +492,8 @@ local function addBuildMenu(playerIndex, context, worldobjects, test)
     end
 end
 
+-- Checks whether the player is standing on an active trap and triggers it with
+-- a short cooldown per square to prevent rapid repeated hits.
 local function playerTriggerCheck(player)
     if not player or not defs.IsPlayerDamageEnabled() then
         return
@@ -477,6 +522,8 @@ local function playerTriggerCheck(player)
     end
 end
 
+-- Single-player/local zombie scan. Multiplayer zombie triggering is performed
+-- by the server file.
 local function zombieTriggerCheck(player)
     if isClient and isClient() then
         return
@@ -502,6 +549,8 @@ local function zombieTriggerCheck(player)
     end
 end
 
+-- Player update hook: grant natural recipes, check player trap damage, and in
+-- local mode scan zombies.
 local function onPlayerUpdate(player)
     defs.GrantNaturalRecipes(player)
     playerTriggerCheck(player)

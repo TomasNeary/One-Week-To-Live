@@ -5,6 +5,9 @@ Trap.version = "1.0";
 Trap.author = "Nolan";
 Trap.modName = "Trap";
 
+-- Legacy Player Traps server command handler kept in the OWTL trap folder.
+-- It receives commands from the legacy client traps.lua file and mirrors trap
+-- state onto the server's square/world item modData.
 Trap.OnClientCommand = function(module, command, player, args)
 	if not isServer() then return end
 	if module ~= "Trap" then return end; 

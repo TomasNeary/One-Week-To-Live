@@ -5,6 +5,8 @@ By Nolan Ritchie
 
 ]]
 
+-- Legacy helper that chooses a random body part and returns that BodyPart
+-- object from the player's BodyDamage.
 function getRandomBodyPart(player)
 	
 	local parttohurt;
@@ -38,6 +40,9 @@ function getRandomBodyPart(player)
 	
 end
 
+-- Legacy recipe callback for placing a trap item on the player's current
+-- square. It prevents duplicate traps, moves the item from inventory to the
+-- world, marks modData, and tells the server about the placed trap.
 function SetTrapDown(items, result, player)
 local theTraptoSet;
 	for i=0, items:size()-1 do
@@ -78,6 +83,8 @@ local theTraptoSet;
 	
 end
 
+-- Legacy texture helper. It temporarily creates an item, reads its texture, then
+-- removes the temporary item from inventory.
 function getTextureFor(name)
 
 	--getPlayer():Say(name);
@@ -90,6 +97,9 @@ function getTextureFor(name)
 
 end
 
+-- Legacy trap trigger function. Depending on trap type, it injures the player,
+-- clears the set flag, removes the set trap world item, and may place a closed
+-- trap item back on the square.
 function HandleTrap(player, trap)
 	if(trap:getType() == "BearTrap") and (trap:getModData().isSet == true or trap:getWorldItem():getModData().isSet == true) then
 		local BP;
@@ -174,6 +184,8 @@ function HandleTrap(player, trap)
 	end
 end
 
+-- Legacy per-player check for standing on a set trap. The immuneToTrap flag is
+-- used so the player who just placed a trap is not immediately hit by it.
 function CheckForTrap(player)
 	if(player:getCurrentSquare() ~= nil) then
 		if (player:getCurrentSquare():getModData().isTrapSet == true) and (player:getModData().immuneToTrap ~= true) then
@@ -194,12 +206,16 @@ function CheckForTrap(player)
 	end
 end
 
+-- Legacy OnPlayerUpdate handler. It checks traps every update and removes the
+-- placeholder "Nothing" item that older recipes may create.
 function TrapupdateThePlayer(player)
 	
 	CheckForTrap(player);
 	player:getInventory():Remove("Nothing");
 end
 
+-- Legacy key handler left mostly for debugging. Key number 210 used to print
+-- trap state while testing.
 function TrapsKeysUp(keyNum) 
 local player = getPlayer();
 	--getPlayer():Say(tostring(keyNum));	

@@ -1,6 +1,8 @@
 OWTL_Bows = OWTL_Bows or {}
 OWTL_Bows.Client = OWTL_Bows.Client or {}
 
+-- Bow definitions are a Lua table keyed by item type. Each entry tells the
+-- sprite updater which model to show when the bow is empty or loaded.
 local BOWS = {
     OWTL_BasicBow = {
         emptySprite = "OWTLweapons.OWTL_BasicBow",
@@ -12,6 +14,8 @@ local BOWS = {
     },
 }
 
+-- Arrow definitions are keyed by ammo full type. The mod stores hit counts on a
+-- zombie, then uses these chances to decide what can be looted from the corpse.
 local ARROWS = {
     ["OWTLweapons.OWTL_BasicArrow"] = {
         modDataKey = "OWTL_BasicArrows",
@@ -29,6 +33,8 @@ local ARROWS = {
     },
 }
 
+-- Runs a risky call safely. If a game method is unavailable, pcall prevents an
+-- error from breaking all weapon event handling.
 local function safeCall(fn)
     local ok, result = pcall(fn)
     if ok then
@@ -37,15 +43,20 @@ local function safeCall(fn)
     return nil
 end
 
+-- Returns the bow definition for an inventory item, or nil when the item is not
+-- one of this mod's bows.
 local function getBowDef(item)
     local itemType = item and safeCall(function() return item:getType() end) or nil
     return itemType and BOWS[itemType] or nil
 end
 
+-- Boolean convenience wrapper around getBowDef().
 local function isBow(item)
     return getBowDef(item) ~= nil
 end
 
+-- Updates a bow's visible weapon sprite based on current loaded ammo count.
+-- The game model is reset by the caller so the new sprite appears in-hand.
 local function setBowSprite(item)
     local bowDef = getBowDef(item)
     if not bowDef then
@@ -60,6 +71,7 @@ local function setBowSprite(item)
     return true
 end
 
+-- Checks the player's primary hand item and refreshes it if it is an OWTL bow.
 local function refreshPrimaryBow(player)
     local item = player and safeCall(function() return player:getPrimaryHandItem() end) or nil
     if setBowSprite(item) then
@@ -67,6 +79,8 @@ local function refreshPrimaryBow(player)
     end
 end
 
+-- When a bow hits a zombie, increment a counter on that zombie's modData. The
+-- arrow itself is not added to loot yet; recovery happens when the zombie dies.
 local function onWeaponHitCharacter(attacker, target, weapon, damage)
     if not weapon or not target or not isBow(weapon) then
         return
@@ -86,6 +100,8 @@ local function onWeaponHitCharacter(attacker, target, weapon, damage)
     modData[arrowDef.modDataKey] = (tonumber(modData[arrowDef.modDataKey]) or 0) + 1
 end
 
+-- Converts the stored hit count for one arrow type into corpse inventory items.
+-- Each arrow can be recovered intact, recovered broken, or lost.
 local function recoverArrows(zombie, arrowDef)
     local modData = zombie and safeCall(function() return zombie:getModData() end) or nil
     local inventory = zombie and safeCall(function() return zombie:getInventory() end) or nil
@@ -109,11 +125,14 @@ local function recoverArrows(zombie, arrowDef)
     modData[arrowDef.modDataKey] = 0
 end
 
+-- Death event hook. It runs recovery for each arrow type the mod knows about.
 local function onZombieDead(zombie)
     recoverArrows(zombie, ARROWS["OWTLweapons.OWTL_BasicArrow"])
     recoverArrows(zombie, ARROWS["OWTLweapons.OWTL_ImprovedArrow"])
 end
 
+-- Swing/hit hook. After firing, the loaded ammo count may have changed, so the
+-- bow sprite is refreshed.
 local function onWeaponSwingHitPoint(player, weapon)
     if not weapon or not isBow(weapon) then
         return
@@ -122,12 +141,16 @@ local function onWeaponSwingHitPoint(player, weapon)
     safeCall(function() player:resetEquippedHandsModels() end)
 end
 
+-- Equip hook. A newly equipped bow gets the correct loaded/empty sprite
+-- immediately.
 local function onEquipPrimary(player, item)
     if isBow(item) then
         refreshPrimaryBow(player)
     end
 end
 
+-- Periodic fallback. If another mod or game action changes ammo state without
+-- firing an event, this keeps the visible bow sprite in sync.
 local function onPlayerUpdate(player)
     refreshPrimaryBow(player)
 end

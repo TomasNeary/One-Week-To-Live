@@ -4,6 +4,7 @@ require "Items/ItemPicker"
 OWTL_Traps = OWTL_Traps or {}
 OWTL_Traps.Loading = OWTL_Traps.Loading or {}
 
+-- Appends item/weight pairs to an existing loot distribution target.
 local function insertItems(target, items)
     if not target or not target.items then
         return
@@ -14,6 +15,8 @@ local function insertItems(target, items)
     end
 end
 
+-- These tables use Project Zomboid's alternating item full type and weight
+-- format for loot distributions.
 local magazinesBookstore = {
     "Trap.OWTL_BasicPitTrapsMagazine", 0.4,
     "Trap.OWTL_AdvancedPitTrapsMagazine", 0.25,
@@ -32,12 +35,15 @@ local magazinesGarage = {
     "Trap.OWTL_SpikedBarricadesMagazine", 0.15,
 }
 
+-- Looks up one room/container distribution and appends the magazine entries.
 local function addDistribution(room, container, items)
     local roomDef = SuburbsDistributions and SuburbsDistributions[room] or nil
     local target = roomDef and roomDef[container] or nil
     insertItems(target, items)
 end
 
+-- Pre-map-load hook. It asks the texture manager for a texture so the game has
+-- item art ready, then prints a simple load message.
 OWTL_Traps.Loading.getSprites = function()
 	getTexture("Item_BicycleHelmet.png");
 	print("OWTL trap textures and sprites loaded.");

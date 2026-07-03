@@ -1,12 +1,15 @@
 OWTL_BloodMoon = OWTL_BloodMoon or {}
 OWTL_BloodMoon.AdminClient = OWTL_BloodMoon.AdminClient or {}
 
+-- Defensive event registration helper for client events.
 local function addEvent(event, handler)
     if event and event.Add then
         event.Add(handler)
     end
 end
 
+-- Tells the server this client has a usable player. During an active Blood Moon
+-- the server may merge that player into an existing horde group.
 local function notifyPlayerAvailable()
     local player = getPlayer()
     if player and sendClientCommand then
@@ -14,6 +17,8 @@ local function notifyPlayerAvailable()
     end
 end
 
+-- Requests status from the server. In single-player-like contexts without
+-- sendClientCommand, it reads local state directly and makes the player say it.
 local function requestStatus()
     local player = getPlayer()
     if not player then
@@ -30,6 +35,8 @@ local function requestStatus()
     end
 end
 
+-- Sends one admin command name plus optional arguments to the authoritative
+-- server-side admin handler.
 local function sendAdminCommand(command, args)
     local player = getPlayer()
     if not player then
@@ -41,6 +48,8 @@ local function sendAdminCommand(command, args)
     end
 end
 
+-- Splits chat input into non-space words. Lua arrays start at 1, so words[1] is
+-- the command prefix.
 local function splitWords(text)
     local words = {}
     if not text then
@@ -54,6 +63,8 @@ local function splitWords(text)
     return words
 end
 
+-- Parses /owtl chat commands and sends the corresponding server command. It
+-- returns true when it consumed the chat line.
 function OWTL_BloodMoon.AdminClient.HandleChatCommand(text)
     if not text then
         return false
@@ -111,6 +122,8 @@ function OWTL_BloodMoon.AdminClient.HandleChatCommand(text)
     return true
 end
 
+-- Monkey-patches ISChat.onCommandEntered once. The wrapper consumes /owtl
+-- commands and delegates every other command back to the original chat handler.
 local function patchChat()
     if OWTL_BloodMoon.AdminClient.chatPatched then
         return

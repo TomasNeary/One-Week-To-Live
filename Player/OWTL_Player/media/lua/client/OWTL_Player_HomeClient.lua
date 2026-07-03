@@ -6,6 +6,8 @@ OWTL_Player.Home = OWTL_Player.Home or {}
 
 local constants = OWTL_Player.Constants
 
+-- Protected call helper. PZ exposes many Java objects to Lua, and this keeps a
+-- missing method from crashing the event callback.
 local function safeCall(fn)
     local ok, result = pcall(fn)
     if ok then
@@ -14,6 +16,8 @@ local function safeCall(fn)
     return nil
 end
 
+-- Converts an IsoGridSquare into a plain Lua table. Plain tables are easy to
+-- save in modData; Java square objects themselves should not be stored.
 local function getSquarePosition(square)
     if not square then
         return nil
@@ -25,10 +29,14 @@ local function getSquarePosition(square)
     }
 end
 
+-- Small wrapper for object:getSquare() so the caller does not need its own
+-- pcall each time it asks where a world object is.
 local function getObjectSquare(object)
     return safeCall(function() return object:getSquare() end)
 end
 
+-- Decides whether a right-clicked world object is a reasonable "bed/home"
+-- target. It first checks tile properties, then falls back to sprite names.
 local function isSleepableObject(object)
     if not object then
         return false
@@ -57,6 +65,8 @@ local function isSleepableObject(object)
     return false
 end
 
+-- Searches the multiplayer safehouse list for one containing the x/y tile.
+-- Safehouse rectangles are checked with x/y/w/h bounds.
 local function getSafehouseAt(x, y)
     if not SafeHouse or not SafeHouse.getSafehouseList then
         return nil
@@ -81,6 +91,8 @@ local function getSafehouseAt(x, y)
     return nil
 end
 
+-- In single-player all home positions are allowed. In multiplayer this confirms
+-- the player is allowed to use the safehouse that contains the target tile.
 local function playerAllowedSafehouse(player, x, y)
     if not isClient or not isClient() then
         return true
@@ -112,6 +124,8 @@ local function playerAllowedSafehouse(player, x, y)
     return false
 end
 
+-- A respawn square must exist, be in an allowed safehouse area, have solid
+-- floor, and not be blocked.
 local function isValidRespawnSquare(player, square)
     if not square then
         return false
@@ -136,6 +150,7 @@ local function isValidRespawnSquare(player, square)
     return true
 end
 
+-- Looks up an IsoGridSquare from saved numeric coordinates.
 local function getSquare(x, y, z)
     local cell = safeCall(function() return getCell() end)
     if not cell then
@@ -144,6 +159,8 @@ local function getSquare(x, y, z)
     return safeCall(function() return cell:getGridSquare(tonumber(x), tonumber(y), tonumber(z) or 0) end)
 end
 
+-- If the exact bed tile is blocked, scan outward in a square ring until a valid
+-- nearby tile is found.
 local function findNearbySafeSquare(player, home)
     for radius = 1, constants.HOME_SEARCH_RADIUS do
         for dx = -radius, radius do
@@ -160,6 +177,8 @@ local function findNearbySafeSquare(player, home)
     return nil, nil
 end
 
+-- Moves the player to the center of a square. Project Zomboid tracks current
+-- and last x/y/z positions, so both sets are updated.
 local function teleportPlayer(player, square)
     local pos = getSquarePosition(square)
     if not pos then
@@ -175,6 +194,8 @@ local function teleportPlayer(player, square)
     return true
 end
 
+-- Reads home data from world-level persistent data first, then from the current
+-- character's modData as a fallback.
 local function getHome(player)
     local persistent = OWTL_Player.Data.GetPersistent(player)
     if persistent and persistent.home then
@@ -185,6 +206,7 @@ local function getHome(player)
     return playerData and playerData.home or nil
 end
 
+-- Saves a selected sleepable object as the player's home respawn point.
 function OWTL_Player.Home.Set(player, object)
     local square = getObjectSquare(object)
     local pos = getSquarePosition(square)
@@ -218,6 +240,8 @@ function OWTL_Player.Home.Set(player, object)
     safeCall(function() player:Say("Home set. You will respawn here.") end)
 end
 
+-- Attempts home respawn after character creation. It tries the saved square,
+-- then nearby safe squares, then the old square if safehouse permission allows.
 function OWTL_Player.Home.TryRespawnAtHome(player)
     if not player then
         return false
@@ -246,6 +270,8 @@ function OWTL_Player.Home.TryRespawnAtHome(player)
     return false
 end
 
+-- OnCreatePlayer can pass either playerIndex/player or just a player depending
+-- on game context. This normalizes the event arguments before trying respawn.
 local function onCreatePlayer(playerIndex, player)
     if not player and type(playerIndex) == "number" and getSpecificPlayer then
         player = getSpecificPlayer(playerIndex)
@@ -254,6 +280,8 @@ local function onCreatePlayer(playerIndex, player)
     OWTL_Player.Home.TryRespawnAtHome(player)
 end
 
+-- Adds "Set as Home" to the right-click menu when any clicked world object
+-- looks sleepable.
 local function addSetHomeOption(playerIndex, context, worldobjects)
     local player = getSpecificPlayer and getSpecificPlayer(playerIndex) or getPlayer()
     if not player or not context or not worldobjects then

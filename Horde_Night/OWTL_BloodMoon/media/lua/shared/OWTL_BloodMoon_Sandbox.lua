@@ -1,6 +1,8 @@
 OWTL_BloodMoon = OWTL_BloodMoon or {}
 OWTL_BloodMoon.Sandbox = OWTL_BloodMoon.Sandbox or {}
 
+-- Defaults are used when SandboxVars is absent or missing a field. Keeping them
+-- in one table makes each getter small and consistent.
 local defaults = {
     Enabled = true,
     IntervalMode = 1,
@@ -12,6 +14,8 @@ local defaults = {
     DebugLogging = false,
 }
 
+-- Returns the Blood Moon sandbox table if Project Zomboid has created it.
+-- Otherwise returns defaults, so tests and early load phases still work.
 local function getSandboxTable()
     if SandboxVars and SandboxVars.OWTL_BloodMoon then
         return SandboxVars.OWTL_BloodMoon
@@ -20,6 +24,8 @@ local function getSandboxTable()
     return defaults
 end
 
+-- Reads a numeric sandbox option and falls back to the default if it cannot be
+-- converted with tonumber().
 local function getNumber(name)
     local value = getSandboxTable()[name]
     if value == nil then
@@ -29,6 +35,8 @@ local function getNumber(name)
     return tonumber(value) or defaults[name]
 end
 
+-- Reads a boolean sandbox option. Only true counts as true; nil falls back to
+-- the default.
 local function getBoolean(name)
     local value = getSandboxTable()[name]
     if value == nil then
@@ -38,6 +46,8 @@ local function getBoolean(name)
     return value == true
 end
 
+-- Public getters below hide the raw sandbox table from the rest of the mod.
+-- Numeric values are clamped/floored so later code receives safe integers.
 function OWTL_BloodMoon.Sandbox.IsEnabled()
     return getBoolean("Enabled")
 end

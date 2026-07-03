@@ -3,18 +3,23 @@ OWTL_BloodMoon.State = OWTL_BloodMoon.State or {}
 
 local constants = OWTL_BloodMoon.Constants
 
+-- Registers an event handler if the PZ event exists in the current runtime.
 local function addEvent(event, handler)
     if event and event.Add then
         event.Add(handler)
     end
 end
 
+-- Debug logging is centralized so noisy prints are controlled by one sandbox
+-- option.
 local function debugLog(message)
     if OWTL_BloodMoon.Sandbox and OWTL_BloodMoon.Sandbox.IsDebugLoggingEnabled() then
         print("[OWTL_BloodMoon] " .. tostring(message))
     end
 end
 
+-- Plays a cue locally in single-player, or sends a server command so connected
+-- clients play it in multiplayer.
 local function dispatchLocalCue(cueName)
     if not cueName then
         return
@@ -32,6 +37,8 @@ local function dispatchLocalCue(cueName)
     end
 end
 
+-- Returns absolute world age in hours. Scheduler math uses this so events that
+-- cross midnight can be compared with simple >= checks.
 local function getCurrentWorldAgeHours()
     local gameTime = getGameTime()
     if gameTime and gameTime.getWorldAgeHours then
@@ -45,6 +52,7 @@ local function getCurrentWorldAgeHours()
     return 0
 end
 
+-- Converts world age to a whole day number, with getNightsSurvived as fallback.
 local function getCurrentWorldDay()
     local gameTime = getGameTime()
     local worldAgeHours = getCurrentWorldAgeHours()
@@ -60,6 +68,7 @@ local function getCurrentWorldDay()
     return 0
 end
 
+-- Returns the current whole hour of day for status/debug output.
 local function getCurrentHour()
     local gameTime = getGameTime()
     if gameTime and gameTime.getTimeOfDay then
@@ -73,10 +82,13 @@ local function getCurrentHour()
     return 0
 end
 
+-- Converts a day number into the absolute world hour when a Blood Moon starts.
 local function getStartWorldHour(day)
     return (day * 24) + constants.START_HOUR
 end
 
+-- Converts a day number into the absolute world hour when a Blood Moon ends.
+-- END_HOUR is before START_HOUR, so the end is usually on the following day.
 local function getEndWorldHour(day)
     local endDay = day
     if constants.END_HOUR <= constants.START_HOUR then
@@ -86,10 +98,12 @@ local function getEndWorldHour(day)
     return (endDay * 24) + constants.END_HOUR
 end
 
+-- Calculates when the warning window begins before the event start.
 local function getWarningWorldHour(startWorldHour)
     return startWorldHour - (constants.WARNING_LEAD_DAYS * 24)
 end
 
+-- For admin-forced starts, computes the next dawn-like end time from now.
 local function getNextDawnWorldHour(worldAgeHours)
     local day = math.floor(worldAgeHours / 24)
     local hour = worldAgeHours - (day * 24)
@@ -101,6 +115,7 @@ local function getNextDawnWorldHour(worldAgeHours)
     return (day * 24) + constants.END_HOUR
 end
 
+-- Ensures the world-level Blood Moon save table exists in GameTime modData.
 local function getRootData()
     local gameTime = getGameTime()
     if not gameTime then
@@ -116,6 +131,8 @@ local function getRootData()
     return modData[constants.GAME_TIME_DATA_KEY]
 end
 
+-- Chooses the number of days until the next event, using fixed or random
+-- sandbox settings.
 local function getIntervalDays()
     if OWTL_BloodMoon.Sandbox.IsFixedInterval() then
         return OWTL_BloodMoon.Sandbox.GetFixedInterval()
@@ -126,6 +143,7 @@ local function getIntervalDays()
     return ZombRand(minDays, maxDays + 1)
 end
 
+-- Counts active horde group records in saved state.
 function OWTL_BloodMoon.State.CountActiveGroups(data)
     if not data or not data.activeHordeGroups then
         return 0
@@ -138,6 +156,8 @@ function OWTL_BloodMoon.State.CountActiveGroups(data)
     return count
 end
 
+-- Returns true if the current/last event had any real horde activity. The stage
+-- only advances when this is true.
 function OWTL_BloodMoon.State.EventHadHordeGroup(data)
     if not data then
         return false
@@ -149,6 +169,8 @@ function OWTL_BloodMoon.State.EventHadHordeGroup(data)
         or (tonumber(data.queuedHordeCount) or 0) > 0
 end
 
+-- Fills missing fields in saved state. This allows old saves to keep working
+-- when new fields are added.
 local function initializeSchema(data)
     data.schemaVersion = data.schemaVersion or constants.DATA_VERSION
     data.enabled = OWTL_BloodMoon.Sandbox.IsEnabled()
@@ -178,6 +200,8 @@ local function initializeSchema(data)
     end
 end
 
+-- Schedules the next Blood Moon relative to baseWorldHour or the current time.
+-- It stores both day/hour display values and absolute world-hour values.
 function OWTL_BloodMoon.State.ScheduleNext(data, baseWorldHour)
     if not data then
         data = getRootData()
@@ -211,6 +235,7 @@ function OWTL_BloodMoon.State.ScheduleNext(data, baseWorldHour)
     return data
 end
 
+-- Clears runtime event state and immediately schedules a fresh future event.
 function OWTL_BloodMoon.State.ResetScheduler()
     local data = getRootData()
     if not data then
@@ -238,6 +263,8 @@ function OWTL_BloodMoon.State.ResetScheduler()
     return data
 end
 
+-- Main state accessor. It creates schema fields, honors the enabled sandbox
+-- option, and schedules an event if none exists yet.
 function OWTL_BloodMoon.State.Ensure()
     local data = getRootData()
     if not data then
@@ -260,6 +287,7 @@ function OWTL_BloodMoon.State.Ensure()
     return data
 end
 
+-- Marks the warning as issued and records when/why it happened.
 function OWTL_BloodMoon.State.IssueWarning(data, reason)
     if not data then
         data = OWTL_BloodMoon.State.Ensure()
@@ -278,6 +306,8 @@ function OWTL_BloodMoon.State.IssueWarning(data, reason)
     return data
 end
 
+-- Transitions the scheduler into active mode, initializes horde counters, plays
+-- the start cue, and asks the horde module to spawn zombies.
 function OWTL_BloodMoon.State.StartBloodMoon(data, reason)
     if not data then
         data = OWTL_BloodMoon.State.Ensure()
@@ -316,6 +346,8 @@ function OWTL_BloodMoon.State.StartBloodMoon(data, reason)
     return data
 end
 
+-- Transitions out of active mode, advances stage if a horde existed, clears
+-- horde state, schedules the next event, and plays the end cue.
 function OWTL_BloodMoon.State.EndBloodMoon(data, reason)
     if not data then
         data = OWTL_BloodMoon.State.Ensure()
@@ -351,6 +383,7 @@ function OWTL_BloodMoon.State.EndBloodMoon(data, reason)
     return data
 end
 
+-- Admin helper that forces the horde stage to a positive integer.
 function OWTL_BloodMoon.State.SetStage(stage)
     local data = OWTL_BloodMoon.State.Ensure()
     if not data then
@@ -363,6 +396,8 @@ function OWTL_BloodMoon.State.SetStage(stage)
     return data
 end
 
+-- Adds or replaces one horde group summary in saved state. This is a lightweight
+-- record of the live horde registry.
 function OWTL_BloodMoon.State.MarkHordeGroupAllocated(groupId, count, queuedCount)
     local data = OWTL_BloodMoon.State.Ensure()
     if not data then
@@ -388,6 +423,8 @@ function OWTL_BloodMoon.State.MarkHordeGroupAllocated(groupId, count, queuedCoun
     return data
 end
 
+-- Rebuilds saved horde summaries from the live horde registry. The live zombie
+-- objects stay in Horde.Registry; saved state only stores simple values.
 function OWTL_BloodMoon.State.ReplaceActiveHordeGroups(groups, activeCount, queuedCount)
     local data = OWTL_BloodMoon.State.Ensure()
     if not data then
@@ -419,6 +456,8 @@ function OWTL_BloodMoon.State.ReplaceActiveHordeGroups(groups, activeCount, queu
     return data
 end
 
+-- Builds chat/status lines describing saved horde state, plus live registry
+-- lines when the horde module is loaded.
 function OWTL_BloodMoon.State.GetActiveHordeLines()
     local data = OWTL_BloodMoon.State.Ensure()
     if not data then
@@ -450,6 +489,8 @@ function OWTL_BloodMoon.State.GetActiveHordeLines()
     return lines
 end
 
+-- Scheduler tick. It issues warnings, starts events, ends events, and skips a
+-- missed event window if time has already passed it.
 function OWTL_BloodMoon.State.Tick()
     local data = OWTL_BloodMoon.State.Ensure()
     if not data then
@@ -491,6 +532,7 @@ function OWTL_BloodMoon.State.Tick()
     return data
 end
 
+-- Builds human-readable scheduler status lines for admin chat commands.
 function OWTL_BloodMoon.State.GetStatusLines()
     local data = OWTL_BloodMoon.State.Ensure()
     if not data then
@@ -511,10 +553,13 @@ function OWTL_BloodMoon.State.GetStatusLines()
     }
 end
 
+-- Startup hook: make sure the state table exists as soon as game/global modData
+-- is available.
 local function onInit()
     OWTL_BloodMoon.State.Ensure()
 end
 
+-- Periodic hook: advance the scheduler using current world time.
 local function onTick()
     OWTL_BloodMoon.State.Tick()
 end

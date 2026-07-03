@@ -6,6 +6,8 @@ OWTL_Traps.Server = OWTL_Traps.Server or {}
 local defs = OWTL_Traps.Definitions
 local tickCounter = 0
 
+-- Protected-call helper. Server code touches Java-backed objects, so pcall
+-- prevents one missing method from stopping the tick handler.
 local function safeCall(fn)
     local ok, result = pcall(fn)
     if ok then
@@ -14,6 +16,8 @@ local function safeCall(fn)
     return nil
 end
 
+-- Converts "Module.Type" to "Type" for inventory APIs that remove by simple
+-- item type.
 local function simpleType(fullType)
     local dot = string.find(fullType, ".", 1, true)
     if dot then
@@ -22,6 +26,8 @@ local function simpleType(fullType)
     return fullType
 end
 
+-- Ensures the world-level trap registry exists. The registry stores simple
+-- coordinates/key ids, not live world objects.
 local function getRoot()
     local gameTime = getGameTime()
     local modData = gameTime and gameTime:getModData()
@@ -34,10 +40,12 @@ local function getRoot()
     return root
 end
 
+-- Creates a stable string key from x/y/z coordinates.
 local function trapKey(x, y, z)
     return tostring(math.floor(tonumber(x) or 0)) .. "," .. tostring(math.floor(tonumber(y) or 0)) .. "," .. tostring(math.floor(tonumber(z) or 0))
 end
 
+-- Converts command args with x/y/z fields into an IsoGridSquare.
 local function getSquare(args)
     local cell = getCell and getCell() or safeCall(function() return getWorld():getCell() end)
     if not cell or not args then
@@ -46,6 +54,8 @@ local function getSquare(args)
     return safeCall(function() return cell:getGridSquare(tonumber(args.x), tonumber(args.y), tonumber(args.z) or 0) end)
 end
 
+-- Finds a server cell. Dedicated server contexts may not have getCell(), so it
+-- can fall back through online players.
 local function getServerCell()
     local cell = getCell and getCell() or nil
     if cell then
@@ -66,6 +76,7 @@ local function getServerCell()
     return nil
 end
 
+-- Counts an item type in the player's inventory, including nested containers.
 local function getItemCount(inventory, fullType)
     if not inventory then
         return 0
@@ -75,6 +86,8 @@ local function getItemCount(inventory, fullType)
         or 0
 end
 
+-- Checks for a required kept tool, accepting equivalent item types for common
+-- tools.
 local function hasTool(inventory, toolName)
     if not inventory then
         return false
@@ -96,6 +109,8 @@ local function hasTool(inventory, toolName)
     return safeCall(function() return inventory:containsTypeRecurse(toolName) end) == true
 end
 
+-- Server-side validation for build/repair requirements. This mirrors the
+-- client menu checks so clients cannot bypass requirements.
 local function hasMaterials(player, trapDef, repair)
     local inventory = player and player:getInventory()
     if not inventory or not trapDef then
@@ -123,6 +138,7 @@ local function hasMaterials(player, trapDef, repair)
     return true
 end
 
+-- Removes consumed material items from inventory.
 local function consumeMaterials(player, materials)
     local inventory = player and player:getInventory()
     if not inventory then
@@ -136,6 +152,7 @@ local function consumeMaterials(player, materials)
     return true
 end
 
+-- Awards Carpentry XP for a completed trap build.
 local function awardBuildXp(player, trapDef)
     if not player or not trapDef or not trapDef.buildXp or trapDef.buildXp <= 0 then
         return
@@ -146,6 +163,8 @@ local function awardBuildXp(player, trapDef)
     end
 end
 
+-- Finds an OWTL trap world item on a square, optionally matching a key id sent
+-- by the client.
 local function findTrapWorldItem(square, keyId)
     local objects = square and safeCall(function() return square:getWorldObjects() end) or nil
     if not objects then
@@ -163,11 +182,13 @@ local function findTrapWorldItem(square, keyId)
     return nil, nil
 end
 
+-- True when a square already contains an OWTL trap.
 local function squareHasTrap(square)
     local worldItem = findTrapWorldItem(square)
     return worldItem ~= nil
 end
 
+-- Adds or updates the trap in the world-level registry used by zombie scans.
 local function registerTrap(square, worldItem, trapId)
     local root = getRoot()
     if not root or not square or not worldItem then
@@ -183,6 +204,8 @@ local function registerTrap(square, worldItem, trapId)
     }
 end
 
+-- Synchronizes uses/condition/active state to item modData, world item modData,
+-- and square modData.
 local function syncTrap(square, worldItem, item, trapDef, uses)
     local active = uses > 0
     item:getModData().uses = uses
@@ -198,6 +221,8 @@ local function syncTrap(square, worldItem, item, trapDef, uses)
     square:transmitModdata()
 end
 
+-- Authoritative multiplayer build command. It validates the request, consumes
+-- materials, creates the trap item, registers it, and awards XP.
 function OWTL_Traps.Server.BuildTrap(player, args)
     local trapDef = args and defs.Get(args.trapId)
     local square = getSquare(args)
@@ -226,6 +251,7 @@ function OWTL_Traps.Server.BuildTrap(player, args)
     end
 end
 
+-- Applies damage to a zombie that stepped on a trap.
 local function applyZombieDamage(zombie, trapDef)
     if not zombie or not trapDef then
         return
@@ -245,6 +271,7 @@ local function applyZombieDamage(zombie, trapDef)
     end
 end
 
+-- Applies player foot damage when player trap damage is enabled.
 local function applyPlayerDamage(player, trapDef)
     if not player or not trapDef or not defs.IsPlayerDamageEnabled() then
         return
@@ -263,6 +290,8 @@ local function applyPlayerDamage(player, trapDef)
     end
 end
 
+-- Triggers one trap, applies target damage, reduces uses, and synchronizes the
+-- changed trap state.
 local function triggerTrap(square, worldItem, item, trapDef, target)
     if not square or not worldItem or not item or not trapDef then
         return false
@@ -283,6 +312,8 @@ local function triggerTrap(square, worldItem, item, trapDef, target)
     return true
 end
 
+-- Authoritative repair command. It validates materials, consumes them, and
+-- restores the trap to max uses.
 function OWTL_Traps.Server.RepairTrap(player, args)
     local square = getSquare(args)
     local worldItem, item = findTrapWorldItem(square, args and args.keyId)
@@ -295,6 +326,8 @@ function OWTL_Traps.Server.RepairTrap(player, args)
     registerTrap(square, worldItem, trapDef.id)
 end
 
+-- Multiplayer player-trigger command. The client notices the player standing on
+-- a trap, but the server applies the actual damage and use reduction.
 function OWTL_Traps.Server.TriggerPlayerTrap(player, args)
     if not defs.IsPlayerDamageEnabled() then
         return
@@ -307,6 +340,8 @@ function OWTL_Traps.Server.TriggerPlayerTrap(player, args)
     end
 end
 
+-- Server zombie scan. It checks registered trap coordinates against live zombie
+-- positions and triggers the matching trap when a zombie stands on it.
 local function scanZombieTriggers()
     local root = getRoot()
     if not root or not root.traps then
@@ -336,6 +371,7 @@ local function scanZombieTriggers()
     end
 end
 
+-- Tick hook throttled to every 30 ticks so zombie scans are not run every frame.
 local function onTick()
     if not isServer() then
         return
@@ -348,6 +384,7 @@ local function onTick()
     scanZombieTriggers()
 end
 
+-- Dispatches client commands from OWTL_Traps_Client.lua to server functions.
 local function onClientCommand(module, command, player, args)
     if not isServer() or module ~= defs.COMMAND_MODULE then
         return

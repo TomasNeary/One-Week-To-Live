@@ -1,12 +1,15 @@
 OWTL_BloodMoon = OWTL_BloodMoon or {}
 OWTL_BloodMoon.Admin = OWTL_BloodMoon.Admin or {}
 
+-- Registers an event handler only when the event object exists.
 local function addEvent(event, handler)
     if event and event.Add then
         event.Add(handler)
     end
 end
 
+-- Single-player/local contexts allow access. Multiplayer requires a recognized
+-- admin-like access level.
 local function hasAdminAccess(player)
     if not player then
         return false
@@ -24,6 +27,7 @@ local function hasAdminAccess(player)
     return false
 end
 
+-- Sends multiple status/help lines through player speech.
 local function sayLines(player, lines)
     if not player or not lines then
         return
@@ -34,6 +38,7 @@ local function sayLines(player, lines)
     end
 end
 
+-- Common permission check used by every admin command.
 local function commandAllowed(player)
     if not hasAdminAccess(player) then
         sayLines(player, { "OWTL Blood Moon: admin access required" })
@@ -43,6 +48,7 @@ local function commandAllowed(player)
     return true
 end
 
+-- Sends scheduler status lines to the requesting admin.
 function OWTL_BloodMoon.Admin.SendStatus(player)
     if not commandAllowed(player) then
         return
@@ -50,6 +56,7 @@ function OWTL_BloodMoon.Admin.SendStatus(player)
     sayLines(player, OWTL_BloodMoon.State.GetStatusLines())
 end
 
+-- Sends horde registry/status lines to the requesting admin.
 function OWTL_BloodMoon.Admin.SendActiveHordeStatus(player)
     if not commandAllowed(player) then
         return
@@ -57,6 +64,7 @@ function OWTL_BloodMoon.Admin.SendActiveHordeStatus(player)
     sayLines(player, OWTL_BloodMoon.State.GetActiveHordeLines())
 end
 
+-- Forces the warning state, then reports the new schedule status.
 function OWTL_BloodMoon.Admin.ForceWarning(player)
     if not commandAllowed(player) then
         return
@@ -65,6 +73,7 @@ function OWTL_BloodMoon.Admin.ForceWarning(player)
     sayLines(player, OWTL_BloodMoon.State.GetStatusLines())
 end
 
+-- Starts a Blood Moon immediately, using the admin-forced start path.
 function OWTL_BloodMoon.Admin.ForceStart(player)
     if not commandAllowed(player) then
         return
@@ -73,6 +82,7 @@ function OWTL_BloodMoon.Admin.ForceStart(player)
     sayLines(player, OWTL_BloodMoon.State.GetStatusLines())
 end
 
+-- Ends the active Blood Moon immediately, if one is active.
 function OWTL_BloodMoon.Admin.ForceEnd(player)
     if not commandAllowed(player) then
         return
@@ -81,6 +91,7 @@ function OWTL_BloodMoon.Admin.ForceEnd(player)
     sayLines(player, OWTL_BloodMoon.State.GetStatusLines())
 end
 
+-- Sets the current horde stage from chat input.
 function OWTL_BloodMoon.Admin.SetStage(player, stage)
     if not commandAllowed(player) then
         return
@@ -89,6 +100,7 @@ function OWTL_BloodMoon.Admin.SetStage(player, stage)
     sayLines(player, OWTL_BloodMoon.State.GetStatusLines())
 end
 
+-- Clears scheduler state and schedules the next event from current time.
 function OWTL_BloodMoon.Admin.ResetScheduler(player)
     if not commandAllowed(player) then
         return
@@ -97,6 +109,7 @@ function OWTL_BloodMoon.Admin.ResetScheduler(player)
     sayLines(player, OWTL_BloodMoon.State.GetStatusLines())
 end
 
+-- Sends the command list to the player.
 function OWTL_BloodMoon.Admin.SendHelp(player)
     if not commandAllowed(player) then
         return
@@ -108,6 +121,7 @@ function OWTL_BloodMoon.Admin.SendHelp(player)
     })
 end
 
+-- Server-side dispatcher for commands sent by OWTL_BloodMoon_AdminClient.lua.
 local function onClientCommand(module, command, player, args)
     if module ~= "OWTL_BloodMoon" then
         return

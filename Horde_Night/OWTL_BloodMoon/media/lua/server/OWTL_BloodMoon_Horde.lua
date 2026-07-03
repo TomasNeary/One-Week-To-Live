@@ -3,6 +3,8 @@ OWTL_BloodMoon.Horde = OWTL_BloodMoon.Horde or {}
 
 local constants = OWTL_BloodMoon.Constants
 
+-- registry is live runtime state. It may contain player and zombie objects, so
+-- it is not written directly to modData; State receives summaries instead.
 local registry = {
     groups = {},
     groupOrder = {},
@@ -17,18 +19,21 @@ local registry = {
 
 OWTL_BloodMoon.Horde.Registry = registry
 
+-- Optional debug logger for horde operations.
 local function debugLog(message)
     if OWTL_BloodMoon.Sandbox and OWTL_BloodMoon.Sandbox.IsDebugLoggingEnabled() then
         print("[OWTL_BloodMoon] " .. tostring(message))
     end
 end
 
+-- Safe event registration helper.
 local function addEvent(event, handler)
     if event and event.Add then
         event.Add(handler)
     end
 end
 
+-- Returns absolute world age in hours for spawn metadata and reports.
 local function getWorldHour()
     local gameTime = getGameTime()
     if gameTime and gameTime.getWorldAgeHours then
@@ -37,6 +42,7 @@ local function getWorldHour()
     return 0
 end
 
+-- Returns a millisecond-ish timestamp. Awareness refresh throttling uses this.
 local function getNowMs()
     if getTimestampMs then
         return getTimestampMs()
@@ -47,6 +53,7 @@ local function getNowMs()
     return math.floor(getWorldHour() * 3600000)
 end
 
+-- Best-effort display name for reports and group summaries.
 local function getPlayerName(player)
     if not player then
         return "unknown"
@@ -60,6 +67,7 @@ local function getPlayerName(player)
     return tostring(player)
 end
 
+-- Best-effort stable id for target metadata on zombies.
 local function getPlayerId(player)
     if not player then
         return nil
@@ -73,6 +81,7 @@ local function getPlayerId(player)
     return tostring(player)
 end
 
+-- A usable player must exist, be alive, and expose x/y/z methods.
 local function playerIsUsable(player)
     if not player then
         return false
@@ -86,6 +95,7 @@ local function playerIsUsable(player)
     return true
 end
 
+-- A usable zombie must be alive and tagged as an OWTL Blood Moon horde zombie.
 local function zombieIsUsable(zombie)
     if not zombie then
         return false
@@ -104,12 +114,14 @@ local function zombieIsUsable(zombie)
     return modData and modData.OWTL_BloodMoon and modData.OWTL_BloodMoon.isBloodMoonHorde == true
 end
 
+-- Squared distance avoids sqrt and is enough for range comparisons.
 local function distanceSquared(x1, y1, x2, y2)
     local dx = (tonumber(x1) or 0) - (tonumber(x2) or 0)
     local dy = (tonumber(y1) or 0) - (tonumber(y2) or 0)
     return (dx * dx) + (dy * dy)
 end
 
+-- Collects active players from multiplayer, split-screen, or single-player APIs.
 local function getActivePlayers()
     local players = {}
 
@@ -144,6 +156,8 @@ local function getActivePlayers()
     return players
 end
 
+-- Reads the player's square, room, and building. Spawn logic avoids spawning
+-- inside that room/building.
 local function getPlayerSquareInfo(player)
     local square = nil
     local room = nil
@@ -162,6 +176,7 @@ local function getPlayerSquareInfo(player)
     return square, room, building
 end
 
+-- Recomputes a group's target center from all usable players in the group.
 local function recalculateGroupCenter(group)
     local totalX = 0
     local totalY = 0
@@ -185,6 +200,8 @@ local function recalculateGroupCenter(group)
     end
 end
 
+-- Picks the best current player target for a group. If all original group
+-- players are gone, it falls back to any active player.
 local function resolveGroupTarget(group)
     if not group then
         return nil
@@ -207,6 +224,7 @@ local function resolveGroupTarget(group)
     return nil
 end
 
+-- Returns true when a player is close enough to any player already in a group.
 local function playerFitsGroup(player, group, maxDistanceSquared)
     for i = 1, #group.players do
         local other = group.players[i]
@@ -217,6 +235,7 @@ local function playerFitsGroup(player, group, maxDistanceSquared)
     return false
 end
 
+-- Checks whether a group already contains the exact player object.
 local function groupHasPlayer(group, player)
     if not group or not player then
         return false
@@ -231,6 +250,7 @@ local function groupHasPlayer(group, player)
     return false
 end
 
+-- Stores group membership in per-player modData for later inspection.
 local function setPlayerGroup(player, groupId)
     if OWTL_BloodMoon.PlayerData and OWTL_BloodMoon.PlayerData.Ensure then
         local playerData = OWTL_BloodMoon.PlayerData.Ensure(player)
@@ -241,6 +261,7 @@ local function setPlayerGroup(player, groupId)
     end
 end
 
+-- Creates a new horde group around one player.
 local function createGroup(player)
     registry.nextGroupNumber = registry.nextGroupNumber + 1
     local groupId = "bm-" .. tostring(registry.nextGroupNumber)
@@ -268,6 +289,7 @@ local function createGroup(player)
     return group
 end
 
+-- Adds a player to an existing group and updates the group's center.
 local function addPlayerToGroup(player, group)
     if groupHasPlayer(group, player) then
         return
@@ -279,6 +301,7 @@ local function addPlayerToGroup(player, group)
     recalculateGroupCenter(group)
 end
 
+-- Removes a player from every live group, used on death/disconnect.
 local function removePlayerFromGroups(player)
     if not player then
         return
@@ -303,6 +326,8 @@ local function removePlayerFromGroups(player)
     end
 end
 
+-- Builds groups from all active players. Nearby players share one horde group;
+-- distant players receive separate groups.
 local function buildGroups(players)
     registry.groups = {}
     registry.groupOrder = {}
@@ -329,6 +354,8 @@ local function buildGroups(players)
     end
 end
 
+-- Validates a candidate spawn square. It avoids solid/blocked tiles and can
+-- require outside tiles before falling back to less strict placement.
 local function squareIsValid(square, avoidRoom, avoidBuilding, requireOutside)
     if not square then
         return false
@@ -351,6 +378,8 @@ local function squareIsValid(square, avoidRoom, avoidBuilding, requireOutside)
     return true
 end
 
+-- Attempts random points around the group center until a valid spawn square is
+-- found.
 local function getCandidateSquare(group, requireOutside)
     local cell = getCell()
     if not cell then
@@ -377,10 +406,13 @@ local function getCandidateSquare(group, requireOutside)
     return nil
 end
 
+-- Prefer outside spawn squares; if none are found, allow any valid square.
 local function findSpawnSquare(group)
     return getCandidateSquare(group, true) or getCandidateSquare(group, false)
 end
 
+-- Writes Blood Moon metadata onto a zombie so later scans know it belongs to
+-- this event and group.
 local function tagZombie(zombie, group)
     if not zombie or not zombie.getModData then
         return
@@ -403,6 +435,8 @@ local function tagZombie(zombie, group)
     }
 end
 
+-- Calls an object method when it exists. Varargs (...) forward any extra
+-- arguments to the method.
 local function callIfAvailable(object, methodName, ...)
     if object and object[methodName] then
         if pcall then
@@ -416,6 +450,7 @@ local function callIfAvailable(object, methodName, ...)
     return false
 end
 
+-- Clears forced target/pathing metadata from one horde zombie.
 local function clearZombieAwareness(zombie)
     if not zombie or not zombie.getModData then
         return
@@ -435,6 +470,8 @@ local function clearZombieAwareness(zombie)
     modData.OWTL_BloodMoon = nil
 end
 
+-- Forces a zombie to notice and path toward a target player, then records that
+-- target in zombie modData and group fields.
 local function applyZombieAwareness(zombie, targetPlayer, group)
     if not zombieIsUsable(zombie) or not playerIsUsable(targetPlayer) then
         return false
@@ -471,6 +508,7 @@ local function applyZombieAwareness(zombie, targetPlayer, group)
     return true
 end
 
+-- Spawns one zombie near the group, tags it, stores it, and gives it a target.
 local function spawnOneZombie(group)
     if not addZombiesInOutfit then
         return false
@@ -497,12 +535,15 @@ local function spawnOneZombie(group)
     return true
 end
 
+-- Sends a summary of the live registry to the scheduler state module.
 local function syncState()
     if OWTL_BloodMoon.State and OWTL_BloodMoon.State.ReplaceActiveHordeGroups then
         OWTL_BloodMoon.State.ReplaceActiveHordeGroups(registry.groups, registry.totalActive, registry.totalQueued)
     end
 end
 
+-- Spawns as many zombies as allowed by group and server caps. Unspawned zombies
+-- are counted as queued for status reporting.
 local function spawnGroup(group, requestedCount, remainingServerCap)
     local groupCap = OWTL_BloodMoon.Sandbox.GetGroupHordeCap()
     local allowed = math.min(requestedCount, groupCap, remainingServerCap)
@@ -527,6 +568,8 @@ local function spawnGroup(group, requestedCount, remainingServerCap)
     debugLog("group " .. tostring(group.id) .. " requested=" .. tostring(requestedCount) .. " spawned=" .. tostring(spawned) .. " queued=" .. tostring(queued))
 end
 
+-- Starts a horde event: reset registry, group active players, spawn zombies for
+-- each group, and sync the result to State.
 function OWTL_BloodMoon.Horde.StartEvent(data)
     registry.groups = {}
     registry.groupOrder = {}
@@ -560,6 +603,8 @@ function OWTL_BloodMoon.Horde.StartEvent(data)
     return registry
 end
 
+-- Ends a horde event by clearing forced zombie awareness and wiping the live
+-- registry.
 function OWTL_BloodMoon.Horde.EndEvent()
     for i = 1, #registry.groupOrder do
         local group = registry.groups[registry.groupOrder[i]]
@@ -579,6 +624,8 @@ function OWTL_BloodMoon.Horde.EndEvent()
     registry.lastAwarenessRefreshMs = 0
 end
 
+-- During an active event, merge a newly available player into the nearest group
+-- when close enough.
 function OWTL_BloodMoon.Horde.MergePlayer(player)
     local data = OWTL_BloodMoon.State and OWTL_BloodMoon.State.Ensure and OWTL_BloodMoon.State.Ensure() or nil
     if not data or data.isActive ~= true or not playerIsUsable(player) then
@@ -614,6 +661,7 @@ function OWTL_BloodMoon.Horde.MergePlayer(player)
     return nil
 end
 
+-- Retargets every usable zombie in one group toward the group's current target.
 function OWTL_BloodMoon.Horde.RetargetGroup(group)
     local targetPlayer = resolveGroupTarget(group)
     if not targetPlayer or not group or not group.spawnedZombies then
@@ -634,6 +682,7 @@ function OWTL_BloodMoon.Horde.RetargetGroup(group)
     return retargeted
 end
 
+-- Retargets all groups and returns the total number of zombies updated.
 function OWTL_BloodMoon.Horde.RetargetAll()
     local retargeted = 0
     for i = 1, #registry.groupOrder do
@@ -643,6 +692,8 @@ function OWTL_BloodMoon.Horde.RetargetAll()
     return retargeted
 end
 
+-- Periodically re-applies awareness so horde zombies keep pursuing players even
+-- if game AI state drifts.
 function OWTL_BloodMoon.Horde.RefreshAwareness(force)
     local data = OWTL_BloodMoon.State and OWTL_BloodMoon.State.Ensure and OWTL_BloodMoon.State.Ensure() or nil
     if not data or data.isActive ~= true then
@@ -676,6 +727,7 @@ function OWTL_BloodMoon.Horde.RefreshAwareness(force)
     return refreshed
 end
 
+-- Builds admin-readable lines about the live horde registry.
 function OWTL_BloodMoon.Horde.GetReportLines()
     local lines = {
         "OWTL Blood Moon active horde registry",
@@ -700,6 +752,8 @@ function OWTL_BloodMoon.Horde.GetReportLines()
     return lines
 end
 
+-- Handles the client "PlayerAvailable" command and tries to merge that player
+-- into an active horde.
 local function onClientCommand(module, command, player, args)
     if module ~= "OWTL_BloodMoon" or command ~= "PlayerAvailable" then
         return
@@ -707,12 +761,14 @@ local function onClientCommand(module, command, player, args)
     OWTL_BloodMoon.Horde.MergePlayer(player)
 end
 
+-- Removes unavailable players and retargets their old zombies.
 local function onPlayerUnavailable(player)
     removePlayerFromGroups(player)
     OWTL_BloodMoon.Horde.RetargetAll()
     syncState()
 end
 
+-- Periodic safety pass that merges any active players not already in a group.
 local function onPeriodicPlayerCheck()
     local data = OWTL_BloodMoon.State and OWTL_BloodMoon.State.Ensure and OWTL_BloodMoon.State.Ensure() or nil
     if not data or data.isActive ~= true then
@@ -725,6 +781,7 @@ local function onPeriodicPlayerCheck()
     end
 end
 
+-- Frame tick hook used for awareness refresh throttled inside RefreshAwareness.
 local function onTick()
     OWTL_BloodMoon.Horde.RefreshAwareness(false)
 end
